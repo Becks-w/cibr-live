@@ -8,10 +8,10 @@
     <string>/bin/bash</string>
     <string>/Users/beckywang/Projects/cibr-live/run.sh</string>
   </array>
-  <!-- 每天 07:30（本机时间，北京）：美股收盘后、IBKR Gateway 日线已更新。周末跑了也只是重复同一天数据，不会发重复信号。Mac 休眠错过的会在唤醒后补跑。 -->
+  <!-- 每天 11:00（本机时间 = 东八区）：美股收盘后、IBKR Gateway 日线已更新。周末跑了也只是重复同一天数据，不会发重复信号。Mac 休眠错过的会在唤醒后补跑。 -->
   <key>StartCalendarInterval</key>
   <array>
-    <dict><key>Hour</key><integer>7</integer><key>Minute</key><integer>30</integer></dict>
+    <dict><key>Hour</key><integer>11</integer><key>Minute</key><integer>0</integer></dict>
   </array>
   <key>StandardOutPath</key><string>/Users/beckywang/Projects/cibr-live/logs/launchd.out.log</string>
   <key>StandardErrorPath</key><string>/Users/beckywang/Projects/cibr-live/logs/launchd.err.log</string>

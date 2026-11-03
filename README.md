@@ -12,7 +12,7 @@
 
 | 层 | 文件 | 谁改 | 频率 |
 |---|---|---|---|
-| 行情与统计 | `scripts/fetch_prices.py` → `analyze.py` → `export.py` | 机器 | 每天 07:30（launchd） |
+| 行情与统计 | `scripts/fetch_prices.py` → `analyze.py` → `export.py` | 机器 | 每天 11:00（launchd，东八区） |
 | 事实配置 | `config/fundamentals.json`（基本面快照、梯子倍数、持仓）、`config/calendar.json`（判决日 + 检验标准）、`config/zones.json`（观察区）、`config/events.json`（图表事件点） | 人 / `earnings.py` | 财报后、再平衡后 |
 | 叙事 | `docs/index.html` 里带「叙事快照」标签的段落、`content/updates.json`（更新日志） | 人（或让 Claude 改） | 有新判断时；改完把 `config/settings.json` 的 `narrative_date` 改成当天 |
 
@@ -50,7 +50,7 @@ launchctl start com.becks.cibr-live     # 手动触发一次
 tail -f logs/run.log
 ```
 
-每天 07:30（北京时间，美股收盘后）。Mac 休眠错过会在唤醒后补跑。
+每天 11:00（本机时间 = 东八区，美股收盘后）。Mac 休眠错过会在唤醒后补跑。
 
 ## Telegram
 
