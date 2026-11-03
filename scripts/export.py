@@ -51,6 +51,8 @@ look = int(SETTINGS.get("alerts", {}).get("earnings_lookahead_days", 2))
 calendar = []
 for ev in CAL["events"]:
     d = datetime.strptime(ev["date"], "%Y-%m-%d"); days = (d - asof_d).days
+    if days < -14:  # 已过两周的事件从页面日历移出（config 里保留）
+        continue
     e = earn.get((ev.get("ticker"), ev["date"]))
     c = dict(ev); c["days"] = days
     if e: c["status"] = "已出"; c["result"] = e
@@ -58,6 +60,7 @@ for ev in CAL["events"]:
     elif days <= look: c["status"] = "即将"
     else: c["status"] = f"{days} 天后"
     calendar.append(c)
+calendar.sort(key=lambda c: c["date"])
 earnings_list = sorted(earn.values(), key=lambda e: e["date"], reverse=True)
 
 # ---- 今日信号 ----
