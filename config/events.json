@@ -1,0 +1,113 @@
+{
+ "note": "图表事件点：日期 + 一句话。财报与大事件在这里追加即可。",
+ "events": [
+  {
+   "date": "2025-11-19",
+   "label": "PANW 宣布收购 Chronosphere"
+  },
+  {
+   "date": "2026-02-03",
+   "label": "Anthropic Cowork 插件：SaaSpocalypse"
+  },
+  {
+   "date": "2026-02-11",
+   "label": "PANW 完成收购 CyberArk"
+  },
+  {
+   "date": "2026-02-20",
+   "label": "Claude Code Security 发布，CRWD -7.9%"
+  },
+  {
+   "date": "2026-02-28",
+   "label": "美伊战争开始"
+  },
+  {
+   "date": "2026-03-27",
+   "label": "Mythos 泄露 + VIX 31"
+  },
+  {
+   "date": "2026-04-09",
+   "label": "Mythos 预览/Glasswing：ZS -11%、NET -22%(两日)"
+  },
+  {
+   "date": "2026-04-10",
+   "label": "CIBR 低点 60.74"
+  },
+  {
+   "date": "2026-05-07",
+   "label": "FTNT 一季报 +20%"
+  },
+  {
+   "date": "2026-05-27",
+   "label": "ZS 指引失望 -31.5%"
+  },
+  {
+   "date": "2026-05-29",
+   "label": "OKTA +30%"
+  },
+  {
+   "date": "2026-06-03",
+   "label": "CRWD 财报 in-line，宣布 4:1 拆股"
+  },
+  {
+   "date": "2026-06-05",
+   "label": "半导体崩跌 SMH -9.2%"
+  },
+  {
+   "date": "2026-07-07",
+   "label": "PANW 降级 Hold"
+  },
+  {
+   "date": "2026-07-14",
+   "label": "IBM：订单推迟但软件未被颠覆，CRWD +12%"
+  },
+  {
+   "date": "2026-08-10",
+   "label": "Black Hat：AI Agent 威胁叙事，新高"
+  },
+  {
+   "date": "2026-08-27",
+   "label": "CRWD +20.5%、OKTA +28.6%"
+  },
+  {
+   "date": "2026-09-01",
+   "label": "PANW beat-and-fall -5%"
+  },
+  {
+   "date": "2026-09-14",
+   "label": "AI 风险交易：CIBR +6%、SMH -4.8%"
+  },
+  {
+   "date": "2026-09-16",
+   "label": "美联储加息 25bp"
+  },
+  {
+   "date": "2026-10-06",
+   "label": "PANW/CRWD/FTNT 历史新高"
+  },
+  {
+   "date": "2026-10-09",
+   "label": "CIBR 历史高点 110.00"
+  },
+  {
+   "date": "2026-10-16",
+   "label": "AI 融资担忧 -4.5%"
+  },
+  {
+   "date": "2026-10-21",
+   "label": "php2shell 漏洞：ZS +7.8%"
+  },
+  {
+   "date": "2026-10-29",
+   "label": "FTNT -20%、NOW -27%"
+  },
+  {
+   "date": "2026-10-30",
+   "label": "芯片股崩跌 INTC -29%"
+  },
+  {
+   "date": "2026-11-02",
+   "label": "纳指100修正，OKTA -11%"
+  }
+ ]
+}

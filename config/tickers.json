@@ -1,0 +1,15 @@
+{
+ "universe": ["CIBR","HACK","BUG","IGV","SMH","SOXX","QQQ","SPY","NVDA","AVGO","CRWD","PANW","FTNT","ZS","NET","OKTA","S","CHKP","GEN","TENB","RBRK","QLYS","AKAM","FFIV","CSCO","DDOG","SNOW"],
+ "yahoo_only": ["^VIX","^TNX"],
+ "core": ["CIBR","SMH","IGV","QQQ","CRWD","PANW","FTNT","ZS","NET","OKTA"],
+ "leaders": ["CRWD","PANW","FTNT","ZS","NET","OKTA"],
+ "benchmarks": ["CIBR","IGV","SMH","QQQ"],
+ "tech_panel": ["CIBR","CRWD","PANW","FTNT","ZS","NET","OKTA","SMH","IGV","QQQ"],
+ "corr_matrix": ["CIBR","IGV","SMH","QQQ","SPY","NVDA","AVGO","CRWD","PANW","FTNT","ZS","NET","OKTA","S","CHKP","^TNX"],
+ "monthly": ["CIBR","IGV","SMH","QQQ","SPY","CRWD","PANW","FTNT","ZS","NET","OKTA"],
+ "returns_bar": ["OKTA","CRWD","PANW","TENB","FTNT","S","RBRK","NET","HACK","BUG","CIBR","SMH","QQQ","IGV","ZS","CHKP"],
+ "stats_table": ["CIBR","HACK","BUG","IGV","SMH","QQQ","SPY","CRWD","PANW","FTNT","ZS","NET","OKTA","S","RBRK","CHKP","CSCO","AVGO","NVDA"],
+ "beta_bar": ["PANW","CRWD","FTNT","ZS","NET","OKTA","S","RBRK","CIBR","SMH"],
+ "history_years": 2,
+ "ibkr": {"host": "127.0.0.1", "port": 4001, "client_id": 48}
+}

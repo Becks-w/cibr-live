@@ -1,0 +1,18 @@
+{
+ "note": "判决日日历。财报出来后跑 scripts/earnings.py <TICKER> <DATE>，结果写入 content/earnings/，页面自动对照 criteria 显示通过/未通过。",
+ "events": [
+  {"date": "2026-11-05", "ticker": "NET", "event": "NET 三季报（盘后）", "watch": "收入增速是否维持 30%+、NRR 120%、FCF 利润率", "impact": "NET RSI 26 贴 200 日线，财报决定是“超卖反弹”还是“估值重置”",
+   "criteria": ["收入同比增速 ≥ 30%", "NRR ≥ 120%", "Q4/全年指引高于一致预期", "FCF 利润率不低于上季（13.6%）"]},
+  {"date": "2026-11-18", "ticker": "PANW", "event": "PANW FQ1（待确认）", "watch": "有机 NGS ARR 增速（剔除 CyberArk）、RPO、FY27 指引是否上调", "impact": "9-01 beat-and-fall 后第一次检验；若再跌则 300 附近是估值锚 17x 位置",
+   "criteria": ["NGS ARR 有机增速 ≥ 30%", "RPO 增速 ≥ 30%", "FY27 指引上调或维持", "非 GAAP 营业利润率 ≥ 29%"], "tentative": true},
+  {"date": "2026-11-19", "ticker": "OKTA", "event": "OKTA FQ3（11 月中，待确认）", "watch": "cRPO 增速 ≥ 12%、AI Agent 身份产品的客户数", "impact": "OKTA YTD +114% 后 -15%，验证“身份”叙事能否兑现",
+   "criteria": ["cRPO 增速 ≥ 12%", "FQ4 cRPO 指引 ≥ 11%", "非 GAAP 营业利润率 ≥ 28%"], "tentative": true},
+  {"date": "2026-11-24", "ticker": "ZS", "event": "ZS FQ1", "watch": "ARR 增速能否守住 17-19%、销售团队流失后的管线", "impact": "唯一技术面仍强的龙头；若指引上修则 ZS 是行业内性价比最高的平台",
+   "criteria": ["ARR 增速 ≥ 17%", "FY27 ARR 指引不下调", "Billings 增速 ≥ 20%"]},
+  {"date": "2026-12-01", "ticker": "CRWD", "event": "CRWD FQ3", "watch": "净新增 ARR 指引 $343-347M 是否达成、Flex ARR", "impact": "市场对 CRWD 的 36x 定价全系于净新增 ARR 的加速",
+   "criteria": ["净新增 ARR ≥ $343M", "ARR 增速 ≥ 25%", "FY27 指引上调"]},
+  {"date": "2026-12-03", "ticker": "S", "event": "S、RBRK 财报（约）", "watch": "净新增 ARR 是否回升", "impact": "二线平台验证", "criteria": ["净新增 ARR 同比回升"], "tentative": true},
+  {"date": "2026-12-10", "ticker": "", "event": "FOMC", "watch": "市场定价 12 月加息概率约 79%；10 年期 4.9%", "impact": "若加息且美债重回 5%+，第 4 节“同跌”状态延续，第二档观察区更可能触及", "criteria": []},
+  {"date": "2026-12-11", "ticker": "", "event": "联邦拨款到期", "watch": "是否停摆（联邦安全预算 ≈ LDOS/BAH/SAIC/PANW 政府业务）", "impact": "短期噪音，长期无关", "criteria": []}
+ ]
+}

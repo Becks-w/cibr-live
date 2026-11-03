@@ -1,0 +1,471 @@
+{
+ "asof": "2026-11-02",
+ "note": "基本面与估值快照：来自各公司财报与 stockanalysis.com（2026-11-02）。市值、EV/NTM Sales、fwd P/E、EV/FCF 会按最新股价等比例重算（分母仍为快照日口径）；财报后请更新对应行并改 asof。",
+ "companies": [
+  {
+   "t": "PANW",
+   "name": "Palo Alto Networks",
+   "sub": "平台化/防火墙+SASE+身份(CyberArk)",
+   "weight": 7.58,
+   "mcap_b": 288.0,
+   "ev_b": 287.5,
+   "q_rev_growth": 34,
+   "ntm_growth": 23.5,
+   "arr_note": "NGS ARR $9.10B +63%(含并购); RPO $21.2B +34%",
+   "fcf_margin": 35.8,
+   "op_margin": 29.2,
+   "evs_ttm": 25.2,
+   "evs_ntm": 20,
+   "fwd_pe": 84,
+   "ev_fcf": 70,
+   "peg": 4.67,
+   "rule40": 60,
+   "net_cash_b": 0.5,
+   "shares_m": 819,
+   "ntm_rev_b": 14.5,
+   "ladder_mults": [
+    15,
+    18,
+    20,
+    25
+   ],
+   "support_note": "328–335 / 300",
+   "px_asof": 351.72
+  },
+  {
+   "t": "CRWD",
+   "name": "CrowdStrike",
+   "sub": "端点/云安全平台 Falcon",
+   "weight": 8.58,
+   "mcap_b": 248.1,
+   "ev_b": 243.9,
+   "q_rev_growth": 26,
+   "ntm_growth": 24.9,
+   "arr_note": "ARR $5.84B +25%; 净新增 ARR $333M 创纪录 +51%",
+   "fcf_margin": 29.8,
+   "op_margin": 25.3,
+   "evs_ttm": 45.2,
+   "evs_ntm": 36,
+   "fwd_pe": 171,
+   "ev_fcf": 152,
+   "peg": 5.84,
+   "rule40": 56,
+   "net_cash_b": 4.2,
+   "shares_m": 1026,
+   "ntm_rev_b": 6.95,
+   "ladder_mults": [
+    20,
+    25,
+    30,
+    36
+   ],
+   "support_note": "217–222 / 185–190",
+   "px_asof": 241.81
+  },
+  {
+   "t": "FTNT",
+   "name": "Fortinet",
+   "sub": "防火墙硬件+SASE/服务",
+   "weight": 6.3,
+   "mcap_b": 92.7,
+   "ev_b": 88.5,
+   "q_rev_growth": 20,
+   "ntm_growth": 12,
+   "arr_note": "Billings $2.34B +29%; 服务收入仅 +13%, 全年服务指引下调",
+   "fcf_margin": 43.5,
+   "op_margin": 38.2,
+   "evs_ttm": 11.2,
+   "evs_ntm": 10,
+   "fwd_pe": 34,
+   "ev_fcf": 26,
+   "peg": 2.1,
+   "rule40": 63,
+   "net_cash_b": 4.2,
+   "shares_m": 734,
+   "ntm_rev_b": 9.0,
+   "ladder_mults": [
+    8,
+    10,
+    12,
+    14
+   ],
+   "support_note": "128.6(MA200) / 110",
+   "px_asof": 126.21
+  },
+  {
+   "t": "ZS",
+   "name": "Zscaler",
+   "sub": "零信任/SASE",
+   "weight": 4.37,
+   "mcap_b": 36.5,
+   "ev_b": 34.9,
+   "q_rev_growth": 25,
+   "ntm_growth": 17,
+   "arr_note": "ARR $3.77B +25%(剔除 Red Canary +20%); FY27 ARR 指引 +17%",
+   "fcf_margin": 25.4,
+   "op_margin": 24.0,
+   "evs_ttm": 10.4,
+   "evs_ntm": 8.9,
+   "fwd_pe": 46,
+   "ev_fcf": 41,
+   "peg": 2.08,
+   "rule40": 50,
+   "net_cash_b": 1.6,
+   "shares_m": 163,
+   "ntm_rev_b": 4.0,
+   "ladder_mults": [
+    7,
+    9,
+    11,
+    13
+   ],
+   "support_note": "205(MA50) / 180",
+   "px_asof": 223.79
+  },
+  {
+   "t": "NET",
+   "name": "Cloudflare",
+   "sub": "网络边缘/零信任/AI 推理",
+   "weight": 3.64,
+   "mcap_b": 94.4,
+   "ev_b": 93.8,
+   "q_rev_growth": 36,
+   "ntm_growth": 32.5,
+   "arr_note": "RPO $2.73B +38%; NRR 120%; 11/5 发 Q3",
+   "fcf_margin": 13.6,
+   "op_margin": 13.8,
+   "evs_ttm": 37.3,
+   "evs_ntm": 28.7,
+   "fwd_pe": 179,
+   "ev_fcf": 274,
+   "peg": 3.61,
+   "rule40": 50,
+   "net_cash_b": 0.6,
+   "shares_m": 356,
+   "ntm_rev_b": 3.5,
+   "ladder_mults": [
+    18,
+    22,
+    26,
+    30
+   ],
+   "support_note": "248(MA200) / 200",
+   "px_asof": 265.17
+  },
+  {
+   "t": "OKTA",
+   "name": "Okta",
+   "sub": "身份(IAM)/AI Agent 身份",
+   "weight": 4.49,
+   "mcap_b": 32.3,
+   "ev_b": 30.1,
+   "q_rev_growth": 11,
+   "ntm_growth": 10.4,
+   "arr_note": "cRPO $2.59B +14%; Q3 cRPO 指引 +11-12%",
+   "fcf_margin": 31.9,
+   "op_margin": 28.0,
+   "evs_ttm": 9.8,
+   "evs_ntm": 8.9,
+   "fwd_pe": 45,
+   "ev_fcf": 31,
+   "peg": 2.55,
+   "rule40": 39,
+   "net_cash_b": 2.2,
+   "shares_m": 175,
+   "ntm_rev_b": 3.35,
+   "ladder_mults": [
+    6,
+    8,
+    10,
+    12
+   ],
+   "support_note": "185(BB下轨) / 166(MA100)",
+   "px_asof": 184.87
+  },
+  {
+   "t": "S",
+   "name": "SentinelOne",
+   "sub": "端点/AI SIEM",
+   "weight": 1.36,
+   "mcap_b": 8.75,
+   "ev_b": 8.1,
+   "q_rev_growth": 21,
+   "ntm_growth": 20.3,
+   "arr_note": "ARR $1.22B +22%; 净新增 ARR +4%",
+   "fcf_margin": 5.2,
+   "op_margin": 10.0,
+   "evs_ttm": 7.4,
+   "evs_ntm": 6.2,
+   "fwd_pe": 58,
+   "ev_fcf": 143,
+   "peg": 0.71,
+   "rule40": 26,
+   "net_cash_b": 0.65,
+   "shares_m": 378,
+   "ntm_rev_b": 1.3,
+   "ladder_mults": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "support_note": "21.3 / 19",
+   "px_asof": 23.16
+  },
+  {
+   "t": "RBRK",
+   "name": "Rubrik",
+   "sub": "数据安全/备份恢复",
+   "weight": 2.97,
+   "mcap_b": 23.8,
+   "ev_b": 23.2,
+   "q_rev_growth": 38,
+   "ntm_growth": 28.4,
+   "arr_note": "订阅 ARR $1.66B +33%; FY27 FCF 指引 $323-333M",
+   "fcf_margin": 19.7,
+   "op_margin": null,
+   "evs_ttm": 15.0,
+   "evs_ntm": 12.5,
+   "fwd_pe": 234,
+   "ev_fcf": 76,
+   "peg": null,
+   "rule40": 57,
+   "net_cash_b": 0.6,
+   "shares_m": 208,
+   "ntm_rev_b": 1.85,
+   "ladder_mults": [
+    8,
+    10,
+    12,
+    14
+   ],
+   "support_note": "105 / 95",
+   "px_asof": 114.67
+  },
+  {
+   "t": "CHKP",
+   "name": "Check Point",
+   "sub": "防火墙(成熟)",
+   "weight": 2.1,
+   "mcap_b": 14.4,
+   "ev_b": 12.3,
+   "q_rev_growth": -1,
+   "ntm_growth": 2.1,
+   "arr_note": "RPO $2.5B +5%; 管理层称 Q3 为谷底",
+   "fcf_margin": 31.9,
+   "op_margin": 37.4,
+   "evs_ttm": 4.5,
+   "evs_ntm": 4.2,
+   "fwd_pe": 13,
+   "ev_fcf": 11,
+   "peg": 5.48,
+   "rule40": 31,
+   "net_cash_b": 2.1,
+   "shares_m": 102,
+   "ntm_rev_b": 2.9,
+   "ladder_mults": [
+    3.5,
+    4,
+    5,
+    6
+   ],
+   "support_note": "135 / 125",
+   "px_asof": 141.5
+  }
+ ],
+ "holdings": {
+  "asof": "2026-10-30",
+  "source": "First Trust 官网",
+  "aum_b": 17.53,
+  "shares_m": 173.6,
+  "count": 45,
+  "expense": 0.58,
+  "rows": [
+   {
+    "t": "CRWD",
+    "w": 8.58,
+    "sub": "端点/云安全"
+   },
+   {
+    "t": "PANW",
+    "w": 7.58,
+    "sub": "平台化"
+   },
+   {
+    "t": "CSCO",
+    "w": 7.48,
+    "sub": "网络设备/Splunk"
+   },
+   {
+    "t": "AVGO",
+    "w": 6.97,
+    "sub": "半导体(含 Symantec/VMware 安全)"
+   },
+   {
+    "t": "FTNT",
+    "w": 6.3,
+    "sub": "防火墙/SASE"
+   },
+   {
+    "t": "OKTA",
+    "w": 4.49,
+    "sub": "身份"
+   },
+   {
+    "t": "ZS",
+    "w": 4.37,
+    "sub": "零信任/SASE"
+   },
+   {
+    "t": "NET",
+    "w": 3.64,
+    "sub": "边缘/零信任"
+   },
+   {
+    "t": "RBRK",
+    "w": 2.97,
+    "sub": "数据安全"
+   },
+   {
+    "t": "FFIV",
+    "w": 2.79,
+    "sub": "应用交付/ADC"
+   },
+   {
+    "t": "ACN",
+    "w": 2.69,
+    "sub": "IT 服务"
+   },
+   {
+    "t": "IBM",
+    "w": 2.18,
+    "sub": "IT 服务/QRadar"
+   },
+   {
+    "t": "NTAP",
+    "w": 2.13,
+    "sub": "存储"
+   },
+   {
+    "t": "CHKP",
+    "w": 2.1,
+    "sub": "防火墙"
+   },
+   {
+    "t": "GEN",
+    "w": 2.1,
+    "sub": "消费者安全"
+   },
+   {
+    "t": "DT",
+    "w": 2.09,
+    "sub": "可观测性"
+   },
+   {
+    "t": "INFY",
+    "w": 2.06,
+    "sub": "IT 服务"
+   },
+   {
+    "t": "MSFT",
+    "w": 2.03,
+    "sub": "平台(Defender/Entra)"
+   },
+   {
+    "t": "LDOS",
+    "w": 2.02,
+    "sub": "国防 IT"
+   },
+   {
+    "t": "DDOG",
+    "w": 1.96,
+    "sub": "可观测性/安全"
+   },
+   {
+    "t": "FROG",
+    "w": 1.87,
+    "sub": "DevSecOps"
+   },
+   {
+    "t": "HO.FP",
+    "w": 1.83,
+    "sub": "国防(Thales)"
+   },
+   {
+    "t": "AKAM",
+    "w": 1.78,
+    "sub": "CDN/边缘安全"
+   },
+   {
+    "t": "ANET",
+    "w": 1.71,
+    "sub": "网络设备"
+   },
+   {
+    "t": "GOOGL",
+    "w": 1.63,
+    "sub": "平台(Wiz/Mandiant)"
+   },
+   {
+    "t": "ESTC",
+    "w": 1.51,
+    "sub": "搜索/SIEM"
+   },
+   {
+    "t": "BAH",
+    "w": 1.5,
+    "sub": "国防 IT"
+   },
+   {
+    "t": "S",
+    "w": 1.36,
+    "sub": "端点/AI SIEM"
+   },
+   {
+    "t": "QLYS",
+    "w": 1.08,
+    "sub": "漏洞管理"
+   },
+   {
+    "t": "4704.JP",
+    "w": 1.04,
+    "sub": "Trend Micro"
+   },
+   {
+    "t": "CVLT",
+    "w": 0.96,
+    "sub": "数据安全"
+   },
+   {
+    "t": "SAIC",
+    "w": 0.96,
+    "sub": "国防 IT"
+   },
+   {
+    "t": "BB",
+    "w": 0.88,
+    "sub": "IoT/端点"
+   },
+   {
+    "t": "VRNS",
+    "w": 0.84,
+    "sub": "数据安全"
+   },
+   {
+    "t": "NTSK",
+    "w": 0.81,
+    "sub": "SASE(Netskope)"
+   },
+   {
+    "t": "TENB",
+    "w": 0.81,
+    "sub": "漏洞管理"
+   }
+  ]
+ },
+ "band": {
+  "lo": 14,
+  "hi": 22,
+  "note": "2026 年平台龙头合理带（Windsor Drake 2026-01）"
+ }
+}

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>网络安全行业复盘 CIBR</title>
+<meta name="description" content="CIBR ETF 龙头标的 2025.11–2026.11 一年复盘：高 beta 驱动因素、与半导体共振、资金流、技术面与估值框架">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{color-scheme:light;--bg:#f9f9f7;--surface:#fcfcfb;--surface2:#f0efec;--line:#e2e1dc;--ink:#0b0b0b;--ink2:#52514e;--ink3:#7a7975;
+ --s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;--s4:#eda100;--s5:#e87ba4;--s6:#008300;--s7:#6250d6;--s8:#e34948;
+ --good:#0ca30c;--warn:#fab219;--serious:#ec835a;--crit:#d03b3b;--seq1:#cde2fb;--seq4:#3987e5;--seq7:#0d366b;--red1:#fbd5d5;--red7:#7a1414;}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0d0d0d;--surface:#1a1a19;--surface2:#262624;--line:#383835;--ink:#f0efec;--ink2:#c3c2b7;--ink3:#8f8e88;
+ --s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500;--s5:#d55181;--s6:#008300;--s7:#9085e9;--s8:#e66767;--seq1:#1c3a5e;--seq7:#9ec5f4;--red1:#4a1a1a;--red7:#f3a3a3;}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0d0d0d;--surface:#1a1a19;--surface2:#262624;--line:#383835;--ink:#f0efec;--ink2:#c3c2b7;--ink3:#8f8e88;
+ --s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500;--s5:#d55181;--s6:#008300;--s7:#9085e9;--s8:#e66767;--seq1:#1c3a5e;--seq7:#9ec5f4;--red1:#4a1a1a;--red7:#f3a3a3;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 -apple-system,"PingFang SC","Helvetica Neue","Noto Sans SC",sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 16px 80px}
+header.hero{padding:36px 0 18px;border-bottom:1px solid var(--line)}
+header.hero h1{font-size:30px;margin:0 0 6px;letter-spacing:-.01em}
+header.hero .sub{color:var(--ink2);font-size:15px}
+nav.toc{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:8px 0;margin-bottom:8px;overflow-x:auto;white-space:nowrap}
+nav.toc a{color:var(--ink2);text-decoration:none;font-size:13px;margin-right:14px}
+nav.toc a:hover{color:var(--ink)}
+h2{font-size:22px;margin:44px 0 10px;padding-top:8px;letter-spacing:-.01em}
+h3{font-size:17px;margin:26px 0 8px}
+p{margin:8px 0}
+.lead{font-size:16px;color:var(--ink)}
+.muted{color:var(--ink2);font-size:13px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:16px 0}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.tile .k{font-size:12px;color:var(--ink2)}
+.tile .v{font-size:24px;font-weight:600;letter-spacing:-.02em;margin-top:2px}
+.tile .d{font-size:12px;color:var(--ink3)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;margin:14px 0}
+.card h4{margin:0 0 4px;font-size:15px}
+.card .cap{color:var(--ink2);font-size:13px;margin-bottom:8px}
+.chart{position:relative;height:340px}
+.chart.tall{height:400px}.chart.short{height:240px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:820px){.grid2{grid-template-columns:1fr}.chart{height:280px}}
+table{border-collapse:collapse;width:100%;font-size:13px;background:var(--surface)}
+th,td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:right;vertical-align:top}
+th{color:var(--ink2);font-weight:600;background:var(--surface2);position:sticky;top:0}
+td:first-child,th:first-child{text-align:left}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;margin:10px 0}
+.pos{color:var(--good)}.neg{color:var(--crit)}
+.tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:999px;background:var(--surface2);color:var(--ink2);margin-right:4px}
+.callout{border-left:4px solid var(--s1);background:var(--surface);padding:10px 14px;border-radius:0 10px 10px 0;margin:12px 0}
+.callout.warn{border-color:var(--serious)}.callout.good{border-color:var(--good)}
+ul,ol{padding-left:22px}li{margin:4px 0}
+.heat{display:grid;gap:2px;font-size:12px}
+.heat div{padding:6px 4px;text-align:center;border-radius:3px;min-width:0;overflow:hidden;white-space:nowrap}
+.heat .h{background:transparent;color:var(--ink2);font-weight:600}
+.leg{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--ink2);margin-top:6px}
+.leg span i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.phase{display:grid;grid-template-columns:150px 1fr;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.phase .hd{font-weight:600}
+.phase .hd small{display:block;color:var(--ink2);font-weight:400;font-size:12px}
+details{margin:8px 0}summary{cursor:pointer;color:var(--ink2);font-size:13px}
+.src{font-size:12px;color:var(--ink3)}
+#tblLadder td,#tblLadder th{white-space:nowrap}
+.snap{background:var(--surface2);color:var(--ink3);font-size:11px;border-radius:999px;padding:1px 8px;margin-left:6px;vertical-align:middle;font-weight:400}
+.banner{background:var(--red1);color:var(--red7);border:1px solid var(--crit);border-radius:10px;padding:10px 14px;margin:12px 0;font-size:14px}
+.sig{list-style:none;padding:0;margin:6px 0}.sig li{padding:4px 0;border-bottom:1px dashed var(--line)}.sig li:last-child{border:0}
+.lv{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:0}.lv.good{background:var(--good)}.lv.warning{background:var(--warn)}.lv.serious{background:var(--serious)}.lv.critical{background:var(--crit)}
+.upd{border-left:4px solid var(--s3)}.upd h4 small{color:var(--ink3);font-weight:400;margin-left:8px}
+.st{font-size:11px;padding:1px 7px;border-radius:999px;background:var(--surface2);color:var(--ink2);white-space:nowrap}.st.pass{background:color-mix(in srgb,var(--good) 18%,transparent);color:var(--good)}.st.fail{background:color-mix(in srgb,var(--crit) 18%,transparent);color:var(--crit)}.st.mixed{background:color-mix(in srgb,var(--warn) 25%,transparent);color:var(--ink)}.st.soon{background:color-mix(in srgb,var(--s1) 18%,transparent);color:var(--s1)}
+#tblZones td,#tblZones th,#tblCal td:first-child{white-space:nowrap}
+.kbd{font-family:ui-monospace,Menlo,monospace;font-size:12px;background:var(--surface2);padding:1px 5px;border-radius:4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+ <h1>网络安全行业深度复盘：CIBR 龙头一年回顾（2025.11 → 2026.11）</h1>
+ <div class="sub">高 beta 波动的驱动因素 · 与半导体（SMH）的共振与跷跷板 · 资金流与仓位 · 技术指标 · 基本面估值框架 · 耐心等待进场价的清单</div>
+ <div class="muted" id="meta" style="margin-top:6px">数据加载中…</div>
+</header>
+<div id="stale"></div>
+<nav class="toc">
+ <a href="#slive">⚡ 最新动态</a><a href="#s0">0 核心结论</a><a href="#s1">1 行业与 CIBR 结构</a><a href="#s2">2 一年走势全景</a><a href="#s3">3 高 beta 驱动因素</a><a href="#s4">4 与半导体共振</a><a href="#s5">5 资金流与仓位</a><a href="#s6">6 技术指标</a><a href="#s7">7 基本面与估值框架</a><a href="#s8">8 进场框架与观察价位</a><a href="#s9">9 待核对清单</a>
+</nav>
+
+<h2 id="slive">⚡ 最新动态：今日信号 · 更新日志 · 财报对照</h2>
+<div id="alerts"></div>
+<div class="grid2">
+ <div class="card"><h4>判决日日历</h4><div class="cap">财报出来后自动对照第 8 节设定的检验标准；未出的按天倒数。</div><div class="tbl"><table id="tblCal"></table></div></div>
+ <div class="card"><h4>财报对照结果</h4><div class="cap">由 <span class="kbd">scripts/earnings.py</span> 抽取公司公告后写入，人工可改。</div><div id="earnBox"></div></div>
+</div>
+<div id="updates"></div>
+
+<h2 id="s0">0 · 核心结论 <span class="snap"></span></h2>
+<div class="tiles" id="tiles"></div>
+<div class="callout"><b>一句话：</b>过去一年网络安全股的高波动，<b>70% 以上来自行业自身的"AI 叙事"而不是大盘</b>——CIBR 对 QQQ 的 beta 只有 0.79、相关系数 0.53（R² ≈ 0.28），但年化波动率 31%，龙头个股 50–70%。同一个"AI"在 2026 年先后扮演了<b>颠覆者</b>（2 月 Anthropic Cowork 插件与 Claude Code Security、4 月 Mythos 预览）和<b>需求放大器</b>（5 月"史上最强网安行情"、9 月 14 日"AI 风险交易"、10 月"黑色十月" PHP 漏洞），行情在两种叙事之间来回切换，叠加财报季"beat-and-fall"和 10 月以来的 AI 融资/利率冲击，构成了全部的大幅回调与持续拉涨。</div>
+<ol>
+ <li><b>涨跌归因。</b>CIBR 一年 +25%（YTD +35%），但路径是：2025-10 高点 → 2026-04-10 低点 <b>-22%</b>（6 个月磨底），然后 2026-04-10 → 06-02 <b>+55%</b>（其中 5 月单月 +32%），之后三次 -7% 到 -12% 的回撤，10-09 创出历史高点 110.00 后至今 <b>-12%</b>。龙头 YTD：OKTA +114%、CRWD +106%、PANW +91%、FTNT +59%（10 月 29 日一天 -20%）、NET +35%、ZS -1%、CHKP -24%。</li>
+ <li><b>与半导体：相关性低、但尾部同跌。</b>CIBR 与 SMH 日收益相关系数仅 <b>0.34</b>（与软件 IGV 为 0.87）；2026 年多次出现"AI 赢家/输家"跷跷板（1 月 SMH +12% / CIBR -3%；7 月 SMH -18% / CIBR +2%；9-14 SMH -4.8% / CIBR +6%）。但当冲击来自<b>利率与 AI 融资</b>（10-14~16、10-30、11-02），两者一起跌，分散化在尾部失效。</li>
+ <li><b>资金流：价格贡献为主，净申购为辅。</b>CIBR 资产规模从 3 月约 $10.6B 升至 10-30 的 <b>$17.5B</b>，按份额估算净申购仅约 $0.8B，其余是价格上涨；机构拥挤度在半导体（BofA FMS "long semis" 最拥挤交易）而非网安。近 3 周 CIBR 下跌伴随放量（20 日均量/100 日均量 = 1.37），属于分配型下跌。</li>
+ <li><b>估值：龙头分化成三档。</b>贵且在自身历史区间之上：CRWD（EV/NTM Sales ≈ 36x、fwd P/E 171x）、NET（≈ 29x / 179x）、PANW（≈ 20x / 84x，含 CyberArk 并表）。中档、已回到或低于自身区间：FTNT（≈ 10x / 34x）、ZS（≈ 9x / 46x）、OKTA（≈ 9x / 45x）。便宜但增长停滞：CHKP（≈ 4x / 13x）。</li>
+ <li><b>技术面：短期超卖、中期趋势未破。</b>CIBR 96.75 正好坐在 100 日线（96.5），200 日线 83.3 仍在上行；RSI 34、MACD 死叉。FTNT（RSI 18）、NET（RSI 26）处于崩溃后超卖，QQQ RSI 27 刚回到 200 日线——这是过去一年第三次"行业+大盘"同时超卖。</li>
+ <li><b>进场框架（第 8 节）。</b>不预测底部，用"基本面不恶化 + 估值回到区间 + 技术企稳"三层过滤。CIBR 三档观察区：91–93（0.382 回撤 + 8 月平台）、83–86（200 日线 + 0.5 回撤）、≈80（0.618 回撤，需基本面确认）。个股给出"EV/NTM Sales 估值锚 → 对应股价"的梯子表。</li>
+</ol>
+
+<h2 id="s1">1 · 行业结构与 CIBR 的构成</h2>
+<p class="lead">CIBR（First Trust Nasdaq Cybersecurity ETF）跟踪 Nasdaq CTA Cybersecurity Index，净资产 $17.53B、1.736 亿份（2026-10-30），45 只持仓，费率 0.58%。指数按修正自由流通市值加权：<b>前 5 大核心公司上限 8%、其余核心公司 4%、辅助公司 2%</b>，季度再平衡、半年度重构。这个规则决定了 CIBR 的两个特征：① 它不是纯网安——CSCO、AVGO、ACN、IBM、MSFT、GOOGL 等"辅助"持仓合计约 25%，带来半导体与 IT 服务的暴露；② 8% 上限意味着 CRWD/PANW 这样的大涨股会在再平衡时被动减仓，ETF 的 beta 天然低于龙头。</p>
+<div class="grid2">
+ <div class="card"><h4>持仓构成（<span class="hasof"></span>，前 36 只）</h4><div class="cap">子赛道映射为本报告归纳，便于理解各股对同一事件的反应差异</div><div class="tbl" style="max-height:420px;overflow:auto"><table id="tblHold"></table></div></div>
+ <div class="card"><h4>行业子赛道与 2026 年的"叙事敏感度"</h4>
+ <div class="tbl"><table>
+ <tr><th>子赛道</th><th>代表</th><th>CIBR 权重</th><th>对"AI 颠覆"敏感</th><th>对"AI 威胁扩张"受益</th></tr>
+ <tr><td>端点/云工作负载平台</td><td>CRWD, S</td><td>≈10%</td><td>中（2-20、4-9 均重挫）</td><td>高（9-14 +14%、8-27 +20%）</td></tr>
+ <tr><td>平台化/防火墙+SASE</td><td>PANW, FTNT, CHKP</td><td>≈16%</td><td>中低</td><td>高（PANW 4→7 月 +120%）</td></tr>
+ <tr><td>零信任/网络边缘</td><td>ZS, NET, AKAM</td><td>≈10%</td><td><b>最高</b>（ZS 4-9 -11%、NET 4-10 -13.5%）</td><td>高但靠财报兑现</td></tr>
+ <tr><td>身份（IAM）</td><td>OKTA, CyberArk(并入 PANW)</td><td>≈4.5%</td><td>高（2-20 -9%）</td><td><b>最高</b>（"AI Agent 身份"叙事，OKTA YTD +114%）</td></tr>
+ <tr><td>数据安全/漏洞管理</td><td>RBRK, VRNS, TENB, QLYS</td><td>≈5%</td><td>中</td><td>高（"黑色十月"受益）</td></tr>
+ <tr><td>网络设备/IT 服务/平台巨头</td><td>CSCO, AVGO, FFIV, ACN, IBM, MSFT, GOOGL</td><td>≈25%</td><td>低</td><td>低；但带入半导体/AI capex 暴露</td></tr>
+ </table></div>
+ <p class="muted">行业需求底色：Gartner 2026-09 预测 2026 年全球安全支出 $247.5B（+13.6%），2027 年 +11.2%；Morgan Stanley CIO 调查中安全软件是 2026 年第二优先级（11.3%，仅次于 AI/ML）。即需求增速 11–14%，而龙头靠份额集中（平台化）做到 20–35%。</p>
+ </div>
+</div>
+
+<h2 id="s2">2 · 一年走势全景</h2>
+<div class="card"><h4>CIBR vs 软件（IGV）vs 半导体（SMH）vs 纳指 100（QQQ）：<span class="wstart"></span> = 100</h4><div class="cap">网安在 2026 年前 4 个月随软件一起被"AI 颠覆"叙事压制、半导体独涨；4 月后网安率先修复并在 7 月半导体大跌时逆势走强；10 月以来三者同步回落。</div><div class="chart tall"><canvas id="cNorm"></canvas></div></div>
+<div class="card"><h4>月度收益热力图</h4><div class="cap">颜色：蓝 = 上涨，红 = 下跌，深浅表示幅度；2026-11 为 11-02 单日。</div><div id="heatMonthly"></div></div>
+<div class="grid2">
+ <div class="card"><h4>龙头一年与 YTD 收益（截至 <span class="asof"></span>）</h4><div class="cap">同一个行业内部分化极大：身份与平台化龙头翻倍，零信任（ZS）和成熟防火墙（CHKP）为负。</div><div class="chart tall"><canvas id="cRet"></canvas></div></div>
+ <div class="card"><h4>六大龙头一年走势：<span class="wstart"></span> = 100</h4><div class="cap">注意 5 月的集体拉升与 10 月底的集体回落，个股的"独立行情"主要出现在财报日。</div><div class="chart tall"><canvas id="cLead"></canvas></div></div>
+</div>
+<div class="card"><h4>风险收益统计（一年，日收益）</h4><div class="tbl"><table id="tblStats"></table></div><p class="muted">beta/相关系数相对 QQQ 或 SMH；上行 beta / 下行 beta 分别只用 QQQ 上涨日 / 下跌日估计。R² = 相关系数²，表示大盘能解释的波动占比。最大回撤为一年窗口内峰谷值。</p></div>
+
+<h2 id="s3">3 · 高 beta 波动的驱动因素：九个阶段复盘</h2>
+<p class="lead">把 CIBR 两年的价格叠上 50/100/200 日线，再把回撤超过 5% 的阶段逐个对应到事件，可以看到：<b>每一段大跌都由"AI 叙事转向 + 财报失望"组合触发，每一段大涨都由"AI 威胁扩张 + 财报超预期"组合推动</b>，宏观（伊朗战争、加息、AI 融资）决定幅度而非方向。</p>
+<div class="card"><h4>CIBR 两年日线、均线与关键事件</h4><div class="cap">圆点为事件日（悬停查看）。200 日线在 2026 年 4 月低点时被跌破 16%（两年最大负乖离），10-09 高点时正乖离 +36%（两年最大）。</div><div class="chart tall"><canvas id="cPx"></canvas></div></div>
+<div class="card"><h4>CIBR 水下回撤图（距前高的百分比）</h4><div class="chart short"><canvas id="cUw"></canvas></div></div>
+
+<div class="card"><h4>阶段复盘（按 CIBR 峰谷划分，回撤 ≥5% 或拉升 ≥20%）<span class="snap"></span></h4>
+<div class="phase"><div class="hd">P1 磨底<small>2025-10-08 → 2026-04-10<br>78.21 → 60.74 · <span class="neg">-22.3%</span></small></div><div>
+ <b>六个月的"AI 颠覆软件"定价。</b>11-19 PANW 宣布 $3.35B 收购 Chronosphere（约 21x ARR）被视为买贵，12 月 CRWD 财报"beat 后回落"；1 月软件板块（IGV -15%，2008 年以来最差单月）被"AI Agent 取代按席位收费的 SaaS"叙事压制，同期 SMH +12%，资金在 AI 链内部从软件流向硬件。<b>2-03</b> Anthropic 发布 Cowork 插件（法律插件）引发"SaaSpocalypse"，高盛软件篮子 -6%；<b>2-11</b> PANW 完成 $25B 收购 CyberArk，2-17 财报因约 14% 的股本稀释给出低于预期的 EPS 指引，次日 -6.8%；<b>2-20</b> Anthropic 发布 Claude Code Security（代码漏洞扫描与自动修复），市场把 AppSec 的冲击外推到整个行业：CRWD -7.9%、NET -8.0%、OKTA -9.2%、ZS -5.5%，2-23 继续 CRWD -9.9%、ZS -10.3%、NET -9.6%（两日 CIBR -7%）；Barclays 称抛售"不合逻辑"，Wedbush 称之为"AI 幽灵交易"。<b>2-28</b> 美以对伊朗开战，油价飙升，3-27 VIX 升至 31、纳指 100 进入修正，同日 Anthropic Mythos 草稿泄露（AI 可自动发现零日漏洞）再砸网安（CRWD -5.9%、PANW -6.0%、OKTA -7.7%）。<b>4-07</b> Anthropic 正式预览 Claude Mythos 并发起 Project Glasswing，4-09/4-10 未被列为合作伙伴的零信任与边缘厂商重挫：ZS -11.3%、NET -8.6%/-13.5%、OKTA -10.9%/-7.1%、CRWD -7.5%/-4.0%，CIBR 在 4-10 以 60.74 触底——与半导体毫无关系（同两日 SMH +1.7%/+1.5%）。</div></div>
+<div class="phase"><div class="hd">P2 主升浪<small>2026-04-10 → 2026-06-02<br>60.74 → 94.32 · <span class="pos">+55.3%</span></small></div><div>
+ <b>叙事反转："AI 扩大威胁面 = 扩大安全预算"。</b>4-08 美伊停火、Glasswing 合作伙伴名单公布后 CRWD 反弹 +6%；4 月纳指 +15.6%（2002 年以来最佳月份）。<b>5-07</b> FTNT 一季报 +20%（产品收入 +37%）打开行业财报季；5 月 CIBR <b>+32%</b>、CRWD +64%、PANW +57%、FTNT +64%、OKTA +67%，被称为"史上最强网安行情"，HACK/BUG/CIBR 在 4 月低点后 6 周内刷新历史高点。<b>5-27</b> ZS 因 FY27 ARR 增速指引 16-17%（预期 19.5%）、FCF 指引下调和两位销售负责人离职暴跌 -31.5%（历史最差单日），同业当日跟跌 3-5% 后两天就收复；<b>5-29</b> OKTA +30.1%（"AI Agent 身份"叙事）、6-01 ZS +11.4%、NET +12.0%，CIBR 两日 +12%。</div></div>
+<div class="phase"><div class="hd">P3 财报获利了结<small>2026-06-02 → 06-10<br>94.32 → 83.25 · <span class="neg">-11.7%</span></small></div><div>
+ 6-02 PANW 财报全线上调指引但盘后持平（4 月以来 +85%，"利好出尽"）；<b>6-03</b> CRWD 一季报仅小幅超预期、二季度指引"in line"并宣布 4:1 拆股，盘后一度 -10%，同日 PANW -5.6%、ZS -6.8%、OKTA -7.9%；6-04 AVGO 财报 -12.6%，<b>6-05</b> 半导体崩跌（SMH -9.2%、QQQ -4.8%）把网安拖下 -4.4%。这是一次典型的"行业内获利了结 + 大盘 beta"叠加。</div></div>
+<div class="phase"><div class="hd">P4 半导体大跌、网安抗跌<small>2026-07-14 → 07-23<br>94.73 → 87.72 · <span class="neg">-7.4%</span></small></div><div>
+ 7-02 CRWD 拆股生效；<b>7-07</b> 券商将 PANW 下调至 Hold（4 月以来 +120%、fwd P/E ≈ 90x），PANW -5.7%；<b>7-14</b> IBM CEO 称部分客户因 Mythos 重新评估安全架构而推迟订单，但"不认为软件会被 AI 颠覆"，CRWD +12%、OKTA +11% 后回吐；7-28 纳指 100 因存储/芯片与 Alphabet capex 上调而进入修正。整个 7 月 <b>SMH -17.6% 而 CIBR +2.2%</b>——网安成为"AI 输家→赢家"轮动的接盘方。</div></div>
+<div class="phase"><div class="hd">P5 财报季前震荡<small>2026-08-13 → 08-25<br>102.20 → 92.46 · <span class="neg">-9.5%</span></small></div><div>
+ 8-04 大盘反弹（CIBR +4.3%、SMH +5.5%），8-06 NET 二季报收入 +36% 加速、盘后 +17%；8-10 Black Hat 后"AI Agent 改变威胁格局"（BTIG）推动 CRWD/PANW 新高；随后两周无催化下回落 9.5%。<b>8-27</b> CRWD 二季报净新增 ARR $333M（+51%，创纪录）、OKTA 超预期：CRWD +20.5%、OKTA +28.6%、PANW +12.8%、ZS +10%，CIBR 单日 <b>+7.6%</b>（一年最大单日涨幅）。</div></div>
+<div class="phase"><div class="hd">P6 beat-and-fall 与 AI 风险交易<small>2026-09-01 → 09-21<br>（未形成 5% 回撤）</small></div><div>
+ <b>9-01/02</b> PANW 四季报收入 +34%、FY27 指引高于预期，但股价 -5.2%、-9.3%（YTD 已 +97%，"beat and fall"），带动 CRWD -6.9%、FTNT -5.3%；9-04 ZS FY27 指引增速 17%（上一年 25%）并裁员 3%，-4.5%。<b>9-14</b> Amodei 呼吁前沿实验室"放慢能力节奏"、Altman 附和，市场解读为威胁环境恶化：CRWD +13.9%、ZS +16.5%、PANW +13.1%、S +14.5%，CIBR +6.0%，<b>同日 SMH -4.8%、NVDA -3.4%</b>——最典型的"AI 风险交易"跷跷板。9-16 美联储意外加息 25bp 至 3.75-4.00%（2023 年以来首次，新主席 Warsh），9-17 Bernstein 下调 PANW/OKTA 至 Market Perform。</div></div>
+<div class="phase"><div class="hd">P7 历史高点后的回落（进行中）<small>2026-10-09 → 11-02<br>110.00 → 96.75 · <span class="neg">-12.0%</span></small></div><div>
+ 10-06 PANW（419.91）、CRWD（278.86）、FTNT（191.27）创历史收盘高点，10-09 CIBR 高点 110.00（200 日线正乖离 +36%）。随后五重打击：① 估值降级：10-12 Phillip 下调 PANW（P/E ≈ 97x）；② 竞争叙事：10-14 传 OpenAI 洽购 Trail of Bits、CISA 把 PAN-OS 漏洞列入已利用清单，PANW -5.5%、CIBR -3.5%；③ <b>宏观+AI 融资</b>：10-14/15 CPI 超预期、10 年期美债一度 5.33%，CoreWeave 债务担忧，<b>10-16</b> CIBR -4.5%、OKTA -10.2%、PANW -7.6%、S -7.7%（当周 SMH -10%）；④ 短暂修复：10-21 NSA/FBI 对 PHP "php2shell" 漏洞（AI 发现）发出警告，ZS +7.8%、PANW +7%；10-23 Evercore ISI 渠道调查显示预算走强（OKTA 管线最强），CRWD +8.2%、PANW +7.2%；⑤ <b>财报再次 beat-and-fall</b>：10-28 F5 FY27 展望放缓 -20%；<b>10-29</b> FTNT 三季报 billings +29% 但服务收入仅 +13%、全年服务收入指引下调，<b>-20.1%</b>（BofA 降级）；同日 ServiceNow -27% 重燃"AI 颠覆软件"；<b>10-30</b> 芯片股崩跌（INTC -29%、SOX -7.2%）、Alphabet 因 capex 上调至 $205B 创纪录 -12%，NET -9.5%、OKTA -6.1%；<b>11-02</b> Oracle 宣布 $20B 融资、Marvell $115B 收购 Lumentum，纳指 100 收于修正区；网安在 Deutsche Bank 上调 CRWD 的利好下仍跌：OKTA -11.2%、S -7.9%、FTNT -7.3%、CHKP（三季报收入 -1%）-7.0%、CIBR -4.2%。</div></div>
+</div>
+
+<div class="grid2">
+ <div class="card"><h4>拉涨的四类原因（本年样本）</h4><ol>
+ <li><b>"AI 扩大威胁面"叙事确认</b>：4-08 Glasswing 合作伙伴、8-10 Black Hat、9-14 Amodei 信、10-21 php2shell。这类日子 CIBR +3~6%，且与 SMH 常常反向。</li>
+ <li><b>财报兑现 ARR 加速</b>：5-07 FTNT、5-29 OKTA、8-06 NET、8-27 CRWD/OKTA。个股 +20~30%，行业 +4~8%。</li>
+ <li><b>渠道/预算调查</b>：7-14 IBM 评论、10-23 Evercore。幅度 +3~8%，持续性最弱。</li>
+ <li><b>大盘风险偏好修复</b>：4 月停火、8-04 反弹。行业 beta 约 0.7-0.8 倍跟随。</li></ol></div>
+ <div class="card"><h4>大幅回调的四类原因（本年样本）</h4><ol>
+ <li><b>"AI 颠覆软件/安全"叙事</b>：2-03、2-20/23、3-27、4-09/10、10-14、10-29（NOW）。单次 -4~-8%，是本年最大的 alpha 风险来源。</li>
+ <li><b>财报 beat-and-fall / 指引失望</b>：5-27 ZS、6-03 CRWD、9-01 PANW、9-04 ZS、10-28 FFIV、10-29 FTNT。当 YTD 涨幅 &gt;60% 时，"beat"也会跌 5-10%。</li>
+ <li><b>估值降级</b>：7-07、9-17、10-12 的 PANW 降级。单次 -3~-6%，往往出现在 fwd P/E &gt;90x 之后。</li>
+ <li><b>宏观/利率/AI 融资</b>：3 月伊朗战争、9-16 加息、10-14~16 CPI 与 5.3% 美债、10-30/11-02 AI capex 与融资（Alphabet、Oracle、CoreWeave）。此时与 SMH 同跌，CIBR 单日 -3~-4.5%。</li></ol></div>
+</div>
+<div class="card"><h4>上行 beta vs 下行 beta（相对 QQQ，一年）</h4><div class="cap">PANW 呈"凸性"（涨时 1.20 倍、跌时 0.62 倍），NET 相反（涨 0.65 / 跌 1.23）；FTNT、OKTA、CRWD 跌时 beta 高于涨时。个股 beta 的不对称性比 beta 本身更值得关注。</div><div class="chart"><canvas id="cBeta"></canvas></div></div>
+
+<h2 id="s4">4 · 与半导体板块的共振（correlation）</h2>
+<p class="lead">结论先行：<b>网安是"软件"的子集而不是"AI 硬件"的子集。</b>一年日收益相关系数：CIBR–IGV 0.87，CIBR–QQQ 0.53，CIBR–SMH 仅 0.34，个股对 SMH 的相关系数 0.02（ZS）到 0.25（CRWD）。但滚动相关系数在 2026 年几次从 +0.6 掉到接近 0 甚至为负（"AI 赢家/输家"轮动），又在 10 月利率与融资冲击下回升——<b>相关性本身是一个随叙事切换的变量</b>，这正是配置时要盯的东西。</p>
+<div class="card"><h4>一年日收益相关系数矩阵</h4><div class="cap">蓝越深相关越高；红为负相关。^TNX 为 10 年期美债收益率的日变动。</div><div id="heatCorr"></div></div>
+<div class="grid2">
+ <div class="card"><h4>60 日滚动相关系数：CIBR–SMH、IGV–SMH、CIBR–QQQ</h4><div class="cap">2026 年 2-4 月（AI 颠覆软件）和 6-8 月（半导体独跌）两次降到 0.2 以下；10 月回升。</div><div class="chart"><canvas id="cRoll"></canvas></div></div>
+ <div class="card"><h4>相对强弱：CIBR/SMH、IGV/SMH、CIBR/QQQ（<span class="wstart"></span> = 1）</h4><div class="cap">4 月之前网安跑输半导体 40%，7-9 月反超，10 月再度同步。</div><div class="chart"><canvas id="cRel"></canvas></div></div>
+</div>
+<div class="card"><h4>四种共振状态与 2026 年的实例</h4><div class="tbl"><table>
+<tr><th>状态</th><th>典型时期</th><th>机制</th><th>CIBR 表现</th><th>对配置的含义</th></tr>
+<tr><td>同涨（风险偏好）</td><td>2026-04 停火后；08-04；05 月</td><td>流动性与 AI 乐观同时抬升</td><td>+8% / +32%（4、5 月）</td><td>网安 beta 0.7-0.8，涨幅不如 SMH（4 月 SMH +32%）</td></tr>
+<tr><td>跷跷板：半导体强/网安弱</td><td>2026-01；2026-02 上旬</td><td>"AI 吃软件"：资金从软件流向算力硬件</td><td>1 月 -3.3%（SMH +12%）</td><td>此时网安是 AI 交易的空头腿，不要用"AI 受益"逻辑抄底</td></tr>
+<tr><td>跷跷板：网安强/半导体弱</td><td>2026-07；09-14；10-21/23</td><td>"AI 威胁扩张 + 安全是 AI 的必需品"，资金从拥挤的半导体轮出</td><td>7 月 +2.2%（SMH -17.6%）；9-14 +6%（SMH -4.8%）</td><td>网安充当 AI 内部的避险腿；对冲 SMH 多头有效</td></tr>
+<tr><td>同跌（利率/融资/盈利担忧）</td><td>2026-03-27；06-05；10-14~16；10-30；11-02</td><td>贴现率上升、AI capex 融资链条（CoreWeave/Oracle）、财报失望外溢</td><td>-3.8% / -4.4% / -4.5% / -3.8% / -4.2%</td><td>尾部同跌，分散化失效；这类日子是建仓样本但要分批</td></tr>
+</table></div>
+<p class="muted">定量佐证：CIBR 对 SMH 的 beta 0.26，但对 SMH 的下行 beta 在 10 月显著上升；IGV–SMH 的 60 日相关系数在 6-8 月一度为负（外部研究亦记录到 -0.25 的历史首次负值）。10 年期美债日变动与 CIBR 的相关系数仅 -0.06，即利率的影响是通过"大跌日"而非日常线性传导。</p></div>
+<div class="card"><h4>20 日已实现波动率（年化）：CIBR vs SMH vs QQQ</h4><div class="cap">网安的波动率在财报季（5 月底、8 月底、10 月底）尖峰化，半导体的波动率在 6-7 月和 10 月末更高；两者波动率高峰并不同步，印证了驱动因素不同。</div><div class="chart"><canvas id="cRvol"></canvas></div></div>
+
+<h2 id="s5">5 · 资金的流入与流出 <span class="snap"></span></h2>
+<div class="tiles">
+ <div class="tile"><div class="k">CIBR 净资产 2026-10-30</div><div class="v">$17.53B</div><div class="d">1.736 亿份 · First Trust</div></div>
+ <div class="tile"><div class="k">对比 2026-03-04</div><div class="v">≈$10.6B</div><div class="d">二手来源，弱证据</div></div>
+ <div class="tile"><div class="k">3→10 月份额变化（估算）</div><div class="v">+9.7M 份</div><div class="d">≈ $0.8B 净申购，其余 $6B 为价格贡献</div></div>
+ <div class="tile"><div class="k">20 日/100 日均量比</div><div class="v">1.37</div><div class="d">10 月下跌放量（分配）</div></div>
+ <div class="tile"><div class="k">软件 ETF（IGV）YTD 流向</div><div class="v">流出</div><div class="d">2 月 -$326M YTD；全年反复</div></div>
+</div>
+<div class="callout warn"><b>数据诚实声明：</b>我没有找到可靠、带日期的 2026 年 CIBR/HACK/BUG 月度净流入序列（etf.com、etfdb 等页面被反爬拦截，二手文章数据互相矛盾）。上面的"净申购 ≈ $0.8B"是用 10-30 份额（1.736 亿，First Trust 官方）减去 3-04 的隐含份额（$10.6B ÷ 当日价 64.66 ≈ 1.64 亿）得到的估算，其中 $10.6B 这个起点来自 24/7 Wall St 的文章，置信度低。结论的方向（本轮 AUM 增长主要来自价格）是稳健的，数值不要直接引用。</div>
+<div class="grid2">
+ <div class="card"><h4>CIBR 日成交量（千股）与 20 日均量</h4><div class="cap">放量日几乎都对应事件日：2-20/23、4-09/10、5-27~6-01、8-27、9-14、10-16、10-29~11-02。</div><div class="chart"><canvas id="cVol"></canvas></div></div>
+ <div class="card"><h4>一年内 CIBR 放量最大的 10 个交易日</h4><div class="tbl"><table id="tblVol"></table></div><p class="muted">量比 = 当日成交量 / 前 20 日均量。放量上涨（8-27、9-14）是增量资金进场，放量下跌（10-16、10-30、11-02）是分配。</p></div>
+</div>
+<div class="card"><h4>机构仓位与拥挤度（2026 下半年）</h4><ul>
+<li><b>BofA 全球基金经理调查（10 月）</b>："做多半导体"连续是最拥挤交易（45%，7 月创纪录 82%）；科技净超配 +37%（2020-08 以来最高）；现金 3.9%（≤4.0% 触发卖出信号）；AI 泡沫是头号尾部风险（23%），"债券收益率无序上升"是最大尾部风险（31%）；39% 认为超大规模云厂商 capex 是最可能的信用事件来源。<b>含义：拥挤在半导体不在网安</b>，这是 7 月、9-14 网安逆势的仓位基础，也是 10 月半导体先崩的原因。</li>
+<li><b>对冲基金</b>：高盛 PB 2 月记录到 2016 年以来最大规模的个股做空（软件与 IT 服务是最被做空的行业），随后软件 2-24 起反弹——即 2 月底的网安低点有空头回补成分；10 月高盛 PB 显示空头杠杆处于 5 年 99 分位、基金以十余年来最快速度减持芯片股。</li>
+<li><b>13F（2026Q2）</b>：持有 CRWD 的对冲基金从 79 家升至 89 家，PANW 89 家；D.E. Shaw 加仓 CRWD 18%。Q3 汇总尚未出齐。</li>
+<li><b>空头比例</b>（8 月底数据，10 月缺失）：CRWD 2.4% 流通股、NET 3.5%、ZS 4.6-7.7%（来源矛盾）。整体空头不重，意味着下跌时缺少空头回补的缓冲，反弹需要真实买盘。</li>
+<li><b>ETF 层面</b>：CIBR 规模约为 HACK（$3.6B）的 5 倍、BUG（$2.2B）的 8 倍，是被动资金主通道；指数季度再平衡（8%/4%/2% 上限）会在龙头大涨后机械卖出 CRWD/PANW。</li></ul></div>
+
+<h2 id="s6">6 · 技术指标现状（<span class="asof"></span>）</h2>
+<div class="card"><h4>CIBR 与龙头技术面板</h4><div class="tbl"><table id="tblTech"></table></div>
+<p class="muted">RSI 为 14 日；MACD(12,26,9)；BB 位置 = (价格 - 下轨)/(上轨 - 下轨)，0 表示贴着下轨；量比 = 20 日均量/100 日均量；距 200 日线 = 价格/200 日线 - 1。</p></div>
+<div class="grid2">
+ <div class="card"><h4>CIBR 机器快照（每日自动）</h4><ul id="autoCibr"></ul></div>
+ <div class="card"><h4>龙头机器快照（每日自动）</h4><ul id="autoLeaders"></ul></div>
+</div>
+<div class="grid2">
+ <div class="card"><h4>CIBR 的技术判断 <span class="snap"></span></h4><ul>
+ <li><b>趋势</b>：200 日线（83.3）与 100 日线（96.5）仍向上，50 日线（101.3）开始走平；价格跌破 20/50 日线、正好踩在 100 日线上。中期趋势未破，短期趋势已坏。</li>
+ <li><b>动量</b>：RSI 33.8，接近但未到 30 以下的超卖；MACD 柱 -0.79 且在零轴附近死叉，属于"上涨后的首次回落"而非"下跌趋势中的反弹失败"。</li>
+ <li><b>乖离与位置</b>：距 200 日线 +16%；两年内 200 日线乖离区间为 -16%（2-23）到 +36%（10-09）。回到 +5% 以内（约 87-88）才是过去一年"便宜"的乖离水平。</li>
+ <li><b>一年高低点的斐波那契回撤</b>（60.74 → 110.00）：0.236 = 98.4（已失守）、<b>0.382 = 91.2</b>、0.5 = 85.4、0.618 = 79.6。8 月平台低点 92.5、6 月高点 94.3 与 0.382 位重叠，形成 91-94 的第一支撑带。</li>
+ <li><b>波动</b>：ATR(14) 3.74（约 3.9%/日），20 日已实现波动率处于一年中位偏上；按 ATR 止损应 ≥ 2 ATR（约 7.5）。</li>
+ <li><b>量</b>：下跌放量 1.37，尚未出现"缩量企稳"或"放量长下影"的反转结构。</li></ul></div>
+ <div class="card"><h4>龙头技术要点 <span class="snap"></span></h4><ul>
+ <li><b>CRWD</b> 241.8：RSI 41，仍在 50 日线（241.3）上、100 日线 217；拆股后主升浪的结构最完整，第一支撑 217-222（100 日线 + BB 下轨），第二支撑 185-190（9 月平台）。</li>
+ <li><b>PANW</b> 351.7：RSI 37，跌破 50 日线、踩 100 日线（354）；MACD 已转负。支撑 328-335（BB 下轨 + 9 月低点），再下是 300（心理关口，5 月缺口）。</li>
+ <li><b>FTNT</b> 126.2：RSI 17.6，距 200 日线（128.6）-2%，三季报缺口 174→139 需要数月消化；超卖反弹概率高但趋势已坏，等基本面（服务收入增速）回答。</li>
+ <li><b>ZS</b> 223.8：唯一 RSI 接近 50、仍在 50 日线之上的龙头（10 月 +19%），5-27 缺口已回补，结构最强但 FY27 指引只有 17%。</li>
+ <li><b>NET</b> 265.2：RSI 26，20/50 日线均在 320，已跌到 200 日线（248.5）附近；11-05 财报是方向判决。</li>
+ <li><b>OKTA</b> 184.9：RSI 34，贴 BB 下轨，50 日线 194；两周 -15% 后 11 月中旬财报前难有趋势。</li></ul></div>
+</div>
+
+<h2 id="s7">7 · 基本面与估值框架：学会自己判断</h2>
+<p class="lead">网安龙头的估值不是"P/E 多少算便宜"，而是四把尺子一起用：<b>① 增长质量</b>（ARR/净新增 ARR/NRR 是否加速）、<b>② Rule of 40</b>（收入增速 + FCF 利润率）、<b>③ EV/NTM Sales 对增速的回归</b>（同业横向）、<b>④ 自身历史分位</b>（纵向）。2026 年市场为 CRWD/NET/PANW 支付的溢价远超 Rule-of-40 回归所能解释，为 ZS/OKTA/FTNT 的定价则回到了历史区间内。</p>
+<div class="card"><h4>龙头基本面快照（财报口径截至 <span class="fasof"></span>；市值与倍数按最新收盘价等比重算）</h4><div class="tbl"><table id="tblFund"></table></div><p class="muted">PANW 的增速含 CyberArk（2-11 并表）与 Chronosphere，有机增速明显低于表观；Rule of 40 = 最新季收入增速 + TTM FCF 利润率（本报告计算）。来源：各公司财报与 stockanalysis.com。</p></div>
+<div class="grid2">
+ <div class="card"><h4>EV/NTM Sales vs NTM 收入增速（气泡 = 市值）</h4><div class="cap">虚线为 2026 年行业"平台龙头合理带"（约 14-22x，Windsor Drake 2026-01）。CRWD、NET 在带之上，FTNT/ZS/OKTA 在带下沿或以下，CHKP 在"遗留点解决方案"区间（4.5-7x）。</div><div class="chart tall"><canvas id="cVal"></canvas></div></div>
+ <div class="card"><h4>估值与自身历史（stockanalysis 财年末 TTM EV/Sales）<span class="snap"></span></h4><div class="tbl"><table>
+ <tr><th>代码</th><th>EV/S TTM 现值</th><th>FY22→最新财年末</th><th>判断</th></tr>
+ <tr><td>CRWD</td><td>45.2x</td><td>25.8 → 9.8 → 21.3 → 23.9 → 22.3</td><td>高于 2021 峰值，约为 FY24-26 的 2 倍</td></tr>
+ <tr><td>PANW</td><td>25.2x</td><td>9.1 → 11.1 → 12.9 → 12.3 → 23.5</td><td>约为 FY23-25 的 2 倍（含并购重估）</td></tr>
+ <tr><td>NET</td><td>37.3x</td><td>63.6 → 15.2 → 21.4 → 21.9 → 31.6</td><td>2021 年以来最高</td></tr>
+ <tr><td>FTNT</td><td>11.2x</td><td>17.0 → 8.5 → 8.1 → 11.7 → 8.4</td><td>区间中上，远低于 2021</td></tr>
+ <tr><td>ZS</td><td>10.4x</td><td>19.6 → 14.0 → 12.1 → 16.0 → 6.8*</td><td>区间低端（*7 月值存疑）</td></tr>
+ <tr><td>OKTA</td><td>9.8x</td><td>23.3 → 6.3 → 5.7 → 5.7 → 4.4</td><td>约为 FY23-26 的 2 倍，远低于 2022</td></tr>
+ <tr><td>CHKP</td><td>4.5x</td><td>5.3–6.9（2021-25）</td><td>五年最低</td></tr>
+ </table></div>
+ <p class="muted">2022 年熊市底部，CRWD/ZS 的 EV/NTM Sales 约 7-10x；2021 年峰值 30-45x；2024-25 常态 14-20x。这给出了"便宜/合理/贵"的三段尺子。</p></div>
+</div>
+<div class="card"><h4>怎么独立判断：一张检查表</h4><div class="grid2"><div><b>基本面（每季财报后 30 分钟内回答）</b><ol>
+<li>净新增 ARR / cRPO 是同比加速还是减速？（CRWD +51% 加速；ZS 从 25% 降到 17%；FTNT 服务收入 +13% 减速）</li>
+<li>指引是否"高于一致预期"？若 YTD 已涨 &gt;60%，"in line" = 跌。</li>
+<li>FCF 利润率与非 GAAP 营业利润率是否同向？（NET 13.6% 偏低，S 5%，是估值最脆弱的两家）</li>
+<li>是否有并购导致的表观增长？（PANW NGS ARR +63% 中约 $1.47B 来自 CyberArk/Chronosphere）</li>
+<li>"AI 颠覆"是否出现在数字里而不只是新闻里？（IBM 7 月提到的"推迟订单"是第一个数字信号；FTNT 的 SASE 附着率下降可能是第二个）</li></ol></div>
+<div><b>估值（财报后对照）</b><ol>
+<li>算 EV/NTM Sales：EV ÷ 未来 12 个月收入（用指引 + 一致预期拼）。</li>
+<li>放进"回归带"：增速 20-25% 的平台龙头 14-22x；增速 10-17% 的 7-10x；增速 &lt;5% 的 4-6x。</li>
+<li>看自身历史分位：高于 FY24-25 均值 50% 以上 = 透支。</li>
+<li>Rule of 40 ≥ 50 且 PEG &lt; 2.5 才给溢价；否则等多重回落。</li>
+<li>把估值锚换算成股价（第 8 节梯子表），和技术支撑位比对，两者重叠处才是"耐心等待"的目标。</li></ol></div></div></div>
+
+<h2 id="s8">8 · 进场框架与观察价位（不是预测，是等待的规则）</h2>
+<div class="callout good"><span class="snap" style="float:right"></span><b>三层过滤。</b>只在三者同时满足时分批进场：<b>(1) 基本面不恶化</b>——最近一季净新增 ARR/cRPO 未减速、指引未下调（FTNT 当前不满足，ZS 勉强，CRWD/PANW/OKTA 满足）；<b>(2) 估值回到区间</b>——EV/NTM Sales 回到下表的"合理"档，或自身 FY24-25 均值附近；<b>(3) 技术企稳</b>——价格收复 20 日线或出现缩量长下影 + RSI 底背离，且 200 日线仍向上。缺任何一层，只做观察仓（≤ 目标仓位 1/4）。</div>
+<div>
+ <div class="card"><h4>CIBR 三档观察区（设定 <span class="zasof"></span>，状态按最新收盘自动判断）</h4><div class="tbl"><table id="tblZones"></table></div>
+ <p class="muted" id="zonesNote"></p></div>
+ <div class="card"><h4>个股估值梯子：EV/NTM Sales 倍数 → 对应股价</h4><div class="tbl"><table id="tblLadder"></table></div><p class="muted">NTM 收入为本报告拼接（指引 + 一致预期），净现金用最新季报；对应股价 = (倍数 × NTM 收入 + 净现金) ÷ 股本。<b>加粗</b> = 当前倍数所在档。与第 6 节技术支撑位重叠处为优先观察价。</p></div>
+</div>
+<p class="muted">判决日日历与财报对照结果见页首「最新动态」。</p>
+<div class="card"><h4>什么时候"不该买"</h4><ul>
+<li>行业放量下跌日（如 10-16、11-02）当天追买——过去一年事件日次日延续下跌的概率高（2-20→2-23、4-09→4-10、10-29→10-30）。</li>
+<li>只因为"跌了 20%"就买 FTNT 这类<b>基本面已变</b>的标的；服务收入增速下调的影响是两到三个季度的。</li>
+<li>把"AI 威胁 = 安全受益"当作免费期权：2 月和 4 月证明 AI 也能在一周内把行业打低 15%，叙事方向由头部实验室的产品发布决定，不可预测。</li>
+<li>当 CIBR 距 200 日线乖离 &gt; +25%（一年内只在 5 月底和 10 月初出现）时加仓。</li></ul></div>
+
+<h2 id="s9">9 · 待核对清单与数据来源</h2>
+<div class="card"><h4>请用官方 filing / IBKR 复核的关键数字</h4><ol>
+<li>CIBR 3 月 AUM ≈ $10.6B（24/7 Wall St，弱）；由此推出的 $0.8B 净申购估算。建议用 First Trust 月度份额数据替换。</li>
+<li>PANW 7-07 下调至 Hold 的券商名称未能确认；10-12 Phillip Securities 降级日期有来源写 9-07。</li>
+<li>CRWD 四季度/全年数字来自二手（IR 页面 403）：ARR $5.84B、净新增 ARR $332.8M、FY27 指引 $5.991-6.011B。</li>
+<li>ZS FY26 财年末 EV/Sales 6.8x（stockanalysis）与股价走势不符，疑为口径问题。</li>
+<li>NET 的 RPO +38% 与 NRR 120% 来自二手摘要，未读 10-Q。</li>
+<li>各家 NTM 收入（梯子表）为本报告拼接：CRWD 6.95B、PANW 14.5B、FTNT 9.0B、ZS 4.0B、NET 3.5B、OKTA 3.35B、RBRK 1.85B、S 1.3B、CHKP 2.9B。</li>
+<li>2026-10-05 10 年期 5.31% 为"2002 年以来最高"仅有一个二手来源；CNBC 记录 9-16 的 5.016%。</li>
+<li>PANW FQ1 财报日 11-18 为 stockanalysis 预估，未经公司确认。</li>
+<li>价格来源为 Yahoo Finance 图表接口，其中 CIBR、SMH、IGV、QQQ、CRWD、PANW、FTNT、ZS、NET、OKTA 的两年日收盘已用 <span class="kbd">_shared/scripts/fetch_market_data.py</span>（IBKR Gateway）逐日核对一致（最大偏差 0.013%）；HACK、BUG、S、RBRK、CHKP、AVGO、NVDA 等其余标的未做 IBKR 核对。</li></ol></div>
+<div class="card"><h4>方法与来源</h4><p class="src">价格：每日由本机定时任务刷新，IBKR Gateway（reqHistoricalData, TRADES, 拆股复权）优先、Yahoo Finance 回退，指数（^TNX/^VIX）取自 Yahoo；首版（2026-11-03）的 10 只核心标的曾与 IBKR 逐日核对（最大偏差 0.013%）。统计：日收益、252 日年化、OLS beta、Pearson 相关、60 日滚动窗口；最大回撤按收盘价。事件：CNBC、Bloomberg、Forrester、Yahoo Finance、24/7 Wall St、Investing.com、公司 IR 与 SEC 8-K/6-K；宏观：Federal Reserve、CNBC、BofA FMS（经 Seeking Alpha / 第三方转述）、Goldman PB（经 Bloomberg/Kitco 转述）；需求：Gartner 3Q26 预测（经 Software Strategies Blog 转述）、Morgan Stanley Q2 CIO 调查、Evercore ISI 渠道调查（经 Yahoo Finance 转述）；持仓与规模：First Trust 官网（2026-10-30）。估值：stockanalysis.com（2026-11-02）与公司财报。所有二手转述均在文中标注。本报告为结构化研究初稿，不构成投资建议。</p></div>
+<p class="muted" id="foot" style="margin-top:28px"></p>
+</div>
+
+<script>
+function render(D){
+const css=getComputedStyle(document.documentElement); const cv=k=>css.getPropertyValue(k).trim();
+const C={s1:cv('--s1'),s2:cv('--s2'),s3:cv('--s3'),s4:cv('--s4'),s5:cv('--s5'),s6:cv('--s6'),s7:cv('--s7'),s8:cv('--s8'),ink:cv('--ink'),ink2:cv('--ink2'),line:cv('--line'),surface:cv('--surface')};
+Chart.defaults.color=C.ink2; Chart.defaults.borderColor=C.line; Chart.defaults.font.family=getComputedStyle(document.body).fontFamily; Chart.defaults.font.size=12;
+const pct=(v,d=1)=>v==null?'–':(v*100).toFixed(d)+'%';
+const cls=v=>v>0?'pos':(v<0?'neg':'');
+const fmt=(v,d=2)=>v==null?'–':Number(v).toFixed(d);
+const hexA=(h,a)=>{const r=parseInt(h.slice(1,3),16),g=parseInt(h.slice(3,5),16),b=parseInt(h.slice(5,7),16);return `rgba(${r},${g},${b},${a})`};
+const baseLine={type:'line',options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'top',labels:{boxWidth:10,boxHeight:10,usePointStyle:true,pointStyle:'rectRounded'}},tooltip:{backgroundColor:C.surface,titleColor:C.ink,bodyColor:C.ink,borderColor:C.line,borderWidth:1}},elements:{point:{radius:0,hitRadius:6},line:{borderWidth:2,tension:0}},scales:{x:{ticks:{maxTicksLimit:12,maxRotation:0},grid:{display:false}},y:{grid:{color:C.line}}}}};
+const mk=(id,cfg)=>new Chart(document.getElementById(id),cfg);
+const clone=o=>JSON.parse(JSON.stringify(o));
+function lineChart(id,labels,series,yfmt,extra){const cfg=clone(baseLine);cfg.data={labels,datasets:series.map(s=>({label:s.label,data:s.data,borderColor:s.color,backgroundColor:s.fill?hexA(s.color,.18):s.color,fill:s.fill||false,borderWidth:s.width||2,borderDash:s.dash||[],spanGaps:true,pointRadius:s.pr||0}))};cfg.options.scales.y.ticks={callback:v=>yfmt?yfmt(v):v};cfg.options.plugins.tooltip.callbacks={label:c=>` ${c.dataset.label}: ${yfmt?yfmt(c.parsed.y):c.parsed.y}`};if(extra)extra(cfg);return mk(id,cfg);}
+const S=D.summary, T=D.tech;
+// tiles
+const tiles=[['CIBR 一年收益',pct(S.CIBR.ret1y),'YTD '+pct(S.CIBR.retytd)],['CIBR 距 '+S.CIBR.high1y_date.slice(5)+' 一年高点',pct(S.CIBR.off_high),'高点 '+fmt(S.CIBR.high1y)+' → '+fmt(S.CIBR.last)],['年化波动率',pct(S.CIBR.vol1y,0),'QQQ '+pct(S.QQQ.vol1y,0)+' · SMH '+pct(S.SMH.vol1y,0)],['对 QQQ beta / 相关',fmt(S.CIBR.beta_qqq)+' / '+fmt(S.CIBR.corr_qqq),'R² ≈ '+fmt(S.CIBR.corr_qqq**2)],['与 SMH 相关系数',fmt(S.CIBR.corr_smh),'与 IGV '+fmt(D.cmat[0][1])],['一年最大回撤',pct(S.CIBR.mdd1y[0]),S.CIBR.mdd1y[1]+' → '+S.CIBR.mdd1y[2]],['RSI(14) / 距 200 日线',fmt(T.CIBR.rsi14,0)+' / '+pct(T.CIBR.px/T.CIBR.ma200-1,0),'MA200 '+fmt(T.CIBR.ma200)]];
+document.getElementById('tiles').innerHTML=tiles.map(t=>`<div class="tile"><div class="k">${t[0]}</div><div class="v">${t[1]}</div><div class="d">${t[2]}</div></div>`).join('');
+// holdings
+document.getElementById('tblHold').innerHTML='<tr><th>代码</th><th>权重</th><th>子赛道</th><th>一年</th><th>YTD</th><th>距高点</th></tr>'+D.holdings.rows.map(h=>{const s=S[h.t];return `<tr><td>${h.t}</td><td>${h.w.toFixed(2)}%</td><td style="text-align:left">${h.sub}</td><td class="${s?cls(s.ret1y):''}">${s?pct(s.ret1y,0):'–'}</td><td class="${s?cls(s.retytd):''}">${s?pct(s.retytd,0):'–'}</td><td class="${s?cls(s.off_high):''}">${s?pct(s.off_high,0):'–'}</td></tr>`}).join('');
+// normalized chart
+lineChart('cNorm',D.dates1y,[{label:'CIBR 网络安全',data:D.norm.CIBR,color:C.s1},{label:'SMH 半导体',data:D.norm.SMH,color:C.s2},{label:'IGV 软件',data:D.norm.IGV,color:C.s3},{label:'QQQ 纳指100',data:D.norm.QQQ,color:C.s4}],v=>v.toFixed(0));
+// monthly heat
+(function(){const ts=['CIBR','IGV','SMH','QQQ','SPY','CRWD','PANW','FTNT','ZS','NET','OKTA'];const months=Object.keys(D.monthly.CIBR);const el=document.getElementById('heatMonthly');el.className='heat';el.style.gridTemplateColumns=`70px repeat(${months.length},1fr)`;let h='<div class="h"></div>'+months.map(m=>`<div class="h">${m.slice(2)}</div>`).join('');ts.forEach(t=>{h+=`<div class="h" style="text-align:left">${t}</div>`;months.forEach(m=>{const v=D.monthly[t][m];const a=Math.min(Math.abs(v)/0.3,1);const bg=v>=0?hexA(cv('--seq7').length==7?cv('--s1'):C.s1,0.12+a*0.8):hexA(C.s8,0.12+a*0.8);const ink=a>0.55?'#fff':C.ink;h+=`<div style="background:${bg};color:${ink}" title="${t} ${m}: ${pct(v)}">${(v*100).toFixed(0)}</div>`})});el.innerHTML=h;})();
+// returns bars
+(function(){const ts=['OKTA','CRWD','PANW','TENB','FTNT','S','RBRK','NET','HACK','BUG','CIBR','SMH','QQQ','IGV','ZS','CHKP'];mk('cRet',{type:'bar',data:{labels:ts,datasets:[{label:'一年收益',data:ts.map(t=>+(S[t].ret1y*100).toFixed(1)),backgroundColor:C.s1,borderRadius:4,borderSkipped:'start'},{label:'YTD 收益',data:ts.map(t=>+(S[t].retytd*100).toFixed(1)),backgroundColor:C.s2,borderRadius:4,borderSkipped:'start'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{boxWidth:10,usePointStyle:true,pointStyle:'rectRounded'}},tooltip:{callbacks:{label:c=>` ${c.dataset.label}: ${c.parsed.y}%`}}},scales:{x:{grid:{display:false}},y:{ticks:{callback:v=>v+'%'},grid:{color:C.line}}}}});})();
+lineChart('cLead',D.dates1y,[{label:'CRWD',data:D.normLeaders.CRWD,color:C.s1},{label:'PANW',data:D.normLeaders.PANW,color:C.s2},{label:'FTNT',data:D.normLeaders.FTNT,color:C.s3},{label:'ZS',data:D.normLeaders.ZS,color:C.s4},{label:'NET',data:D.normLeaders.NET,color:C.s5},{label:'OKTA',data:D.normLeaders.OKTA,color:C.s7}],v=>v.toFixed(0));
+// stats table
+(function(){const ts=['CIBR','HACK','BUG','IGV','SMH','QQQ','SPY','CRWD','PANW','FTNT','ZS','NET','OKTA','S','RBRK','CHKP','CSCO','AVGO','NVDA'];document.getElementById('tblStats').innerHTML='<tr><th>代码</th><th>一年</th><th>YTD</th><th>年化波动</th><th>β QQQ</th><th>上行β</th><th>下行β</th><th>ρ QQQ</th><th>R²</th><th>β SMH</th><th>ρ SMH</th><th>最大回撤</th><th>回撤区间</th><th>距一年高点</th></tr>'+ts.map(t=>{const s=S[t];return `<tr><td>${t}</td><td class="${cls(s.ret1y)}">${pct(s.ret1y)}</td><td class="${cls(s.retytd)}">${pct(s.retytd)}</td><td>${pct(s.vol1y,0)}</td><td>${fmt(s.beta_qqq)}</td><td>${fmt(s.beta_up)}</td><td>${fmt(s.beta_dn)}</td><td>${fmt(s.corr_qqq)}</td><td>${fmt(s.corr_qqq**2)}</td><td>${fmt(s.beta_smh)}</td><td>${fmt(s.corr_smh)}</td><td class="neg">${pct(s.mdd1y[0])}</td><td style="font-size:11px">${s.mdd1y[1]} → ${s.mdd1y[2]}</td><td class="${cls(s.off_high)}">${pct(s.off_high)}</td></tr>`}).join('');})();
+// CIBR 2y price with MAs + events
+(function(){const ev=D.events.map(e=>[e.date,e.label]);const idx=Object.fromEntries(D.dates2y.map((d,i)=>[d,i]));const pts=D.dates2y.map(()=>null);const lab={};ev.forEach(e=>{const i=idx[e[0]];if(i!=null){pts[i]=D.cibr.px[i];lab[i]=e[1];}});const cfg=clone(baseLine);cfg.data={labels:D.dates2y,datasets:[{label:'CIBR',data:D.cibr.px,borderColor:C.s1,borderWidth:2,pointRadius:0},{label:'MA50',data:D.cibr.ma50,borderColor:C.s4,borderWidth:1.5,pointRadius:0,spanGaps:true},{label:'MA100',data:D.cibr.ma100,borderColor:C.s3,borderWidth:1.5,borderDash:[4,3],pointRadius:0,spanGaps:true},{label:'MA200',data:D.cibr.ma200,borderColor:C.s2,borderWidth:1.5,pointRadius:0,spanGaps:true},{label:'事件',data:pts,type:'scatter',showLine:false,pointRadius:5,pointHoverRadius:7,backgroundColor:C.s8,borderColor:C.surface,borderWidth:1.5}]};cfg.options.plugins.tooltip.callbacks={label:c=>c.dataset.label==='事件'?` ${lab[c.dataIndex]||''}`:` ${c.dataset.label}: ${c.parsed.y}`};cfg.options.plugins.tooltip.filter=i=>i.parsed.y!=null;mk('cPx',cfg);})();
+lineChart('cUw',D.dates2y,[{label:'CIBR 距前高',data:D.cibr.uw,color:C.s8,fill:true}],v=>v+'%');
+// beta bars
+(function(){const ts=['PANW','CRWD','FTNT','ZS','NET','OKTA','S','RBRK','CIBR','SMH'];mk('cBeta',{type:'bar',data:{labels:ts,datasets:[{label:'上行 beta（QQQ 上涨日）',data:ts.map(t=>+S[t].beta_up.toFixed(2)),backgroundColor:C.s1,borderRadius:4,borderSkipped:'start'},{label:'下行 beta（QQQ 下跌日）',data:ts.map(t=>+S[t].beta_dn.toFixed(2)),backgroundColor:C.s8,borderRadius:4,borderSkipped:'start'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{boxWidth:10,usePointStyle:true,pointStyle:'rectRounded'}}},scales:{x:{grid:{display:false}},y:{grid:{color:C.line}}}}});})();
+// corr heat
+(function(){const t=D.cm_t;const el=document.getElementById('heatCorr');el.className='heat';el.style.gridTemplateColumns=`60px repeat(${t.length},1fr)`;let h='<div class="h"></div>'+t.map(x=>`<div class="h">${x.replace('^','')}</div>`).join('');t.forEach((a,i)=>{h+=`<div class="h" style="text-align:left">${a.replace('^','')}</div>`;t.forEach((b,j)=>{const v=D.cmat[i][j];const bg=v>=0?hexA(C.s1,0.08+v*0.85):hexA(C.s8,0.1+Math.abs(v)*0.9);const ink=v>0.55?'#fff':C.ink;h+=`<div style="background:${bg};color:${ink}" title="${a}–${b}: ${v}">${v.toFixed(2)}</div>`})});el.innerHTML=h;})();
+lineChart('cRoll',D.rollDates,[{label:'CIBR–SMH',data:D.roll.CIBR_SMH,color:C.s1},{label:'IGV–SMH',data:D.roll.IGV_SMH,color:C.s3},{label:'CIBR–QQQ',data:D.roll.CIBR_QQQ,color:C.s4}],v=>v.toFixed(1),cfg=>{cfg.options.scales.y.min=-0.4;cfg.options.scales.y.max=1;});
+lineChart('cRel',D.rel.dates,[{label:'CIBR/SMH',data:D.rel.CIBR_SMH.map(v=>+v.toFixed(3)),color:C.s1},{label:'IGV/SMH',data:D.rel.IGV_SMH.map(v=>+v.toFixed(3)),color:C.s3},{label:'CIBR/QQQ',data:D.rel.CIBR_QQQ.map(v=>+v.toFixed(3)),color:C.s4}],v=>v.toFixed(2));
+lineChart('cRvol',D.rvol.dates,[{label:'CIBR',data:D.rvol.CIBR.map(v=>v==null?null:+(v*100).toFixed(1)),color:C.s1},{label:'SMH',data:D.rvol.SMH.map(v=>v==null?null:+(v*100).toFixed(1)),color:C.s2},{label:'QQQ',data:D.rvol.QQQ.map(v=>v==null?null:+(v*100).toFixed(1)),color:C.s4}],v=>v+'%');
+// volume
+(function(){const a=D.dates2y.indexOf(D.dates1y[0]);const labels=D.dates1y;const vol=D.cibr.vol.slice(a);const v20=D.cibr.v20.slice(a);const px=D.cibr.px.slice(a);mk('cVol',{type:'bar',data:{labels,datasets:[{type:'line',label:'20 日均量',data:v20,borderColor:C.s2,borderWidth:2,pointRadius:0,order:0},{label:'成交量（千股）',data:vol,backgroundColor:px.map((p,i)=>i>0&&p<px[i-1]?hexA(C.s8,.7):hexA(C.s1,.7)),borderWidth:0,order:1}]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'top',labels:{boxWidth:10,usePointStyle:true,pointStyle:'rectRounded'}}},scales:{x:{ticks:{maxTicksLimit:12,maxRotation:0},grid:{display:false}},y:{grid:{color:C.line}}}}});})();
+document.getElementById('tblVol').innerHTML='<tr><th>日期</th><th>成交量(千)</th><th>量比</th><th>当日涨跌</th></tr>'+D.topvol.map(r=>`<tr><td>${r[0]}</td><td>${r[1].toLocaleString()}</td><td>${r[2]}x</td><td class="${cls(r[3])}">${r[3]}%</td></tr>`).join('');
+// tech table
+(function(){const ts=['CIBR','CRWD','PANW','FTNT','ZS','NET','OKTA','SMH','IGV','QQQ'];document.getElementById('tblTech').innerHTML='<tr><th>代码</th><th>收盘</th><th>MA20</th><th>MA50</th><th>MA100</th><th>MA200</th><th>距MA200</th><th>RSI14</th><th>MACD柱</th><th>BB位置</th><th>20日涨跌</th><th>60日涨跌</th><th>量比</th><th>一年低→高</th></tr>'+ts.map(t=>{const x=T[t];const st=v=>x.px>v?'pos':'neg';return `<tr><td>${t}</td><td><b>${fmt(x.px)}</b></td><td class="${st(x.ma20)}">${fmt(x.ma20)}</td><td class="${st(x.ma50)}">${fmt(x.ma50)}</td><td class="${st(x.ma100)}">${fmt(x.ma100)}</td><td class="${st(x.ma200)}">${fmt(x.ma200)}</td><td class="${cls(x.px/x.ma200-1)}">${pct(x.px/x.ma200-1,0)}</td><td class="${x.rsi14<30?'neg':''}">${fmt(x.rsi14,0)}</td><td class="${cls(x.macd_hist)}">${fmt(x.macd_hist)}</td><td>${fmt(x.bb_pos)}</td><td class="${cls(x.ret20)}">${pct(x.ret20,0)}</td><td class="${cls(x.ret60)}">${pct(x.ret60,0)}</td><td>${x.vol_ratio?fmt(x.vol_ratio):'–'}</td><td style="font-size:11px">${fmt(x.lo52)} (${x.lo52_date.slice(5)}) → ${fmt(x.hi52)} (${x.hi52_date.slice(5)})</td></tr>`}).join('');})();
+// fundamentals table
+document.getElementById('tblFund').innerHTML='<tr><th>代码</th><th>子赛道</th><th>现价</th><th>市值 $B</th><th>最新季收入增速</th><th>NTM 增速(一致)</th><th>ARR / RPO 要点</th><th>FCF 率 TTM</th><th>非GAAP营业利润率</th><th>Rule of 40</th><th>EV/S TTM</th><th>EV/S NTM≈</th><th>fwd P/E</th><th>EV/FCF</th><th>PEG</th></tr>'+D.F.map(r=>`<tr><td><b>${r.t}</b><br><span class="muted">${r.name}</span></td><td style="text-align:left">${r.sub}</td><td>${fmt(r.px)}<br><span class="muted ${cls(r.px_chg_since_asof)}">${pct(r.px_chg_since_asof,0)} vs 快照</span></td><td>${r.mcap_now??r.mcap_b}</td><td class="${cls(r.q_rev_growth)}">${r.q_rev_growth}%</td><td>${r.ntm_growth}%</td><td style="text-align:left;font-size:12px">${r.arr_note}</td><td>${r.fcf_margin}%</td><td>${r.op_margin==null?'–':r.op_margin+'%'}</td><td class="${r.rule40>=50?'pos':(r.rule40<40?'neg':'')}">${r.rule40}</td><td>${r.evs_ttm_now??r.evs_ttm}x</td><td><b>${r.evs_ntm_now??r.evs_ntm}x</b></td><td>${r.fwd_pe_now??r.fwd_pe}x</td><td>${r.ev_fcf_now??r.ev_fcf}x</td><td>${r.peg==null?'–':r.peg}</td></tr>`).join('');
+// valuation scatter
+(function(){const cols=[C.s1,C.s2,C.s3,C.s4,C.s5,C.s7,C.s8,C.s6,C.ink2];const pts=D.F.map((r,i)=>({x:r.ntm_growth,y:r.evs_ntm_now??r.evs_ntm,r:Math.max(6,Math.sqrt(r.mcap_now||r.mcap_b)*1.6),t:r.t,c:cols[i%cols.length]}));const labelPlugin={id:'lbl',afterDatasetsDraw(ch){const {ctx}=ch;ctx.save();ctx.font='600 12px '+Chart.defaults.font.family;ctx.fillStyle=C.ink;ch.getDatasetMeta(0).data.forEach((el,i)=>{ctx.fillText(pts[i].t,el.x+el.options.radius+3,el.y+4)});ctx.restore();}};mk('cVal',{type:'bubble',data:{datasets:[{label:'龙头',data:pts,backgroundColor:pts.map(p=>hexA(p.c,.75)),borderColor:C.surface,borderWidth:1.5},{type:'line',label:'平台龙头合理带 '+D.band.lo+'x',data:[{x:0,y:D.band.lo},{x:40,y:D.band.lo}],borderColor:C.ink2,borderDash:[5,4],borderWidth:1,pointRadius:0},{type:'line',label:'合理带 '+D.band.hi+'x',data:[{x:0,y:D.band.hi},{x:40,y:D.band.hi}],borderColor:C.ink2,borderDash:[5,4],borderWidth:1,pointRadius:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>{const p=pts[c.dataIndex];return p?` ${p.t}: EV/NTM Sales ${p.y}x · NTM 增速 ${p.x}%`:''}}}},scales:{x:{title:{display:true,text:'NTM 收入增速（一致预期，%）'},min:0,max:40,grid:{color:C.line}},y:{title:{display:true,text:'EV / NTM Sales（x）'},min:0,grid:{color:C.line}}}},plugins:[labelPlugin]});})();
+// ladder
+(function(){let h='<tr><th>代码</th><th>现价</th><th>当前 EV/NTM≈</th><th colspan="4">倍数 → 对应股价</th><th>技术支撑参考（快照）</th></tr>';D.F.forEach(r=>{const t=r.t;const L=D.ladder[t];const cur=r.evs_ntm_now??r.evs_ntm;const near=L.reduce((a,x)=>Math.abs(x[0]-cur)<Math.abs(a[0]-cur)?x:a,L[0]);const cells=L.map(x=>{const b=x===near&&Math.abs(x[0]-cur)<=1.5;return `<td>${b?'<b>':''}${x[0]}x → $${x[1].toFixed(0)}${b?'</b>':''}</td>`}).join('');h+=`<tr><td>${t}</td><td>${fmt(r.px)}</td><td>${cur}x</td>${cells}<td style="font-size:12px">${r.support_note||''}</td></tr>`});document.getElementById('tblLadder').innerHTML=h;})();
+// ---- live blocks ----
+const M=D.meta;
+document.querySelectorAll('.snap').forEach(e=>e.textContent='叙事快照 '+M.narrative_date);
+document.querySelectorAll('.asof').forEach(e=>e.textContent=M.asof);
+document.querySelectorAll('.wstart').forEach(e=>e.textContent=M.window_start);
+document.querySelectorAll('.fasof').forEach(e=>e.textContent=M.fundamentals_asof);
+document.querySelectorAll('.hasof').forEach(e=>e.textContent=M.holdings_asof);
+document.querySelectorAll('.zasof').forEach(e=>e.textContent=M.zones_asof);
+(function(){const src=M.sources||{};const c=src.counts||{};const parts=[];if(c.ibkr)parts.push(`IBKR Gateway ${c.ibkr} 只`);if(c.yahoo)parts.push(`Yahoo Finance ${c.yahoo} 只`);if(c.stale)parts.push(`沿用上次 ${c.stale} 只`);document.getElementById('meta').innerHTML=`行情截至 <b>${M.asof}</b> 收盘（${parts.join('、')}；${src.fetched_at||''}）· 分析窗口 ${M.window_start} → ${M.asof}，YTD 自 ${M.ytd_start} · 叙事快照 ${M.narrative_date} · 基本面快照 ${M.fundamentals_asof} · 页面数据生成 ${M.generated_at}。带「叙事快照」标签的段落是分析师当时的判断，数字表格与图表每日自动更新。`;const days=(Date.now()-new Date(M.asof+'T21:00:00Z'))/864e5;if(days>M.stale_after_days){document.getElementById('stale').innerHTML=`<div class="banner">⚠ 行情已 ${Math.floor(days)} 天未更新（最后一个交易日 ${M.asof}）。本机定时任务可能没跑或 IBKR Gateway / Yahoo 都取不到，请检查 logs/run.log。</div>`}})();
+(function(){const el=document.getElementById('alerts');const A=D.alerts||[];if(!A.length){el.innerHTML=`<div class="callout"><b>今日信号（${M.asof}）：</b>无。CIBR ${fmt(S.CIBR.last)}（${pct(S.CIBR.ret1d)}），RSI ${fmt(T.CIBR.rsi14,0)}，距 200 日线 ${pct(T.CIBR.px/T.CIBR.ma200-1,0)}。</div>`;return;}el.innerHTML=`<div class="callout warn"><b>今日信号（${M.asof}）</b><ul class="sig">${A.map(a=>`<li><i class="lv ${a.level}"></i>${a.text}</li>`).join('')}</ul></div>`;})();
+(function(){const vb=v=>v==null?'–':(typeof v==='number'?v:v);const h=['<tr><th>日期</th><th>事件</th><th>看什么</th><th>状态</th><th>对框架的影响</th></tr>'].concat(D.calendar.map(c=>{let st='';if(c.status==='已出'){const v=c.result.verdict||'';st=`<span class="st ${v}">${v==='pass'?'通过':v==='fail'?'未通过':'部分'}</span>`}else if(c.status==='即将')st='<span class="st soon">即将</span>';else st=`<span class="st">${c.status}</span>`;return `<tr><td>${c.date}${c.tentative?'<br><span class="muted">待确认</span>':''}</td><td style="text-align:left"><b>${c.event}</b></td><td style="text-align:left;font-size:12px">${c.watch}</td><td>${st}</td><td style="text-align:left;font-size:12px">${c.impact}</td></tr>`}));document.getElementById('tblCal').innerHTML=h.join('');})();
+(function(){const E=D.earnings||[];const el=document.getElementById('earnBox');if(!E.length){el.innerHTML='<p class="muted">还没有财报对照记录。第一份：NET 2026-11-05。</p>';return;}el.innerHTML=E.map(e=>{const v=e.verdict||'';const chk=(e.checks||[]).map(c=>`<li><span class="st ${c.pass===true?'pass':c.pass===false?'fail':'mixed'}">${c.pass===true?'✓':c.pass===false?'✗':'?'}</span> ${c.criterion}${c.actual?` — <span class="muted">${c.actual}</span>`:''}</li>`).join('');return `<details open><summary><b>${e.ticker}</b> ${e.quarter||''} · ${e.date} · <span class="st ${v}">${v==='pass'?'通过':v==='fail'?'未通过':'部分通过'}</span>${e.reaction_pct!=null?` · 股价 ${e.reaction_date||'次日'} <span class="${cls(e.reaction_pct)}">${(e.reaction_pct>0?'+':'')+e.reaction_pct}%</span>`:''}</summary><div style="font-size:13px;margin:6px 0">${e.revenue_b!=null?`收入 $${e.revenue_b}B（${e.rev_yoy_pct!=null?(e.rev_yoy_pct>0?'+':'')+e.rev_yoy_pct+'% 同比':''}）· `:''}${e.guide||''}</div><ul style="font-size:13px;padding-left:18px">${chk}</ul><p style="font-size:13px">${e.summary_zh||''}</p>${(e.sources||[]).length?`<p class="src">来源：${e.sources.map(s=>`<a href="${s.url}" target="_blank" rel="noopener">${s.title||s.url}</a>`).join(' · ')}</p>`:''}</details>`}).join('');})();
+(function(){const U=D.updates||[];document.getElementById('updates').innerHTML=U.length?`<h3>更新日志</h3>`+U.map(u=>`<div class="card upd"><h4>${u.title}<small>${u.date}</small></h4><div style="font-size:14px">${u.html||''}</div></div>`).join(''):'';})();
+(function(){const Z=D.zones;const px=S.CIBR.last;const h=['<tr><th>档位</th><th>区间</th><th>状态</th><th>依据（快照）</th><th>对应回撤（自 '+D.zones_cfg.ref_high+'）</th><th>仓位建议</th></tr>'].concat(Z.map(z=>{const cl=z.status==='触及中'?'st soon':z.status==='已跌破'?'st fail':'st';return `<tr><td><b>${z.name}</b></td><td>${z.lo}–${z.hi}</td><td><span class="${cl}">${z.status}</span></td><td style="text-align:left;font-size:12px;white-space:normal">${z.basis}</td><td>${z.dd}</td><td style="text-align:left;white-space:normal">${z.plan}</td></tr>`}));document.getElementById('tblZones').innerHTML=h.join('');const F=D.framework;document.getElementById('zonesNote').innerHTML=`现价 <b>${fmt(px)}</b>，距参考高点 ${D.zones_cfg.ref_high}（${D.zones_cfg.ref_high_date}）${pct(F.off_ref_high)}；200 日线 ${fmt(T.CIBR.ma200)}（${F.ma200_up?'仍在上行':'<b class="neg">已走平/向下</b>'}）。失效条件：${D.zones_cfg.invalid_note}${F.invalid?' <b class="neg">—— 已触发</b>':''} 上行失效：${D.zones_cfg.resume_note}${F.resumed?' <b class="pos">—— 已触发</b>':''}`;})();
+(function(){const x=T.CIBR;const s=S.CIBR;const dev=x.px/x.ma200-1;const fib=x.fib;const z=D.zones.find(z=>z.status==='触及中');const li=[];li.push(`<b>收盘 ${fmt(x.px)}</b>（${pct(x.ret1d)}），5 日 ${pct(x.ret5)}、20 日 ${pct(x.ret20)}、60 日 ${pct(x.ret60)}；距一年高点 ${fmt(s.high1y)}（${s.high1y_date}）${pct(s.off_high)}，距一年低点 ${fmt(s.low1y)}（${s.low1y_date}）${pct(s.off_low)}。`);const pos=[['MA20',x.ma20],['MA50',x.ma50],['MA100',x.ma100],['MA200',x.ma200]].map(([k,v])=>`${k} ${fmt(v)}（<span class="${x.px>v?'pos':'neg'}">${x.px>v?'上':'下'}</span>）`).join('、');li.push(`<b>均线</b>：${pos}；200 日线 20 个交易日前 ${fmt(x.ma200_prev20)} → 现在 ${fmt(x.ma200)}（${x.ma200>x.ma200_prev20?'上行':'走平/向下'}），50 日线 ${x.ma50>x.ma50_prev20?'上行':'走平/向下'}。`);li.push(`<b>动量</b>：RSI(14) ${fmt(x.rsi14,0)}（前一日 ${fmt(x.rsi14_prev,0)}）${x.rsi14<30?'，<span class="neg">超卖</span>':x.rsi14>70?'，<span class="pos">超买</span>':''}；MACD 柱 ${fmt(x.macd_hist)}（${x.macd_hist>0?'多头':'空头'}，DIF ${fmt(x.macd)} / DEA ${fmt(x.macd_sig)}）；布林带位置 ${fmt(x.bb_pos)}（0 = 下轨 ${fmt(x.bb_lo)}，1 = 上轨 ${fmt(x.bb_up)}）。`);li.push(`<b>乖离</b>：距 200 日线 ${pct(dev,0)}，两年区间 ${pct(x.dev200_min,0)} ~ ${pct(x.dev200_max,0)}。`);li.push(`<b>一年低→高斐波那契</b>（${fmt(x.lo52)} → ${fmt(x.hi52)}）：0.236 = ${fmt(fib['0.236'],1)}、0.382 = ${fmt(fib['0.382'],1)}、0.5 = ${fmt(fib['0.5'],1)}、0.618 = ${fmt(fib['0.618'],1)}。`);li.push(`<b>波动与量</b>：ATR(14) ${x.atr14?fmt(x.atr14)+'（'+pct(x.atr14/x.px)+'/日）':'–'}；20/100 日均量比 ${fmt(x.vol_ratio)}，当日/20 日均量 ${fmt(x.vol_1d_ratio)}。`);li.push(`<b>观察区</b>：${z?`<span class="neg">处于${z.name} ${z.lo}–${z.hi}</span>`:`未进入任何一档（第一档上沿 ${D.zones[0].hi}，距现价 ${pct(D.zones[0].hi/x.px-1)}）`}。`);document.getElementById('autoCibr').innerHTML=li.map(v=>`<li>${v}</li>`).join('');const L=['CRWD','PANW','FTNT','ZS','NET','OKTA'].filter(t=>T[t]);document.getElementById('autoLeaders').innerHTML=L.map(t=>{const y=T[t];const r=S[t];const ma=[['50',y.ma50],['100',y.ma100],['200',y.ma200]].map(([k,v])=>`${k}日 ${fmt(v,1)}（<span class="${y.px>v?'pos':'neg'}">${pct(y.px/v-1,0)}</span>）`).join('、');return `<li><b>${t}</b> ${fmt(y.px)}（${pct(y.ret1d)}）：RSI ${fmt(y.rsi14,0)}${y.rsi14<30?' <span class="neg">超卖</span>':''}，20 日 ${pct(y.ret20,0)}，距一年高点 ${pct(r.off_high,0)}；${ma}；BB 位置 ${fmt(y.bb_pos)}。</li>`}).join('');})();
+document.getElementById('foot').innerHTML=`行情与统计每日自动刷新（页面数据生成 ${M.generated_at}）· 叙事快照 ${M.narrative_date} · <a href="?snapshot=${M.asof}">本日存档</a>${M.site_url?` · <a href="${M.site_url}">${M.site_url}</a>`:''} · 本页不构成投资建议`;
+}
+(async function(){const q=new URLSearchParams(location.search);const snap=q.get('snapshot');const f=snap?`data/archive/${snap}.json`:'data/report.json';try{const r=await fetch(f,{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);const D=await r.json();if(snap){const b=document.createElement('div');b.className='banner';b.innerHTML=`正在查看 ${snap} 的存档快照。<a href="?">回到最新</a>`;document.querySelector('.wrap').prepend(b);}render(D);}catch(e){document.getElementById('meta').innerHTML='数据加载失败：'+e.message+'。本页需通过 http(s) 打开（本地预览：python3 -m http.server 8766 --directory docs）。';}})();
+</script>
+</body></html>

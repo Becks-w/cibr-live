@@ -1,0 +1,72 @@
+{
+ "asof": "2026-11-02",
+ "generated_at": "2026-11-03 05:59 UTC",
+ "window_start": "2025-11-03",
+ "ytd_start": "2026-01-02",
+ "n_days": 500,
+ "sources": {
+  "gateway": "down",
+  "counts": {
+   "yahoo": 29
+  },
+  "fetched_at": "2026-11-03 05:59 UTC",
+  "per_ticker": {
+   "CIBR": "yahoo",
+   "HACK": "yahoo",
+   "BUG": "yahoo",
+   "IGV": "yahoo",
+   "SMH": "yahoo",
+   "SOXX": "yahoo",
+   "QQQ": "yahoo",
+   "SPY": "yahoo",
+   "NVDA": "yahoo",
+   "AVGO": "yahoo",
+   "CRWD": "yahoo",
+   "PANW": "yahoo",
+   "FTNT": "yahoo",
+   "ZS": "yahoo",
+   "NET": "yahoo",
+   "OKTA": "yahoo",
+   "S": "yahoo",
+   "CHKP": "yahoo",
+   "GEN": "yahoo",
+   "TENB": "yahoo",
+   "RBRK": "yahoo",
+   "QLYS": "yahoo",
+   "AKAM": "yahoo",
+   "FFIV": "yahoo",
+   "CSCO": "yahoo",
+   "DDOG": "yahoo",
+   "SNOW": "yahoo",
+   "^VIX": "yahoo",
+   "^TNX": "yahoo"
+  }
+ },
+ "narrative_date": "2026-11-03",
+ "fundamentals_asof": "2026-11-02",
+ "holdings_asof": "2026-10-30",
+ "zones_asof": "2026-11-03",
+ "site_url": "",
+ "stale_after_days": 4,
+ "title": "网络安全行业深度复盘：CIBR 龙头",
+ "alerts": [
+  {
+   "kind": "move",
+   "level": "serious",
+   "text": "CIBR 单日 -4.2%（SMH -2.7%、QQQ -1.4%、IGV -2.3%），量比 1.34"
+  },
+  {
+   "kind": "move",
+   "level": "serious",
+   "text": "OKTA 单日 -11.2%"
+  },
+  {
+   "kind": "data",
+   "level": "warning",
+   "text": "IBKR Gateway 未连上，本次行情来自 Yahoo"
+  }
+ ],
+ "archives": [
+  "2026-11-02"
+ ]
+}
