@@ -3,6 +3,7 @@
 首版是 2026-11-03 的一次性 HTML 报告（`股票研究/网络安全行业_CIBR龙头年度复盘_2026-11-03.html`）。这个仓库把它拆成三层，
 让**行情与统计每天自动刷新**、**财报后半自动对照**、**叙事按需人工更新**，用 GitHub Pages 发布 `docs/`。
 
+- 线上地址：https://becks-w.github.io/cibr-live/ ；仓库 https://github.com/Becks-w/cibr-live（Pages：main 分支 `/docs`）
 - 页面：`docs/index.html`（静态壳，打开时读 `docs/data/report.json`；`?snapshot=YYYY-MM-DD` 看当日存档）
 - 数据：`docs/data/report.json`（页面唯一数据源）、`docs/data/meta.json`（截至日 + 今日信号）、`docs/data/archive/`（每日存档）
 - 原始行情 `data/raw/`（不进 git；公开仓库里只有归一化序列、指标和 CIBR 单只 ETF 的日线）

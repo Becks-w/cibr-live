@@ -1,6 +1,6 @@
 {
  "asof": "2026-11-02",
- "generated_at": "2026-11-03 05:59 UTC",
+ "generated_at": "2026-11-03 06:02 UTC",
  "window_start": "2025-11-03",
  "ytd_start": "2026-01-02",
  "n_days": 500,
@@ -46,7 +46,7 @@
  "fundamentals_asof": "2026-11-02",
  "holdings_asof": "2026-10-30",
  "zones_asof": "2026-11-03",
- "site_url": "",
+ "site_url": "https://becks-w.github.io/cibr-live/",
  "stale_after_days": 4,
  "title": "网络安全行业深度复盘：CIBR 龙头",
  "alerts": [
