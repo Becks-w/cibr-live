@@ -1,15 +1,15 @@
 {
- "asof": "2026-11-02",
- "generated_at": "2026-11-03 08:06 UTC",
+ "asof": "2026-11-03",
+ "generated_at": "2026-11-04 03:05 UTC",
  "window_start": "2025-11-03",
  "ytd_start": "2026-01-02",
- "n_days": 500,
+ "n_days": 501,
  "sources": {
   "gateway": "down",
   "counts": {
    "yahoo": 29
   },
-  "fetched_at": "2026-11-03 05:59 UTC",
+  "fetched_at": "2026-11-04 03:05 UTC",
   "per_ticker": {
    "CIBR": "yahoo",
    "HACK": "yahoo",
@@ -51,14 +51,9 @@
  "title": "网络安全行业深度复盘：CIBR 龙头",
  "alerts": [
   {
-   "kind": "move",
-   "level": "serious",
-   "text": "CIBR 单日 -4.2%（SMH -2.7%、QQQ -1.4%、IGV -2.3%），量比 1.34"
-  },
-  {
-   "kind": "move",
-   "level": "serious",
-   "text": "OKTA 单日 -11.2%"
+   "kind": "cal",
+   "level": "warning",
+   "text": "2026-11-05 NET 三季报（盘后）：收入增速是否维持 30%+、NRR 120%、FCF 利润率"
   },
   {
    "kind": "data",
@@ -67,6 +62,7 @@
   }
  ],
  "archives": [
-  "2026-11-02"
+  "2026-11-02",
+  "2026-11-03"
  ]
 }
