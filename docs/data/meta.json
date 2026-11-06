@@ -1,44 +1,43 @@
 {
- "asof": "2026-11-04",
- "generated_at": "2026-11-05 03:01 UTC",
- "window_start": "2025-11-04",
+ "asof": "2026-11-05",
+ "generated_at": "2026-11-06 03:00 UTC",
+ "window_start": "2025-11-05",
  "ytd_start": "2026-01-02",
  "n_days": 501,
  "sources": {
-  "gateway": "connected",
+  "gateway": "down",
   "counts": {
-   "ibkr": 27,
-   "yahoo": 2
+   "yahoo": 29
   },
-  "fetched_at": "2026-11-05 03:01 UTC",
+  "fetched_at": "2026-11-06 03:00 UTC",
   "per_ticker": {
-   "CIBR": "ibkr",
-   "HACK": "ibkr",
-   "BUG": "ibkr",
-   "IGV": "ibkr",
-   "SMH": "ibkr",
-   "SOXX": "ibkr",
-   "QQQ": "ibkr",
-   "SPY": "ibkr",
-   "NVDA": "ibkr",
-   "AVGO": "ibkr",
-   "CRWD": "ibkr",
-   "PANW": "ibkr",
-   "FTNT": "ibkr",
-   "ZS": "ibkr",
-   "NET": "ibkr",
-   "OKTA": "ibkr",
-   "S": "ibkr",
-   "CHKP": "ibkr",
-   "GEN": "ibkr",
-   "TENB": "ibkr",
-   "RBRK": "ibkr",
-   "QLYS": "ibkr",
-   "AKAM": "ibkr",
-   "FFIV": "ibkr",
-   "CSCO": "ibkr",
-   "DDOG": "ibkr",
-   "SNOW": "ibkr",
+   "CIBR": "yahoo",
+   "HACK": "yahoo",
+   "BUG": "yahoo",
+   "IGV": "yahoo",
+   "SMH": "yahoo",
+   "SOXX": "yahoo",
+   "QQQ": "yahoo",
+   "SPY": "yahoo",
+   "NVDA": "yahoo",
+   "AVGO": "yahoo",
+   "CRWD": "yahoo",
+   "PANW": "yahoo",
+   "FTNT": "yahoo",
+   "ZS": "yahoo",
+   "NET": "yahoo",
+   "OKTA": "yahoo",
+   "S": "yahoo",
+   "CHKP": "yahoo",
+   "GEN": "yahoo",
+   "TENB": "yahoo",
+   "RBRK": "yahoo",
+   "QLYS": "yahoo",
+   "AKAM": "yahoo",
+   "FFIV": "yahoo",
+   "CSCO": "yahoo",
+   "DDOG": "yahoo",
+   "SNOW": "yahoo",
    "^VIX": "yahoo",
    "^TNX": "yahoo"
   }
@@ -52,14 +51,65 @@
  "title": "网络安全行业深度复盘：CIBR 龙头",
  "alerts": [
   {
+   "kind": "move",
+   "level": "serious",
+   "text": "CIBR 单日 -6.5%（SMH -11.2%、QQQ -6.5%、IGV -4.4%），量比 1.71"
+  },
+  {
+   "kind": "move",
+   "level": "serious",
+   "text": "CRWD 单日 -9.9%"
+  },
+  {
+   "kind": "move",
+   "level": "serious",
+   "text": "PANW 单日 -9.6%"
+  },
+  {
+   "kind": "move",
+   "level": "serious",
+   "text": "ZS 单日 -9.2%"
+  },
+  {
+   "kind": "move",
+   "level": "serious",
+   "text": "NET 单日 -8.3%"
+  },
+  {
+   "kind": "move",
+   "level": "serious",
+   "text": "OKTA 单日 -10.4%"
+  },
+  {
+   "kind": "move",
+   "level": "serious",
+   "text": "S 单日 -8.8%"
+  },
+  {
+   "kind": "move",
+   "level": "serious",
+   "text": "RBRK 单日 -11.1%"
+  },
+  {
+   "kind": "zone",
+   "level": "warning",
+   "text": "CIBR 91.01 进入第一档观察区 91–94（观察仓 1/4，需满足过滤 (1)(3)）"
+  },
+  {
    "kind": "cal",
    "level": "warning",
    "text": "2026-11-05 NET 三季报（盘后）：收入增速是否维持 30%+、NRR 120%、FCF 利润率"
+  },
+  {
+   "kind": "data",
+   "level": "warning",
+   "text": "IBKR Gateway 未连上，本次行情来自 Yahoo"
   }
  ],
  "archives": [
   "2026-11-02",
   "2026-11-03",
-  "2026-11-04"
+  "2026-11-04",
+  "2026-11-05"
  ]
 }
