@@ -1,7 +1,7 @@
 {
- "asof": "2026-11-05",
- "generated_at": "2026-11-06 03:00 UTC",
- "window_start": "2025-11-05",
+ "asof": "2026-11-06",
+ "generated_at": "2026-11-07 03:00 UTC",
+ "window_start": "2025-11-06",
  "ytd_start": "2026-01-02",
  "n_days": 501,
  "sources": {
@@ -9,7 +9,7 @@
   "counts": {
    "yahoo": 29
   },
-  "fetched_at": "2026-11-06 03:00 UTC",
+  "fetched_at": "2026-11-07 03:00 UTC",
   "per_ticker": {
    "CIBR": "yahoo",
    "HACK": "yahoo",
@@ -52,53 +52,18 @@
  "alerts": [
   {
    "kind": "move",
-   "level": "serious",
-   "text": "CIBR 单日 -6.5%（SMH -11.2%、QQQ -6.5%、IGV -4.4%），量比 1.71"
-  },
-  {
-   "kind": "move",
-   "level": "serious",
-   "text": "CRWD 单日 -9.9%"
-  },
-  {
-   "kind": "move",
-   "level": "serious",
-   "text": "PANW 单日 -9.6%"
-  },
-  {
-   "kind": "move",
-   "level": "serious",
-   "text": "ZS 单日 -9.2%"
-  },
-  {
-   "kind": "move",
-   "level": "serious",
-   "text": "NET 单日 -8.3%"
-  },
-  {
-   "kind": "move",
-   "level": "serious",
-   "text": "OKTA 单日 -10.4%"
-  },
-  {
-   "kind": "move",
-   "level": "serious",
-   "text": "S 单日 -8.8%"
-  },
-  {
-   "kind": "move",
-   "level": "serious",
-   "text": "RBRK 单日 -11.1%"
+   "level": "good",
+   "text": "NET 单日 +9.9%"
   },
   {
    "kind": "zone",
    "level": "warning",
-   "text": "CIBR 91.01 进入第一档观察区 91–94（观察仓 1/4，需满足过滤 (1)(3)）"
+   "text": "CIBR 91.04 进入第一档观察区 91–94（观察仓 1/4，需满足过滤 (1)(3)）"
   },
   {
    "kind": "cal",
    "level": "warning",
-   "text": "2026-11-05 NET 三季报（盘后）：收入增速是否维持 30%+、NRR 120%、FCF 利润率"
+   "text": "2026-11-05 NET 三季报（盘后） 已过，待跑 earnings.py NET 2026-11-05"
   },
   {
    "kind": "data",
@@ -110,6 +75,7 @@
   "2026-11-02",
   "2026-11-03",
   "2026-11-04",
-  "2026-11-05"
+  "2026-11-05",
+  "2026-11-06"
  ]
 }
