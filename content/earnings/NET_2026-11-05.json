@@ -1,0 +1,114 @@
+{
+ "ticker": "NET",
+ "date": "2026-11-05",
+ "quarter": "FY26 Q3",
+ "revenue_b": 0.7825,
+ "rev_yoy_pct": 39,
+ "guide": "Q4 收入指引 $845-846M（一致预期 $798M）、non-GAAP EPS $0.43（预期 $0.38）；全年收入指引上调至 $2.963-2.964B（原 $2.864-2.870B）。",
+ "kpis": [
+  {
+   "name": "收入",
+   "value": "$782.5M，+39% YoY",
+   "note": "一致预期 $738M；Q2 为 +36%，近四年最快"
+  },
+  {
+   "name": "DBNR（NRR）",
+   "value": "122%",
+   "note": "Q2 120%、去年同期 119%（10-Q）"
+  },
+  {
+   "name": "cRPO 增速",
+   "value": "+37% YoY",
+   "note": "新闻稿只给增速，不给金额"
+  },
+  {
+   "name": "$100k+ 大客户",
+   "value": "5,006 家，+25% YoY",
+   "note": "环比净增 308 家，$100k/$500k/$1M/$5M+ 各档均创纪录净增"
+  },
+  {
+   "name": "非 GAAP 营业利润率",
+   "value": "17.5%",
+   "note": "去年同期 15.3%；营业利润 $137.1M"
+  },
+  {
+   "name": "FCF 利润率",
+   "value": "10%（$82.1M）",
+   "note": "去年同期 13%（$75.0M）；经营现金流 $215.4M（28%）"
+  },
+  {
+   "name": "非 GAAP EPS",
+   "value": "$0.38",
+   "note": "预期 $0.34；GAAP 净亏损 $34.1M"
+  },
+  {
+   "name": "年化收入",
+   "value": "> $3B",
+   "note": "CEO：公司史上最好的一个季度"
+  }
+ ],
+ "fcf_margin_pct": 10.0,
+ "op_margin_pct": 17.5,
+ "ntm_rev_b": 3.7,
+ "reaction_pct": 9.9,
+ "reaction_date": "2026-11-06",
+ "mgmt_ai_comment": "Matthew Prince：Cloudflare 已建成“AI 驱动互联网”的开发平台，数字威胁升级让各种规模的组织都更依赖 Cloudflare 的防护；公司 5 月起推进“agentic AI-first 运营模式”重组（10-Q：裁员约 20%，预计费用 $140-150M，Q3 重组费用已不重大）。",
+ "analyst_actions": "KeyBanc 维持目标价 $375、BofA $380；Guggenheim 目标价上调至 $190 但维持 Sell（估值 ≈ 30x 前瞻经常性收入）。",
+ "checks": [
+  {
+   "criterion": "收入同比增速 ≥ 30%",
+   "pass": true,
+   "actual": "+39%（$782.5M），较 Q2 的 +36% 再加速"
+  },
+  {
+   "criterion": "NRR ≥ 120%",
+   "pass": true,
+   "actual": "122%（Q2 120%）"
+  },
+  {
+   "criterion": "Q4/全年指引高于一致预期",
+   "pass": true,
+   "actual": "Q4 $845-846M vs 预期 $798M（+6%）；全年上调约 $95M"
+  },
+  {
+   "criterion": "FCF 利润率不低于上季（13.6%）",
+   "pass": false,
+   "actual": "10%（$82.1M），低于上季 13.6% 和去年同期 13%；经营现金流 28% 但 capex 上升"
+  }
+ ],
+ "verdict": "mixed",
+ "verdict_reason": "三项核心增长指标（收入增速、NRR、指引）全部通过且均在加速，唯一未通过的是 FCF 利润率（10% < 13.6%），属于非核心的现金转化问题，因此判为部分通过而非未通过。",
+ "summary_zh": "Cloudflare Q3 收入 $782.5M、同比 +39%，是近四年最快增速，比一致预期高 6%；DBNR 升到 122%、cRPO +37%、$100k 以上大客户净增 308 家创纪录，说明大客户在加速扩张。Q4 指引 $845-846M 比预期高 6%，全年指引上调近 $100M，非 GAAP 营业利润率 17.5% 也在改善。唯一的瑕疵是 FCF 利润率只有 10%（去年同期 13%），资本开支随 AI 推理与网络扩容上升。财报前一天股价因板块去风险 -8.3%，财报后首日 +9.9% 收 268.75，基本收复。对 CIBR 复盘的意义：NET 用财报证明了“超卖反弹”而非“估值重置”，但 EV/NTM Sales 仍约 26x，贵的问题没有解决。",
+ "event_label": "NET 三季报 +39%，次日 +9.9%",
+ "sources": [
+  {
+   "title": "SEC 8-K Ex.99.1（Q3 2026 新闻稿）",
+   "url": "https://www.sec.gov/Archives/edgar/data/0001477333/000147733326000060/q326exhibit991.htm"
+  },
+  {
+   "title": "Cloudflare 10-Q（2026-09-30）",
+   "url": "https://www.sec.gov/Archives/edgar/data/0001477333/000147733326000061/cloud-20260930.htm"
+  },
+  {
+   "title": "Seeking Alpha：Q3 收入 +39%、上调全年指引",
+   "url": "https://seekingalpha.com/news/4667167-cloudflare-catapults-as-q3-revenue-surges-39-raises-full-year-guidance"
+  },
+  {
+   "title": "Seeking Alpha：券商评级",
+   "url": "https://seekingalpha.com/news/4668198-cloudflare-climbs-as-analysts-highlight-its-biggest-earnings-beat-in-years"
+  },
+  {
+   "title": "StockAnalysis：NET 11-06 收盘",
+   "url": "https://stockanalysis.com/stocks/net/"
+  }
+ ],
+ "unverified": [
+  "NTM 收入 $3.7B 为 Q4 指引 $845.5M + 2027 年前三季按约 28% 增速拼接，未核对卖方一致预期",
+  "Q4 一致预期 $798.2M、EPS $0.38 来自 Investing.com 等二手报道",
+  "cRPO 与 RPO 金额未在新闻稿披露，需读 10-Q",
+  "DBNR 122% 来自 10-Q 二手摘要（搜索结果引用），未逐字核对",
+  "Guggenheim/KeyBanc/BofA 评级动作来自 Seeking Alpha 转述"
+ ],
+ "extracted_at": "2026-11-07 17:08",
+ "model": "manual (claude -p 周配额用尽，Fable 5.1 会话内 WebSearch/WebFetch 手写)"
+}
