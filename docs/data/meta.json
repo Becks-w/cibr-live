@@ -1,6 +1,6 @@
 {
  "asof": "2026-11-06",
- "generated_at": "2026-11-07 09:09 UTC",
+ "generated_at": "2026-11-08 03:03 UTC",
  "window_start": "2025-11-06",
  "ytd_start": "2026-01-02",
  "n_days": 501,
@@ -9,7 +9,7 @@
   "counts": {
    "yahoo": 29
   },
-  "fetched_at": "2026-11-07 09:08 UTC",
+  "fetched_at": "2026-11-08 03:03 UTC",
   "per_ticker": {
    "CIBR": "yahoo",
    "HACK": "yahoo",
