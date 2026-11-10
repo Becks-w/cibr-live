@@ -152,13 +152,14 @@ for t in TICKERS["tech_panel"]:
     m20 = sma(s, 20, i); sd20 = st.pstdev(s[i - 19:i + 1]); vol = SER[t]["v"]
     lo = min(s[i1y:]); hi = max(s[i1y:])
     v20 = sum(vol[i - 19:i + 1]) / 20; v100 = sum(vol[i - 99:i + 1]) / 100
+    vprev20 = sum(vol[i - 20:i]) / 20  # 前 20 个交易日均量（不含当日），与放量日排行表同口径
     tech[t] = {"px": s[i], "ret1d": s[i] / s[i - 1] - 1, "ma20": m20, "ma50": sma(s, 50, i), "ma100": sma(s, 100, i), "ma200": sma(s, 200, i),
                "ma200_prev20": sma(s, 200, i - 20), "ma50_prev20": sma(s, 50, i - 20),
                "rsi14": rsi(s, i), "rsi14_prev": rsi(s, i - 1), "macd": macd[i], "macd_sig": sig[i], "macd_hist": macd[i] - sig[i],
                "bb_up": m20 + 2 * sd20, "bb_lo": m20 - 2 * sd20, "bb_pos": (s[i] - (m20 - 2 * sd20)) / (4 * sd20) if sd20 else None,
                "hi52": hi, "lo52": lo, "hi52_date": dates[s.index(hi, i1y)], "lo52_date": dates[s.index(lo, i1y)],
                "ret5": s[i] / s[i - 5] - 1, "ret20": s[i] / s[i - 20] - 1, "ret60": s[i] / s[i - 60] - 1,
-               "vol_ratio": (v20 / v100) if v100 else None, "vol_1d_ratio": (vol[i] / v20) if v20 else None,
+               "vol_ratio": (v20 / v100) if v100 else None, "vol_1d_ratio": (vol[i] / vprev20) if vprev20 else None, "vol_1d": vol[i], "vol_prev20_avg": vprev20,
                "fib": {str(k): hi - (hi - lo) * k for k in (0.236, 0.382, 0.5, 0.618, 0.786)}}
     h = SER[t]["h"]; l = SER[t]["l"]
     if h[-1] is not None and all(x is not None for x in h[-15:] + l[-15:]):

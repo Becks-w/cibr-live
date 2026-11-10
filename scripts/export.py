@@ -64,11 +64,22 @@ calendar.sort(key=lambda c: c["date"])
 earnings_list = sorted(earn.values(), key=lambda e: e["date"], reverse=True)
 
 # ---- 今日信号 ----
+def vol_phrase(x):
+    """成交量的完整描述：当日成交量 ÷ 前 20 个交易日日均成交量（不含当日）。"""
+    r = x.get("vol_1d_ratio")
+    if not r:
+        return "成交量数据缺失"
+    tag = "显著放量" if r >= 2 else "放量" if r >= 1.5 else "温和放量" if r >= 1.1 else "平量" if r >= 0.9 else "缩量"
+    src = str(S["CIBR"].get("src", ""))
+    basis = "IBKR 常规交易时段口径，低于含盘前盘后的全市场成交量" if src.startswith("ibkr") else "Yahoo 全市场口径"
+    return f"当日成交量 {x['vol_1d']/1e6:.2f} 百万股，为前 20 个交易日日均成交量（{x['vol_prev20_avg']/1e6:.2f} 百万股）的 {r:.2f} 倍（{tag}；{basis}）"
+
+
 al = SETTINGS.get("alerts", {}); alerts = []
 r1 = S["CIBR"]["ret1d"]
 if abs(r1) >= al.get("cibr_abs_move", 0.03):
     alerts.append({"kind": "move", "level": "serious" if r1 < 0 else "good",
-                   "text": f"CIBR 单日 {r1*100:+.1f}%（SMH {S['SMH']['ret1d']*100:+.1f}%、QQQ {S['QQQ']['ret1d']*100:+.1f}%、IGV {S['IGV']['ret1d']*100:+.1f}%），量比 {T['CIBR'].get('vol_1d_ratio') or 0:.2f}"})
+                   "text": f"CIBR 单日 {r1*100:+.1f}%（SMH {S['SMH']['ret1d']*100:+.1f}%、QQQ {S['QQQ']['ret1d']*100:+.1f}%、IGV {S['IGV']['ret1d']*100:+.1f}%）；{vol_phrase(T['CIBR'])}"})
 for t in ("CRWD", "PANW", "FTNT", "ZS", "NET", "OKTA", "S", "RBRK", "CHKP"):
     if t in S and abs(S[t]["ret1d"]) >= al.get("leader_abs_move", 0.08):
         alerts.append({"kind": "move", "level": "serious" if S[t]["ret1d"] < 0 else "good", "text": f"{t} 单日 {S[t]['ret1d']*100:+.1f}%"})
