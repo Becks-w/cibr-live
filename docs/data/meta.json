@@ -1,16 +1,16 @@
 {
- "asof": "2026-11-09",
- "generated_at": "2026-11-10 09:05 UTC",
+ "asof": "2026-11-10",
+ "generated_at": "2026-11-11 03:01 UTC",
  "window_start": "2025-11-10",
  "ytd_start": "2026-01-02",
- "n_days": 500,
+ "n_days": 501,
  "sources": {
   "gateway": "connected",
   "counts": {
    "ibkr": 27,
    "yahoo": 2
   },
-  "fetched_at": "2026-11-10 03:15 UTC",
+  "fetched_at": "2026-11-11 03:01 UTC",
   "per_ticker": {
    "CIBR": "ibkr",
    "HACK": "ibkr",
@@ -50,29 +50,14 @@
  "site_url": "https://becks-w.github.io/cibr-live/",
  "stale_after_days": 4,
  "title": "网络安全行业深度复盘：CIBR 龙头",
- "alerts": [
-  {
-   "kind": "move",
-   "level": "good",
-   "text": "CIBR 单日 +4.0%（SMH +5.1%、QQQ +3.5%、IGV +2.6%）；当日成交量 1.49 百万股，为前 20 个交易日日均成交量（2.05 百万股）的 0.73 倍（缩量；IBKR 常规交易时段口径，低于含盘前盘后的全市场成交量）"
-  },
-  {
-   "kind": "move",
-   "level": "good",
-   "text": "NET 单日 +9.3%"
-  },
-  {
-   "kind": "move",
-   "level": "good",
-   "text": "S 单日 +8.0%"
-  }
- ],
+ "alerts": [],
  "archives": [
   "2026-11-02",
   "2026-11-03",
   "2026-11-04",
   "2026-11-05",
   "2026-11-06",
-  "2026-11-09"
+  "2026-11-09",
+  "2026-11-10"
  ]
 }
