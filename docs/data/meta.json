@@ -1,7 +1,7 @@
 {
- "asof": "2026-11-12",
- "generated_at": "2026-11-13 03:00 UTC",
- "window_start": "2025-11-12",
+ "asof": "2026-11-13",
+ "generated_at": "2026-11-14 03:00 UTC",
+ "window_start": "2025-11-13",
  "ytd_start": "2026-01-02",
  "n_days": 501,
  "sources": {
@@ -9,7 +9,7 @@
   "counts": {
    "yahoo": 29
   },
-  "fetched_at": "2026-11-13 03:00 UTC",
+  "fetched_at": "2026-11-14 03:00 UTC",
   "per_ticker": {
    "CIBR": "yahoo",
    "HACK": "yahoo",
@@ -51,6 +51,11 @@
  "title": "网络安全行业深度复盘：CIBR 龙头",
  "alerts": [
   {
+   "kind": "rsi",
+   "level": "warning",
+   "text": "CIBR RSI(14) = 26，超卖区"
+  },
+  {
    "kind": "data",
    "level": "warning",
    "text": "IBKR Gateway 未连上，本次行情来自 Yahoo"
@@ -65,6 +70,7 @@
   "2026-11-09",
   "2026-11-10",
   "2026-11-11",
-  "2026-11-12"
+  "2026-11-12",
+  "2026-11-13"
  ]
 }
