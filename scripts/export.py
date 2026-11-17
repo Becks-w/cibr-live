@@ -47,10 +47,11 @@ for f in sorted(glob.glob(str(CONTENT / "earnings" / "*.json"))):
     e = load(f)
     if e and e.get("ticker") and e.get("date"): earn[(e["ticker"], e["date"])] = e
 asof_d = datetime.strptime(asof, "%Y-%m-%d")
+today_d = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)  # 倒数按运行当天算，不按行情截至日（周末/假日会差几天）
 look = int(SETTINGS.get("alerts", {}).get("earnings_lookahead_days", 2))
 calendar = []
 for ev in CAL["events"]:
-    d = datetime.strptime(ev["date"], "%Y-%m-%d"); days = (d - asof_d).days
+    d = datetime.strptime(ev["date"], "%Y-%m-%d"); days = (d - today_d).days
     if days < -14:  # 已过两周的事件从页面日历移出（config 里保留）
         continue
     e = earn.get((ev.get("ticker"), ev["date"]))

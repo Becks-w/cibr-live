@@ -1,6 +1,6 @@
 {
  "asof": "2026-11-13",
- "generated_at": "2026-11-16 03:00 UTC",
+ "generated_at": "2026-11-17 01:29 UTC",
  "window_start": "2025-11-13",
  "ytd_start": "2026-01-02",
  "n_days": 501,
@@ -54,6 +54,11 @@
    "kind": "rsi",
    "level": "warning",
    "text": "CIBR RSI(14) = 26，超卖区"
+  },
+  {
+   "kind": "cal",
+   "level": "warning",
+   "text": "2026-11-18 PANW FQ1（盘后，北京时间 11-19 05:30 电话会）：有机 NGS ARR 增速（剔除 CyberArk）、RPO、FY27 指引是否上调"
   },
   {
    "kind": "data",
