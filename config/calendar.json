@@ -43,6 +43,17 @@
    "date_source": "按去年同期（感恩节前周二）推算，未经公司确认"
   },
   {
+   "date": "2026-11-30",
+   "ticker": "RBRK",
+   "event": "RBRK FQ3（日期已确认）",
+   "watch": "订阅 ARR 净新增是否回升、FCF",
+   "impact": "二线平台验证",
+   "criteria": [
+    "订阅 ARR 净新增同比回升"
+   ],
+   "date_source": "自动核对 2026-11-19：公司公告（Rubrik 发布新闻稿确认 FY27 Q3 财报在 11 月 30 日（周一）美股收盘后发布，电话会美东 17:00，原暂记的 12-03 有误。）；原记 2026-12-03"
+  },
+  {
    "date": "2026-12-01",
    "ticker": "OKTA",
    "event": "OKTA FQ3（盘后）",
@@ -71,26 +82,13 @@
   {
    "date": "2026-12-03",
    "ticker": "S",
-   "event": "S FQ3（公司尚未公布日期）",
+   "event": "S FQ3（日期已确认）",
    "watch": "净新增 ARR 是否回升",
    "impact": "二线平台验证",
    "criteria": [
     "净新增 ARR 同比回升"
    ],
-   "tentative": true,
-   "date_source": "第三方估计互相矛盾（12-02 / 12-08），未经公司确认"
-  },
-  {
-   "date": "2026-12-03",
-   "ticker": "RBRK",
-   "event": "RBRK FQ3（公司尚未公布日期）",
-   "watch": "订阅 ARR 净新增是否回升、FCF",
-   "impact": "二线平台验证",
-   "criteria": [
-    "订阅 ARR 净新增同比回升"
-   ],
-   "tentative": true,
-   "date_source": "第三方估计互相矛盾（11-26 / 12-03），未经公司确认"
+   "date_source": "自动核对 2026-11-19：公司公告（SentinelOne 于 2026-11-12 发布公告确认 FY27 Q3 财报在 12 月 3 日发布，电话会美东 17:00（收盘后）。）"
   },
   {
    "date": "2026-12-10",
