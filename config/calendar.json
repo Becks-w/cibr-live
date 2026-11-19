@@ -1,5 +1,5 @@
 {
- "note": "判决日日历。财报出来后跑 scripts/earnings.py <TICKER> <DATE>，结果写入 content/earnings/，页面自动对照 criteria 显示通过/未通过。",
+ "note": "判决日日历。财报日过后，每日刷新（scripts/auto_earnings.py）自动抽取并对照 criteria，结果写入 content/earnings/；标了 tentative 的日期每 2 天自动向公司公告核对一次。也可手动跑 scripts/earnings.py <TICKER> <DATE>。",
  "events": [
   {
    "date": "2026-11-05",
@@ -71,14 +71,26 @@
   {
    "date": "2026-12-03",
    "ticker": "S",
-   "event": "S、RBRK 财报（公司尚未公布日期）",
+   "event": "S FQ3（公司尚未公布日期）",
    "watch": "净新增 ARR 是否回升",
    "impact": "二线平台验证",
    "criteria": [
     "净新增 ARR 同比回升"
    ],
    "tentative": true,
-   "date_source": "第三方估计互相矛盾（S 12-02 / 12-08，RBRK 11-26 / 12-03），未经公司确认"
+   "date_source": "第三方估计互相矛盾（12-02 / 12-08），未经公司确认"
+  },
+  {
+   "date": "2026-12-03",
+   "ticker": "RBRK",
+   "event": "RBRK FQ3（公司尚未公布日期）",
+   "watch": "订阅 ARR 净新增是否回升、FCF",
+   "impact": "二线平台验证",
+   "criteria": [
+    "订阅 ARR 净新增同比回升"
+   ],
+   "tentative": true,
+   "date_source": "第三方估计互相矛盾（11-26 / 12-03），未经公司确认"
   },
   {
    "date": "2026-12-10",

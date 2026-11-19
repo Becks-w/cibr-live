@@ -2,7 +2,7 @@
 """合并 analytics + config + content → docs/data/report.json（页面唯一数据源）+ 当日存档 + meta.json。
 这里也算“今日信号”（alerts），页面显示、notify.py 推送都用同一份。
 """
-import glob, os
+import glob, html, os
 from datetime import datetime, timedelta
 from common import RAW, CONFIG, CONTENT, SITE_DATA, SETTINGS, load, save, log, now_utc
 
@@ -10,6 +10,8 @@ BACKFILL = os.environ.get("CIBR_BACKFILL")  # 补录某一天的存档：只写 
 A = load(RAW / ("analytics_backfill.json" if BACKFILL else "analytics.json"))
 FUND = load("fundamentals.json"); ZONES = load("zones.json"); CAL = load("calendar.json"); EV = load("events.json")
 UPD = load(CONTENT / "updates.json", {"updates": []})
+AUTO = {} if BACKFILL else (load(RAW / "earnings_auto.json", {}) or {})   # 财报后自动对照的状态（auto_earnings.py 写）
+PX = load(RAW / "prices.json", {}) or {}
 asof = A["asof"]; S = A["summary"]; T = A["tech"]
 px_cibr = S["CIBR"]["last"]
 
@@ -48,6 +50,21 @@ for f in sorted(glob.glob(str(CONTENT / "earnings" / "*.json"))):
     e = load(f)
     if BACKFILL and e and e.get("date", "") > asof: continue  # 补录时不带入当时还没发生的财报
     if e and e.get("ticker") and e.get("date"): earn[(e["ticker"], e["date"])] = e
+
+
+def fill_reaction(e):
+    """财报后首个完整交易日的涨跌幅：抽取时那天往往还没收盘，这里用自己的行情补。盘后发布看次日，盘前发布看当日。"""
+    if e.get("reaction_pct") is not None: return
+    s = PX.get("series", {}).get(e["ticker"]); ds = PX.get("dates", [])
+    if not s: return
+    pre = e.get("report_timing") == "pre_market"
+    idx = [i for i, d in enumerate(ds) if (d >= e["date"] if pre else d > e["date"]) and d <= asof and s["c"][i] is not None]
+    if idx and idx[0] > 0 and s["c"][idx[0] - 1]:
+        i = idx[0]
+        e["reaction_pct"] = round((s["c"][i] / s["c"][i - 1] - 1) * 100, 1); e["reaction_date"] = ds[i]; e["reaction_auto"] = True
+
+
+for e in earn.values(): fill_reaction(e)
 asof_d = datetime.strptime(asof, "%Y-%m-%d")
 today_d = (asof_d + timedelta(days=1)) if BACKFILL else datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)  # 倒数按运行当天算，不按行情截至日（周末/假日会差几天）
 look = int(SETTINGS.get("alerts", {}).get("earnings_lookahead_days", 2))
@@ -59,7 +76,13 @@ for ev in CAL["events"]:
     e = earn.get((ev.get("ticker"), ev["date"]))
     c = dict(ev); c["days"] = days
     if e: c["status"] = "已出"; c["result"] = e
-    elif days < 0: c["status"] = "已过，待抽取" if ev.get("ticker") else "已过"
+    elif days < 0 and ev.get("ticker"):
+        st = AUTO.get(f"{ev['ticker']}_{ev['date']}", {})
+        if st.get("attempts", 0) >= 6: c["status"] = "已过，待抽取"; c["auto_note"] = "自动对照多次失败，需手动"
+        elif st.get("status") == "not_reported": c["status"] = "已过，未发布"; c["auto_note"] = "公司尚未发布，每日自动再查"
+        elif st.get("status") == "error": c["status"] = "已过，重试中"; c["auto_note"] = f"自动对照失败 {st.get('attempts')} 次，下次刷新重试"
+        else: c["status"] = "已过，对照中"; c["auto_note"] = "自动对照中"
+    elif days < 0: c["status"] = "已过"
     elif days <= look: c["status"] = "即将"
     else: c["status"] = f"{days} 天后"
     calendar.append(c)
@@ -95,7 +118,16 @@ if framework["invalid"]: alerts.append({"kind": "zone", "level": "critical", "te
 if framework["resumed"]: alerts.append({"kind": "zone", "level": "good", "text": f"CIBR 收复 {ZONES['resume_above']}：回撤结束条件触发"})
 for c in calendar:
     if c["status"] == "即将": alerts.append({"kind": "cal", "level": "warning", "text": f"{c['date']} {c['event']}：{c['watch']}"})
-    if c["status"] == "已过，待抽取": alerts.append({"kind": "cal", "level": "warning", "text": f"{c['date']} {c['event']} 已过，待跑 earnings.py {c['ticker']} {c['date']}"})
+    if c["status"] == "已过，待抽取": alerts.append({"kind": "cal", "level": "serious", "text": f"{c['date']} {c['event']}：自动财报对照多次失败，请手动跑 earnings.py {c['ticker']} {c['date']}"})
+    if c["status"] == "已过，未发布": alerts.append({"kind": "cal", "level": "warning", "text": f"{c['date']} {c['event']}：日历日期已过但公司尚未发布，每日刷新会自动再查"})
+VERDICT = {"pass": "通过", "fail": "未通过", "mixed": "部分通过"}
+for e in earnings_list:   # 新出的财报对照结果推送一次（3 天内）
+    try: fresh = (today_d - datetime.strptime(e.get("extracted_at", "")[:10], "%Y-%m-%d")).days <= 3
+    except ValueError: fresh = False
+    if fresh and not BACKFILL:
+        ck = e.get("checks") or []; ok = sum(1 for c in ck if c.get("pass") is True)
+        alerts.append({"kind": "earn", "level": {"pass": "good", "fail": "serious"}.get(e.get("verdict"), "warning"),
+                       "text": html.unescape(f"{e['ticker']} {e.get('quarter', '')} 财报对照：{VERDICT.get(e.get('verdict'), '部分通过')}（{len(ck)} 项标准通过 {ok} 项）。{e.get('event_label', '')}")})
 src = A["sources"]
 if src.get("gateway") == "down": alerts.append({"kind": "data", "level": "warning", "text": "IBKR Gateway 未连上，本次行情来自 Yahoo"})
 stale = [t for t, s in src.get("per_ticker", {}).items() if str(s).startswith("stale")]
@@ -104,7 +136,8 @@ if stale and len(stale) >= len(src.get("per_ticker", {})):
 elif stale: alerts.append({"kind": "data", "level": "warning", "text": f"{len(stale)} 只标的今日未取到、沿用上次：{', '.join(stale)}"})
 
 meta = {"asof": asof, "generated_at": now_utc(), "window_start": A["window_start"], "ytd_start": A["ytd_start"], "n_days": A["n"],
-        "sources": src, "narrative_date": SETTINGS.get("narrative_date"), "fundamentals_asof": FUND["asof"], "holdings_asof": FUND["holdings"]["asof"],
+        "sources": src, "narrative_date": SETTINGS.get("narrative_date"),
+        "earnings_since_narrative": sorted({e["ticker"] for e in earnings_list if e["date"] > str(SETTINGS.get("narrative_date") or "")}), "fundamentals_asof": FUND["asof"], "holdings_asof": FUND["holdings"]["asof"],
         "zones_asof": ZONES["asof"], "site_url": SETTINGS.get("site_url", ""), "stale_after_days": SETTINGS.get("stale_after_days", 4), "title": SETTINGS.get("report_title")}
 report = {"meta": meta, "summary": S, "tech": T, "cm_t": A["cm_t"], "cmat": A["cmat"], "monthly": A["monthly"], "episodes": A["episodes"], "big": A["big"],
           "yield_corr": A["yield_corr"], **A["charts"],
