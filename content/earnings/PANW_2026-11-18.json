@@ -1,0 +1,132 @@
+{
+ "ticker": "PANW",
+ "date": "2026-11-18",
+ "quarter": "FY27 Q1",
+ "revenue_b": 3.445,
+ "rev_yoy_pct": 39,
+ "op_margin_pct": 30.7,
+ "fcf_margin_pct": 56.2,
+ "ntm_rev_b": null,
+ "reaction_date": null,
+ "reaction_pct": null,
+ "guide": "FY27 指引“大幅上调”（materially raised）：收入 $14.52–14.57B（+26–27%），对比 MarketBeat 引用的一致预期约 $14.2B；NGS ARR $11.475–11.525B；非 GAAP 营业利润率 29.5%；EPS $4.26–4.30（一致预期 $3.81）。Q2 收入指引 $3.53–3.55B（一致预期约 $3.4B）。上调前的具体数字公司未披露，指引不含 Applied Compute。",
+ "kpis": [
+  {
+   "name": "收入",
+   "value": "$3.445B，+39% YoY",
+   "note": "含 CyberArk、Chronosphere 并购贡献；8-K Ex.99.1"
+  },
+  {
+   "name": "NGS ARR（报告值）",
+   "value": "$9.73B，+66% YoY",
+   "note": "含并购，非有机；公司未披露有机/pro forma 增速"
+  },
+  {
+   "name": "RPO",
+   "value": "$21.0B，+35% YoY",
+   "note": "含并购；cRPO 在 8-K 中未披露（第三方称 $9.4B、+36%，仅二手来源）"
+  },
+  {
+   "name": "非 GAAP 营业利润",
+   "value": "$1,059M（对比 $746M）",
+   "note": "利润率 30.7% 为用 1,059/3,445 自行计算，非公司披露"
+  },
+  {
+   "name": "Adjusted FCF",
+   "value": "$1,937M，利润率 56.2%（去年同期 69.2%）",
+   "note": "非 GAAP FCF $1,842M；利润率同比明显下降"
+  },
+  {
+   "name": "FY27 指引",
+   "value": "收入 $14.52–14.57B；NGS ARR $11.475–11.525B；RPO $25.3–25.5B；调整后 FCF 利润率 38%",
+   "note": "Q2 NGS ARR 指引 $10.20–10.22B"
+  },
+  {
+   "name": "Prisma AIRS",
+   "value": "ARR 近 $170M，客户 >1,000",
+   "note": "Yahoo 财报电话会摘要"
+  },
+  {
+   "name": "XSIAM ARR",
+   "value": "约 $800M，+65% 以上",
+   "note": "同上"
+  },
+  {
+   "name": "Platformization 新增",
+   "value": "约 170 家",
+   "note": "多于前两个财年 Q1 之和；NRR、大客户总数未披露"
+  }
+ ],
+ "checks": [
+  {
+   "criterion": "NGS ARR 有机增速 ≥ 30%",
+   "pass": null,
+   "actual": "公司只披露报告值 $9.73B、+66%，含 CyberArk/Chronosphere 并购；有机增速未披露，无法判定。注：FY26 Q3 NGS ARR 中并购贡献约 $1.6B，有机增速大概率仍高于 30%，但这只是推测，没有来源。"
+  },
+  {
+   "criterion": "RPO 增速 ≥ 30%",
+   "pass": true,
+   "actual": "RPO $21.0B，+35% YoY（报告值，含并购）"
+  },
+  {
+   "criterion": "FY27 指引上调或维持",
+   "pass": true,
+   "actual": "公司称“materially raising”全年指引；收入指引 $14.52–14.57B 高于一致预期约 $14.2B。上调前旧数字未查到。"
+  },
+  {
+   "criterion": "非 GAAP 营业利润率 ≥ 29%",
+   "pass": true,
+   "actual": "约 30.7%（$1,059M / $3,445M，自行计算）；FY27 全年指引 29.5%"
+  }
+ ],
+ "verdict": "mixed",
+ "verdict_reason": "三项可判定标准（RPO、指引、营业利润率）全部通过，但有机 NGS ARR 增速公司未披露，核心增长指标无法确认，所以不判 pass；也没有任何指标明确未通过，所以不判 fail。",
+ "summary_zh": "PANW 公布 FY27 Q1（截至 2026 年 10 月）：收入 $3.445B，同比 +39%；NGS ARR（下一代安全产品的年化经常性收入）$9.73B，+66%；RPO（已签约未确认收入）$21.0B，+35%。需要注意，这些增速都包含并购 CyberArk 和 Chronosphere 的贡献，公司没有披露有机增速，所以“有机 ARR ≥30%”这一项无法验证。非 GAAP 营业利润约 $1.06B，按收入推算利润率约 30.7%（我们自行计算）。公司“大幅上调”全年指引：收入 $14.52–14.57B，高于市场预期约 $14.2B，EPS $4.26–4.30，对比一致预期约 $3.81。但全年 NGS ARR 指引同比 +26–27%，低于本季 66%，因为并购的基数效应会逐步消失。Adjusted FCF 利润率 56.2%，比去年同期的 69.2% 低不少。AI 方面，CEO Arora 宣布以 $4.5B 全股票方式收购 Applied Compute，Prisma AIRS（AI 安全产品）ARR 近 $170M。财报后首个交易日股价涨跌幅，各来源数字互相矛盾，未能核实。",
+ "event_label": "PANW FY27Q1 收入+39%、全年指引大幅上调；宣布$4.5B收购Applied Compute",
+ "mgmt_ai_comment": "Arora：攻击者正在用开源权重模型和 agentic 框架；收购 Applied Compute 是为了训练监督模型来保护 AI agent，称“If it works, I think this will dwarf the abilities that we have in cybersecurity”。SASE 上 AI agent 流量同比约 9 倍，预计 6–9 个月后开始计量收费。Prisma AIRS 长期可能占 token 支出的 2–5%。",
+ "analyst_actions": "未查到 11-19 的券商评级变动。搜索结果只有财报前的动作：Jefferies 目标价 $450→$400（Buy）；Cantor $425；TD Cowen $440。这些时间不确定，不能当作财报后的反应。",
+ "sources": [
+  {
+   "title": "SEC 8-K Exhibit 99.1 - FY27 Q1 earnings release",
+   "url": "https://www.sec.gov/Archives/edgar/data/0001327567/000132756726000030/ex991q127earningsrelease.htm"
+  },
+  {
+   "title": "PANW IR - Fiscal Q1 2027 results",
+   "url": "https://investors.paloaltonetworks.com/news-releases/news-release-details/palo-alto-networks-reports-fiscal-first-quarter-2027-financial"
+  },
+  {
+   "title": "Yahoo Finance - Q1 Earnings Call Highlights",
+   "url": "https://finance.yahoo.com/markets/stocks/articles/palo-alto-networks-q1-earnings-011313417.html"
+  },
+  {
+   "title": "BigGo Finance - Q1 FY27 call summary",
+   "url": "https://finance.biggo.com/news/US_PANW_2026-11-18"
+  },
+  {
+   "title": "MarketBeat - FY2027 guidance vs consensus",
+   "url": "https://www.marketbeat.com/instant-alerts/guidance-palo-alto-networks-nasdaq-panw-announces-fy-2027-earnings-guidance-2026-11-18/"
+  },
+  {
+   "title": "MarketBeat - Q2 2027 guidance vs consensus",
+   "url": "https://www.marketbeat.com/instant-alerts/guidance-palo-alto-networks-nasdaq-panw-issues-q2-2027-earnings-guidance-2026-11-18/"
+  },
+  {
+   "title": "ChartMill - after-hours move",
+   "url": "https://www.chartmill.com/news/PANW/Chartmill-58904-Palo-Alto-Networks-NASDAQPANW-Jumps-After-Q1-Earnings-Beat-and-Above-View-Guidance"
+  }
+ ],
+ "unverified": [
+  "有机/pro forma NGS ARR 增速（公司未披露，检验项无法判定）",
+  "财报后首个交易日（11-19）涨跌幅：各来源互相矛盾（盘后约 +7.5%/+11%，另有 +9.9%、+18.98%、‘股价下跌’等说法），未能确认",
+  "非 GAAP 营业利润率 30.7% 为自行计算（8-K 未直接披露）；第三方（FX Leaders）也给出 30.7%",
+  "FY27 指引上调前的旧数字（公司未给出）",
+  "一致预期数字（收入 $14.2B、EPS $3.81、Q2 $3.4B）仅来自 MarketBeat 二手来源",
+  "cRPO $9.4B +36%（仅 KuCoin 转引，二手）",
+  "NRR 公司整体数字未披露（仅称 platformized 客户 NRR >120%，来自 BigGo 二手来源）",
+  "财报后券商评级/目标价变动",
+  "NTM 收入（缺 FY28 Q1 指引，无法拼接）",
+  "FCF 利润率 56.2% 为 adjusted FCF 口径，非 GAAP FCF 口径为 $1,842M / $3,445M ≈ 53.5%（自行计算）"
+ ],
+ "extracted_at": "2026-11-19 11:34",
+ "model": "sonnet"
+}
