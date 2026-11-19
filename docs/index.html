@@ -95,6 +95,8 @@ details{margin:8px 0}summary{cursor:pointer;color:var(--ink2);font-size:13px}
 .wh{display:inline-block;font-size:10.5px;padding:0 6px;border-radius:999px;background:var(--surface2);color:var(--ink2);margin-left:4px;white-space:nowrap}
 .kwr{font-size:13px!important}
 .kws{font-size:11.5px!important;color:var(--ink3)}
+.stack{display:grid;grid-template-columns:1fr;gap:14px}.stack>*{min-width:0}
+.hold th{position:sticky;top:0;background:var(--surface2);z-index:1;white-space:nowrap}.hold td{white-space:nowrap}.hold td small{display:block;color:var(--ink3);font-size:11px;font-weight:400}
 .ms td{text-align:left;line-height:1.55}.ms th{text-align:left}.ms td small{display:block;color:var(--ink2);font-size:12px;line-height:1.5;margin:2px 0}.ms td:nth-child(3),.ms th:nth-child(3){text-align:right;white-space:nowrap}.ms td:nth-child(4){min-width:170px}.ms td:nth-child(5){color:var(--ink2);font-size:12px;min-width:84px}.ms td:nth-child(2){font-size:12px}
 </style>
 </head>
@@ -130,8 +132,8 @@ details{margin:8px 0}summary{cursor:pointer;color:var(--ink2);font-size:13px}
 
 <h2 id="s1">1 · 行业结构与 CIBR 的构成</h2>
 <p class="lead">CIBR（First Trust Nasdaq Cybersecurity ETF）跟踪 Nasdaq CTA Cybersecurity Index，净资产 $17.53B、1.736 亿份（2026-10-30），45 只持仓，费率 0.58%。指数按修正自由流通市值加权：<b>前 5 大核心公司上限 8%、其余核心公司 4%、辅助公司 2%</b>，季度再平衡、半年度重构。这个规则决定了 CIBR 的两个特征：① 它不是纯网安——CSCO、AVGO、ACN、IBM、MSFT、GOOGL 等"辅助"持仓合计约 25%，带来半导体与 IT 服务的暴露；② 8% 上限意味着 CRWD/PANW 这样的大涨股会在再平衡时被动减仓，ETF 的 beta 天然低于龙头。</p>
-<div class="grid2">
- <div class="card"><h4>持仓构成（<span class="hasof"></span>，前 36 只）</h4><div class="cap">子赛道映射为本报告归纳，便于理解各股对同一事件的反应差异</div><div class="tbl" style="max-height:420px;overflow:auto"><table id="tblHold"></table></div></div>
+<div class="stack">
+ <div class="card"><h4>持仓构成（<span class="hasof"></span>，前 36 只）</h4><div class="cap">子赛道映射为本报告归纳。价格为收盘价（拆股复权、不含分红），一年窗口 = 最新交易日往前一年；HO.FP、4704.JP 为当地货币。</div><div class="tbl" style="max-height:560px;overflow:auto"><table id="tblHold" class="hold"></table></div><p class="muted">怎么读回撤三列：<b>近一年最大回撤</b>是这一年里从某个高点到其后最低点的最大跌幅，小字是高点和低点所在的月份。<b>2021–25 最大回撤</b>是上个周期（2021 年初至 2025 年底）的同一指标，多数高增长网安股的那次大跌发生在 2021 年底到 2023 年初的加息期。<b>相当于上轮</b> = 前者 ÷ 后者：50% 表示这一年最深的一跌只有上轮的一半，超过 100%（标红）表示已经比上轮跌得更深。带 * 的公司 2021 年之后才上市，上轮区间不完整；错过 2021 年高点的不计算这一列。每日行情清单之外的持仓用 Yahoo 数据补齐。</p></div>
  <div class="card"><h4>行业子赛道与市占率：头部三家的收入份额 <span class="tag">资料整理 2026-11-19</span></h4>
  <div class="cap">份额 = 该厂商在这个细分市场的收入 ÷ 全市场收入，由研究机构统计。完整数据在付费报告里，公开的只有厂商转述的片段，通常只有第一名愿意公布自己的百分比；缺的部分用“公司收入 ÷ 市场规模”估算，带“估算”标签。</div>
  <div class="tbl"><table class="ms">
@@ -479,7 +481,17 @@ const S=D.summary, T=D.tech;
 const tiles=[['CIBR 一年收益',pct(S.CIBR.ret1y),'YTD '+pct(S.CIBR.retytd)],['CIBR 距 '+S.CIBR.high1y_date.slice(5)+' 一年高点',pct(S.CIBR.off_high),'高点 '+fmt(S.CIBR.high1y)+' → '+fmt(S.CIBR.last)],['年化波动率',pct(S.CIBR.vol1y,0),'QQQ '+pct(S.QQQ.vol1y,0)+' · SMH '+pct(S.SMH.vol1y,0)],['对 QQQ beta / 相关',fmt(S.CIBR.beta_qqq)+' / '+fmt(S.CIBR.corr_qqq),'R² ≈ '+fmt(S.CIBR.corr_qqq**2)],['与 SMH 相关系数',fmt(S.CIBR.corr_smh),'与 IGV '+fmt(D.cmat[0][1])],['一年最大回撤',pct(S.CIBR.mdd1y[0]),S.CIBR.mdd1y[1]+' → '+S.CIBR.mdd1y[2]],['RSI(14) / 距 200 日线',fmt(T.CIBR.rsi14,0)+' / '+pct(T.CIBR.px/T.CIBR.ma200-1,0),'MA200 '+fmt(T.CIBR.ma200)]];
 document.getElementById('tiles').innerHTML=tiles.map(t=>`<div class="tile"><div class="k">${t[0]}</div><div class="v">${t[1]}</div><div class="d">${t[2]}</div></div>`).join('');
 // holdings
-document.getElementById('tblHold').innerHTML='<tr><th>代码</th><th>权重</th><th>子赛道</th><th>一年</th><th>YTD</th><th>距高点</th></tr>'+D.holdings.rows.map(h=>{const s=S[h.t];return `<tr><td>${h.t}</td><td>${h.w.toFixed(2)}%</td><td style="text-align:left">${h.sub}</td><td class="${s?cls(s.ret1y):''}">${s?pct(s.ret1y,0):'–'}</td><td class="${s?cls(s.retytd):''}">${s?pct(s.retytd,0):'–'}</td><td class="${s?cls(s.off_high):''}">${s?pct(s.off_high,0):'–'}</td></tr>`}).join('');
+document.getElementById('tblHold').innerHTML=(function(){const ym=d=>d?d.slice(0,7):'';const px=(v,cur)=>v==null?'–':(cur==='JPY'?Math.round(v).toLocaleString('en-US'):v.toFixed(2))+(cur?` <small style="display:inline">${cur}</small>`:'');
+return '<tr><th>代码</th><th>权重</th><th>子赛道</th><th>现价</th><th>一年高点</th><th>一年低点</th><th>距高点</th><th>近一年最大回撤</th><th>2021–25 最大回撤</th><th>相当于上轮</th><th>一年</th><th>YTD</th></tr>'+D.holdings.rows.map(h=>{const s=S[h.t]||h.px;const c=h.cyc&&!h.cyc.na?h.cyc:null;const m=s&&s.mdd1y?s.mdd1y:null;const cur=s&&s.cur;
+const ratio=m&&c&&c.mdd&&c.first<'2022-01-01'?m[0]/c.mdd:null;
+return `<tr><td>${h.t}</td><td>${h.w.toFixed(2)}%</td><td style="text-align:left">${h.sub}</td>`+
+`<td>${s?px(s.last,cur):'–'}</td>`+
+`<td>${s?px(s.high1y)+`<small>${s.high1y_date}</small>`:'–'}</td><td>${s?px(s.low1y)+`<small>${s.low1y_date}</small>`:'–'}</td>`+
+`<td class="${s?cls(s.off_high):''}">${s?pct(s.off_high,0):'–'}</td>`+
+`<td class="${m?'neg':''}">${m?pct(m[0],0)+`<small>${ym(m[1])} → ${ym(m[2])}</small>`:'–'}</td>`+
+`<td class="${c?'neg':''}">${c?pct(c.mdd,0)+(c.late?'*':'')+`<small>${ym(c.peak_date)} → ${ym(c.trough_date)}</small>`:(h.cyc&&h.cyc.na?'<small>2025 年上市</small>':'–')}</td>`+
+`<td class="${ratio!=null&&ratio>=1?'neg':''}">${ratio!=null?Math.round(ratio*100)+'%':'–'}</td>`+
+`<td class="${s?cls(s.ret1y):''}">${s?pct(s.ret1y,0):'–'}</td><td class="${s?cls(s.retytd):''}">${s?pct(s.retytd,0):'–'}</td></tr>`}).join('');})();
 // normalized chart
 lineChart('cNorm',D.dates1y,[{label:'CIBR 网络安全',data:D.norm.CIBR,color:C.s1},{label:'SMH 半导体',data:D.norm.SMH,color:C.s2},{label:'IGV 软件',data:D.norm.IGV,color:C.s3},{label:'QQQ 纳指100',data:D.norm.QQQ,color:C.s4}],v=>v.toFixed(0));
 // monthly heat

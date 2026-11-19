@@ -1,0 +1,328 @@
+{
+ "note": "上个周期（2021-01-01 至 2025-12-31）收盘价的最大峰谷回撤。区间已结束，算一次即可；scripts/holdings_px.py 只补缺的代码。拆股复权、不含分红。",
+ "rows": {
+  "CRWD": {
+   "mdd": -0.6769,
+   "peak_date": "2021-11-09",
+   "peak": 73.29,
+   "trough_date": "2023-01-06",
+   "trough": 23.68,
+   "first": "2021-01-04",
+   "src": "yahoo"
+  },
+  "PANW": {
+   "mdd": -0.36,
+   "peak_date": "2022-04-13",
+   "peak": 104.83,
+   "trough_date": "2023-01-10",
+   "trough": 67.1,
+   "first": "2021-01-04",
+   "src": "yahoo"
+  },
+  "CSCO": {
+   "mdd": -0.386,
+   "peak_date": "2021-12-29",
+   "peak": 63.96,
+   "trough_date": "2022-10-12",
+   "trough": 39.27,
+   "first": "2021-01-04",
+   "src": "yahoo"
+  },
+  "AVGO": {
+   "mdd": -0.4148,
+   "peak_date": "2024-12-16",
+   "peak": 250.0,
+   "trough_date": "2025-04-04",
+   "trough": 146.29,
+   "first": "2021-01-04",
+   "src": "yahoo"
+  },
+  "FTNT": {
+   "mdd": -0.3832,
+   "peak_date": "2023-07-17",
+   "peak": 80.28,
+   "trough_date": "2023-11-07",
+   "trough": 49.52,
+   "first": "2021-01-04",
+   "src": "yahoo"
+  },
+  "OKTA": {
+   "mdd": -0.8457,
+   "peak_date": "2021-02-12",
+   "peak": 291.78,
+   "trough_date": "2022-11-04",
+   "trough": 45.02,
+   "first": "2021-01-04",
+   "src": "yahoo"
+  },
+  "ZS": {
+   "mdd": -0.7641,
+   "peak_date": "2021-11-19",
+   "peak": 368.78,
+   "trough_date": "2023-05-02",
+   "trough": 87.0,
+   "first": "2021-01-04",
+   "src": "yahoo"
+  },
+  "NET": {
+   "mdd": -0.8258,
+   "peak_date": "2021-11-18",
+   "peak": 217.25,
+   "trough_date": "2022-11-09",
+   "trough": 37.84,
+   "first": "2021-01-04",
+   "src": "yahoo"
+  },
+  "RBRK": {
+   "mdd": -0.3424,
+   "peak_date": "2025-02-13",
+   "peak": 78.72,
+   "trough_date": "2025-04-04",
+   "trough": 51.77,
+   "first": "2024-04-25",
+   "src": "yahoo",
+   "late": true
+  },
+  "FFIV": {
+   "mdd": -0.4742,
+   "peak_date": "2021-12-29",
+   "peak": 247.78,
+   "trough_date": "2023-04-25",
+   "trough": 130.29,
+   "first": "2021-01-04",
+   "src": "yahoo"
+  },
+  "ACN": {
+   "mdd": -0.4402,
+   "peak_date": "2021-12-29",
+   "peak": 415.42,
+   "trough_date": "2025-09-25",
+   "trough": 232.56,
+   "first": "2021-01-04",
+   "src": "yahoo"
+  },
+  "IBM": {
+   "mdd": -0.2036,
+   "peak_date": "2025-06-30",
+   "peak": 294.78,
+   "trough_date": "2025-08-12",
+   "trough": 234.77,
+   "first": "2021-01-04",
+   "src": "yahoo"
+  },
+  "NTAP": {
+   "mdd": -0.4347,
+   "peak_date": "2024-07-10",
+   "peak": 134.62,
+   "trough_date": "2025-04-04",
+   "trough": 76.1,
+   "first": "2021-01-04",
+   "src": "yahoo"
+  },
+  "CHKP": {
+   "mdd": -0.2662,
+   "peak_date": "2022-03-02",
+   "peak": 148.98,
+   "trough_date": "2022-10-11",
+   "trough": 109.32,
+   "first": "2021-01-04",
+   "src": "yahoo"
+  },
+  "GEN": {
+   "mdd": -0.4974,
+   "peak_date": "2022-02-09",
+   "peak": 30.76,
+   "trough_date": "2023-05-16",
+   "trough": 15.46,
+   "first": "2021-01-04",
+   "src": "yahoo"
+  },
+  "DT": {
+   "mdd": -0.6177,
+   "peak_date": "2021-10-22",
+   "peak": 78.76,
+   "trough_date": "2022-05-11",
+   "trough": 30.11,
+   "first": "2021-01-04",
+   "src": "yahoo"
+  },
+  "INFY": {
+   "mdd": -0.4355,
+   "peak_date": "2022-01-14",
+   "peak": 26.2,
+   "trough_date": "2023-04-25",
+   "trough": 14.79,
+   "first": "2021-01-04",
+   "src": "yahoo"
+  },
+  "MSFT": {
+   "mdd": -0.3756,
+   "peak_date": "2021-11-19",
+   "peak": 343.11,
+   "trough_date": "2022-11-03",
+   "trough": 214.25,
+   "first": "2021-01-04",
+   "src": "yahoo"
+  },
+  "LDOS": {
+   "mdd": -0.3703,
+   "peak_date": "2024-11-11",
+   "peak": 201.39,
+   "trough_date": "2025-02-21",
+   "trough": 126.82,
+   "first": "2021-01-04",
+   "src": "yahoo"
+  },
+  "DDOG": {
+   "mdd": -0.6811,
+   "peak_date": "2021-11-09",
+   "peak": 196.56,
+   "trough_date": "2023-04-25",
+   "trough": 62.69,
+   "first": "2021-01-04",
+   "src": "yahoo"
+  },
+  "FROG": {
+   "mdd": -0.7578,
+   "peak_date": "2021-01-27",
+   "peak": 69.93,
+   "trough_date": "2022-05-11",
+   "trough": 16.94,
+   "first": "2021-01-04",
+   "src": "yahoo"
+  },
+  "HO.FP": {
+   "mdd": -0.226,
+   "peak_date": "2021-07-28",
+   "peak": 91.6,
+   "trough_date": "2021-12-15",
+   "trough": 70.9,
+   "first": "2021-01-04",
+   "src": "yahoo"
+  },
+  "AKAM": {
+   "mdd": -0.4684,
+   "peak_date": "2024-02-09",
+   "peak": 128.32,
+   "trough_date": "2025-04-08",
+   "trough": 68.21,
+   "first": "2021-01-04",
+   "src": "yahoo"
+  },
+  "ANET": {
+   "mdd": -0.5042,
+   "peak_date": "2025-01-22",
+   "peak": 129.82,
+   "trough_date": "2025-04-04",
+   "trough": 64.37,
+   "first": "2021-01-04",
+   "src": "yahoo"
+  },
+  "GOOGL": {
+   "mdd": -0.4432,
+   "peak_date": "2021-11-18",
+   "peak": 149.84,
+   "trough_date": "2022-11-03",
+   "trough": 83.43,
+   "first": "2021-01-04",
+   "src": "yahoo"
+  },
+  "ESTC": {
+   "mdd": -0.7433,
+   "peak_date": "2021-11-16",
+   "peak": 186.78,
+   "trough_date": "2023-01-06",
+   "trough": 47.94,
+   "first": "2021-01-04",
+   "src": "yahoo"
+  },
+  "BAH": {
+   "mdd": -0.5704,
+   "peak_date": "2024-10-28",
+   "peak": 186.0,
+   "trough_date": "2025-11-20",
+   "trough": 79.9,
+   "first": "2021-01-04",
+   "src": "yahoo"
+  },
+  "S": {
+   "mdd": -0.8326,
+   "peak_date": "2021-11-12",
+   "peak": 76.3,
+   "trough_date": "2023-06-05",
+   "trough": 12.77,
+   "first": "2021-06-30",
+   "src": "yahoo",
+   "late": true
+  },
+  "QLYS": {
+   "mdd": -0.4404,
+   "peak_date": "2023-12-19",
+   "peak": 205.89,
+   "trough_date": "2025-04-08",
+   "trough": 115.21,
+   "first": "2021-01-04",
+   "src": "yahoo"
+  },
+  "4704.JP": {
+   "mdd": -0.4513,
+   "peak_date": "2025-02-17",
+   "peak": 11850.0,
+   "trough_date": "2025-12-30",
+   "trough": 6502.0,
+   "first": "2021-01-04",
+   "src": "yahoo"
+  },
+  "CVLT": {
+   "mdd": -0.3977,
+   "peak_date": "2025-09-18",
+   "peak": 195.41,
+   "trough_date": "2025-11-20",
+   "trough": 117.69,
+   "first": "2021-01-04",
+   "src": "yahoo"
+  },
+  "SAIC": {
+   "mdd": -0.4483,
+   "peak_date": "2024-11-11",
+   "peak": 154.1,
+   "trough_date": "2025-11-20",
+   "trough": 85.01,
+   "first": "2021-01-04",
+   "src": "yahoo"
+  },
+  "BB": {
+   "mdd": -0.9159,
+   "peak_date": "2021-01-27",
+   "peak": 25.1,
+   "trough_date": "2024-08-07",
+   "trough": 2.11,
+   "first": "2021-01-04",
+   "src": "yahoo"
+  },
+  "VRNS": {
+   "mdd": -0.7819,
+   "peak_date": "2021-09-07",
+   "peak": 73.41,
+   "trough_date": "2022-11-04",
+   "trough": 16.01,
+   "first": "2021-01-04",
+   "src": "yahoo"
+  },
+  "NTSK": {
+   "na": true,
+   "first": "2025-09-18",
+   "src": "yahoo"
+  },
+  "TENB": {
+   "mdd": -0.6245,
+   "peak_date": "2022-04-13",
+   "peak": 62.66,
+   "trough_date": "2025-12-31",
+   "trough": 23.53,
+   "first": "2021-01-04",
+   "src": "yahoo"
+  }
+ },
+ "computed_at": "2026-11-19 10:42 UTC"
+}

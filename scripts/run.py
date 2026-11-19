@@ -66,7 +66,10 @@ def main():
             log("retry-only: 行情今天已刷新，只补跑上午失败的财报对照"); a.skip_fetch = True
         else:
             log(f"retry-only: 今天还没有成功的刷新（上次 {last.get('day')} ok={last.get('ok')}），补跑")
-    if not a.skip_fetch: step("fetch_prices.py", ["--no-ibkr"] if a.no_ibkr else [])
+    if not a.skip_fetch:
+        step("fetch_prices.py", ["--no-ibkr"] if a.no_ibkr else [])
+        try: step("holdings_px.py", [])   # 持仓表补充数据：失败只影响那几列，不拦主流程
+        except SystemExit as e: log(f"holdings_px 失败，持仓表补充列沿用上次：{e}")
     step("analyze.py", []); step("export.py", [])
     asof = json.loads((DOCS / "data" / "meta.json").read_text())["asof"]
     if not a.skip_publish: publish(asof)   # 先把行情发出去，财报对照可能要跑十几分钟

@@ -140,9 +140,14 @@ meta = {"asof": asof, "generated_at": now_utc(), "window_start": A["window_start
         "sources": src, "narrative_date": SETTINGS.get("narrative_date"),
         "earnings_since_narrative": sorted({e["ticker"] for e in earnings_list if e["date"] > str(SETTINGS.get("narrative_date") or "")}), "fundamentals_asof": FUND["asof"], "holdings_asof": FUND["holdings"]["asof"],
         "zones_asof": ZONES["asof"], "site_url": SETTINGS.get("site_url", ""), "stale_after_days": SETTINGS.get("stale_after_days", 4), "title": SETTINGS.get("report_title")}
+# 持仓表补充：上个周期（2021–2025）的最大回撤（config/cycle_dd.json，静态）+ 不在每日行情清单里的持仓的一年统计（holdings_px.py）
+CYC = (load("cycle_dd.json", {}) or {}).get("rows", {})
+HPX = {} if BACKFILL else (load(RAW / "holdings_px.json", {}) or {}).get("rows", {})
+HOLD = {**FUND["holdings"], "rows": [{**r, **({"cyc": CYC[r["t"]]} if r["t"] in CYC else {}), **({"px": HPX[r["t"]]} if r["t"] in HPX and r["t"] not in S else {})}
+                                     for r in FUND["holdings"]["rows"]]}
 report = {"meta": meta, "summary": S, "tech": T, "cm_t": A["cm_t"], "cmat": A["cmat"], "monthly": A["monthly"], "episodes": A["episodes"], "big": A["big"],
           "yield_corr": A["yield_corr"], **A["charts"],
-          "F": companies, "ladder": ladder, "holdings": FUND["holdings"], "band": FUND["band"], "fund_note": FUND.get("note"),
+          "F": companies, "ladder": ladder, "holdings": HOLD, "band": FUND["band"], "fund_note": FUND.get("note"),
           "events": EV["events"], "calendar": calendar, "earnings": earnings_list, "zones": zones, "zones_cfg": ZONES, "framework": framework,
           "updates": sorted(UPD["updates"], key=lambda u: u["date"], reverse=True), "alerts": alerts, "kpi_watch": KW}
 if BACKFILL:
