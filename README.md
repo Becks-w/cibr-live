@@ -80,3 +80,7 @@ tail -f logs/run.log
 
 GitHub Pages：main 分支 `/docs` 目录。`docs/` 由本机定时任务自动提交（`Publish …`），改页面逻辑请改 `docs/index.html` 后走正常提交。
 `config/settings.json` 的 `site_url` 填上 Pages 地址后，Telegram 消息和页脚会带链接。
+
+## 指标口径
+
+RSI(14) 用 Wilder 平滑（`analyze.py` 的 `rsi()`），与 IBKR / TradingView 默认一致。2026-11-19 之前用的是不做平滑的简单平均，急跌后偏低；那之前的每日存档保留原值。

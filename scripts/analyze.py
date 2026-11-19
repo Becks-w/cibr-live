@@ -85,10 +85,15 @@ def ema_series(s, w):
 
 
 def rsi(s, i, w=14):
-    g = l = 0
-    for j in range(i - w + 1, i + 1):
-        d = s[j] - s[j - 1]; g += max(d, 0); l += max(-d, 0)
-    return 100 if l == 0 else 100 - 100 / (1 + (g / w) / (l / w))
+    """Wilder RSI：前 w 根涨跌幅取简单平均做种子，之后按 (前值×(w-1) + 当日) / w 平滑，从序列开头一直递推到第 i 根。
+    与 IBKR / TradingView 默认口径一致。2026-11-19 之前用的是不做平滑的简单平均（Cutler），数值波动更大、急跌后明显偏低。"""
+    if i < w: return None
+    ag = sum(max(s[j] - s[j - 1], 0) for j in range(1, w + 1)) / w
+    al = sum(max(s[j - 1] - s[j], 0) for j in range(1, w + 1)) / w
+    for j in range(w + 1, i + 1):
+        d = s[j] - s[j - 1]
+        ag = (ag * (w - 1) + max(d, 0)) / w; al = (al * (w - 1) + max(-d, 0)) / w
+    return 100 if al == 0 else 100 - 100 / (1 + ag / al)
 
 
 # ---- 一年统计 ----
