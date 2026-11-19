@@ -29,20 +29,6 @@
    "date_source": "公司新闻稿 2026-11-03：11-18 周三盘后，4:30pm ET 网络直播"
   },
   {
-   "date": "2026-11-24",
-   "ticker": "ZS",
-   "event": "ZS FQ1（公司尚未公布日期）",
-   "watch": "ARR 增速能否守住 17-19%、销售团队流失后的管线",
-   "impact": "唯一技术面仍强的龙头；若指引上修则 ZS 是行业内性价比最高的平台",
-   "criteria": [
-    "ARR 增速 ≥ 17%",
-    "FY27 ARR 指引不下调",
-    "Billings 增速 ≥ 20%"
-   ],
-   "tentative": true,
-   "date_source": "按去年同期（感恩节前周二）推算，未经公司确认"
-  },
-  {
    "date": "2026-11-30",
    "ticker": "RBRK",
    "event": "RBRK FQ3（日期已确认）",
@@ -78,6 +64,19 @@
     "FY27 指引上调"
    ],
    "date_source": "公司新闻稿 2026-11-04：12-01 周二盘后，5:00pm ET 电话会"
+  },
+  {
+   "date": "2026-12-02",
+   "ticker": "ZS",
+   "event": "ZS FQ1（日期已确认）",
+   "watch": "ARR 增速能否守住 17-19%、销售团队流失后的管线",
+   "impact": "唯一技术面仍强的龙头；若指引上修则 ZS 是行业内性价比最高的平台",
+   "criteria": [
+    "ARR 增速 ≥ 17%",
+    "FY27 ARR 指引不下调",
+    "Billings 增速 ≥ 20%"
+   ],
+   "date_source": "自动核对 2026-11-19：公司公告（Zscaler 于 2026-11-05 通过 GlobeNewswire 发布《Zscaler to Host First Quarter Fiscal Year 2027 Earnings Conference Call》，公告 FY27 Q1 财报将于 12 月 2 日美股收盘后发布，电话会 太平洋时间 13:30（美东 16:30）；日历原暂记的 11-24 有误。ir.zscaler.com 原文返回 403，实际打开的是转载该公司新闻稿的 StockTitan 页面。 https://www.stocktitan.net/news/ZS/zscaler-to-host-first-quarter-fiscal-year-2027-earnings-conference-4dd2pdr45bmp.html）；原记 2026-11-24"
   },
   {
    "date": "2026-12-03",
