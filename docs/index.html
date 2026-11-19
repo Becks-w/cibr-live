@@ -95,6 +95,7 @@ details{margin:8px 0}summary{cursor:pointer;color:var(--ink2);font-size:13px}
 .wh{display:inline-block;font-size:10.5px;padding:0 6px;border-radius:999px;background:var(--surface2);color:var(--ink2);margin-left:4px;white-space:nowrap}
 .kwr{font-size:13px!important}
 .kws{font-size:11.5px!important;color:var(--ink3)}
+.ms td{text-align:left;line-height:1.55}.ms th{text-align:left}.ms td small{display:block;color:var(--ink2);font-size:12px;line-height:1.5;margin:2px 0}.ms td:nth-child(3),.ms th:nth-child(3){text-align:right;white-space:nowrap}.ms td:nth-child(4){min-width:170px}.ms td:nth-child(5){color:var(--ink2);font-size:12px;min-width:84px}.ms td:nth-child(2){font-size:12px}
 </style>
 </head>
 <body>
@@ -131,16 +132,19 @@ details{margin:8px 0}summary{cursor:pointer;color:var(--ink2);font-size:13px}
 <p class="lead">CIBR（First Trust Nasdaq Cybersecurity ETF）跟踪 Nasdaq CTA Cybersecurity Index，净资产 $17.53B、1.736 亿份（2026-10-30），45 只持仓，费率 0.58%。指数按修正自由流通市值加权：<b>前 5 大核心公司上限 8%、其余核心公司 4%、辅助公司 2%</b>，季度再平衡、半年度重构。这个规则决定了 CIBR 的两个特征：① 它不是纯网安——CSCO、AVGO、ACN、IBM、MSFT、GOOGL 等"辅助"持仓合计约 25%，带来半导体与 IT 服务的暴露；② 8% 上限意味着 CRWD/PANW 这样的大涨股会在再平衡时被动减仓，ETF 的 beta 天然低于龙头。</p>
 <div class="grid2">
  <div class="card"><h4>持仓构成（<span class="hasof"></span>，前 36 只）</h4><div class="cap">子赛道映射为本报告归纳，便于理解各股对同一事件的反应差异</div><div class="tbl" style="max-height:420px;overflow:auto"><table id="tblHold"></table></div></div>
- <div class="card"><h4>行业子赛道与 2026 年的"叙事敏感度"</h4>
- <div class="tbl"><table>
- <tr><th>子赛道</th><th>代表</th><th>CIBR 权重</th><th>对"AI 颠覆"敏感</th><th>对"AI 威胁扩张"受益</th></tr>
- <tr><td>端点/云工作负载平台</td><td>CRWD, S</td><td>≈10%</td><td>中（2-20、4-9 均重挫）</td><td>高（9-14 +14%、8-27 +20%）</td></tr>
- <tr><td>平台化/防火墙+SASE</td><td>PANW, FTNT, CHKP</td><td>≈16%</td><td>中低</td><td>高（PANW 4→7 月 +120%）</td></tr>
- <tr><td>零信任/网络边缘</td><td>ZS, NET, AKAM</td><td>≈10%</td><td><b>最高</b>（ZS 4-9 -11%、NET 4-10 -13.5%）</td><td>高但靠财报兑现</td></tr>
- <tr><td>身份（IAM）</td><td>OKTA, CyberArk(并入 PANW)</td><td>≈4.5%</td><td>高（2-20 -9%）</td><td><b>最高</b>（"AI Agent 身份"叙事，OKTA YTD +114%）</td></tr>
- <tr><td>数据安全/漏洞管理</td><td>RBRK, VRNS, TENB, QLYS</td><td>≈5%</td><td>中</td><td>高（"黑色十月"受益）</td></tr>
- <tr><td>网络设备/IT 服务/平台巨头</td><td>CSCO, AVGO, FFIV, ACN, IBM, MSFT, GOOGL</td><td>≈25%</td><td>低</td><td>低；但带入半导体/AI capex 暴露</td></tr>
+ <div class="card"><h4>行业子赛道与市占率：头部三家的收入份额 <span class="tag">资料整理 2026-11-19</span></h4>
+ <div class="cap">份额 = 该厂商在这个细分市场的收入 ÷ 全市场收入，由研究机构统计。完整数据在付费报告里，公开的只有厂商转述的片段，通常只有第一名愿意公布自己的百分比。</div>
+ <div class="tbl"><table class="ms">
+ <tr><th>子赛道</th><th>CIBR 里的代表</th><th>CIBR 权重</th><th>头部三家与收入份额</th><th>口径与年份</th></tr>
+ <tr><td>端点/云工作负载平台</td><td>CRWD, S</td><td>≈10%</td><td>① 微软 <b>28.6%</b><br>② ③ 未公开（CrowdStrike、SentinelOne 等）<br><small>CrowdStrike 最后一次自己公布：17.7%，当时第一，微软 16.4%（2021-07 至 2022-06）</small></td><td>IDC“现代端点安全”，2024 年；微软转述</td></tr>
+ <tr><td>平台化/防火墙+SASE</td><td>PANW, FTNT, CHKP</td><td>≈16%</td><td>① Fortinet <b>19.0%</b><br>② Palo Alto <b>18.7%</b><br>③ 思科 <b>11.4%</b><br><small>第四 Check Point 7.5%。换成只算防火墙收入的口径：Palo Alto 29%、思科 15%、Fortinet 15%</small></td><td>IDC 安全硬件设备，2024 年四季度；小字为 Dell’Oro，2024 年二季度</td></tr>
+ <tr><td>零信任/网络边缘</td><td>ZS, NET, AKAM</td><td>≈10%</td><td>① Zscaler <b>21%</b><br>② 思科、③ Palo Alto，份额未公开<br><small>前六家合计 72%。其中纯安全的 SSE 部分 Zscaler 占 34%。2025 年三季度 Zscaler 与思科相差不到 1 个百分点。NET、AKAM 不在前六</small></td><td>Dell’Oro SASE 市场，2024 年三季度</td></tr>
+ <tr><td>身份（IAM）</td><td>OKTA, CyberArk(并入 PANW)</td><td>≈4.5%</td><td>份额未公开<br><small>公认的头部是微软、Okta、Ping Identity（Gartner 2024 访问管理“领导者”，是定性评级，不是份额）。Okta 年报把微软列为主要竞争对手</small></td><td>IDC 有 IAM 份额报告，未见公开转述</td></tr>
+ <tr><td>数据安全/漏洞管理</td><td>RBRK, VRNS, TENB, QLYS</td><td>≈5%</td><td>漏洞管理：① Tenable <b>29%</b>，② ③ 未公开<br><small>Tenable 称前三名多年未变；按 2021 年的排名，二三位是 Qualys、Rapid7</small><br>备份与数据保护：① Veeam <b>13.6%</b>，② ③ 未公开<br><small>Rubrik 在 2024 年上半年排第七</small></td><td>IDC 设备漏洞管理，2023 年；IDC 数据保护软件，2025 年下半年；均为厂商转述</td></tr>
+ <tr><td>网络设备/IT 服务/平台巨头</td><td>CSCO, AVGO, FFIV, ACN, IBM, MSFT, GOOGL</td><td>≈25%</td><td>不构成一个单独的市场<br><small>这些公司的安全业务已分散计入上面各行（微软在端点、思科在防火墙和 SASE）。安全服务市场（ACN、IBM 所在）第一是德勤 18.1%，其余未公开</small></td><td>Gartner 安全服务，2025 年；德勤转述</td></tr>
  </table></div>
+ <p class="muted">怎么读这张表：① 各细分市场的第一名只有一到三成份额，防火墙前三名合计也只有约一半，行业远比云计算或操作系统分散，这是“平台化”（一家吃掉多个细分市场）成为主线的背景。② 微软是端点的第一名，却不在 CIBR 的端点代表里；看独立厂商的份额时要记得最大的对手在表外。③ 各行的年份和统计口径不同，同一家公司换一个口径名次就会变（Fortinet 按硬件设备第一，按防火墙收入第三），不能跨行比较。</p>
+ <p class="src">来源：端点（<a href="https://www.microsoft.com/en-us/security/blog/?p=141891" target="_blank" rel="noopener">微软</a>、<a href="https://www.crowdstrike.com/en-us/resources/reports/idc-worldwide-modern-endpoint-security-market-share-report/" target="_blank" rel="noopener">CrowdStrike</a>）；防火墙（<a href="https://www.emsnow.com/steady-and-resilient-security-appliance-market-grows-1-5-to-5-1b-in-4q24-with-emea-leading-at-12-4-and-global-shipments-up-2-7-according-to-idc/" target="_blank" rel="noopener">IDC 新闻稿转载</a>、<a href="https://www.cybersecuritydive.com/news/network-security-market-rebounds/726831/" target="_blank" rel="noopener">Cybersecurity Dive</a>）；SASE（<a href="https://www.delloro.com/news/top-six-sase-vendors-own-72-percent-of-2-4-b-3q-2024-market/" target="_blank" rel="noopener">Dell’Oro 2024 Q3</a>、<a href="https://www.delloro.com/news/sase-is-putting-the-nail-in-the-coffin-for-access-routers-as-market-drops-25-percent-in-3q2025/" target="_blank" rel="noopener">2025 Q3</a>）；身份（<a href="https://www.bankinfosecurity.com/microsoft-ping-okta-dominate-access-management-gartner-mq-a-27214" target="_blank" rel="noopener">BankInfoSecurity</a>）；漏洞管理（<a href="https://www.tenable.com/blog/tenable-ranked-1-in-the-device-vulnerability-management-market-for-the-sixth-consecutive-year" target="_blank" rel="noopener">Tenable</a>）；备份（<a href="https://www.comparethecloud.net/news/veeam-holds-136-of-the-global-data-protection-market-as-ai-agents-add-new-recovery-requirements" target="_blank" rel="noopener">Compare the Cloud</a>、<a href="https://www.blocksandfiles.com/data-protection/2025/02/11/data-protection-vendor-market-share-history-and-changes/1610795" target="_blank" rel="noopener">Blocks &amp; Files</a>）；安全服务（<a href="https://www.deloitte.com/global/en/about/recognition/analyst-relations/deloitte-ranked-number-one-in-security-services-by-revenue.html" target="_blank" rel="noopener">德勤</a>）。原表的“叙事敏感度”结论移到这里备查：对“AI 颠覆”最敏感的是零信任/网络边缘（ZS 4-9 -11%、NET 4-10 -13.5%）和身份（2-20 -9%）；对“AI 威胁扩张”受益最明显的是身份（OKTA YTD +114%）、端点和防火墙平台。</p>
  <p class="muted">行业需求底色：Gartner 2026-09 预测 2026 年全球安全支出 $247.5B（+13.6%），2027 年 +11.2%；Morgan Stanley CIO 调查中安全软件是 2026 年第二优先级（11.3%，仅次于 AI/ML）。即需求增速 11–14%，而龙头靠份额集中（平台化）做到 20–35%。</p>
  </div>
 </div>
@@ -201,7 +205,7 @@ details{margin:8px 0}summary{cursor:pointer;color:var(--ink2);font-size:13px}
 <p><span class="lb">做什么</span>云上的安检站。员工无论在哪上网、访问公司应用，流量都先经过 Zscaler 的机房检查，取代公司自建的 VPN 和上网网关设备。</p>
 <p><span class="lb">案例</span>西门子把约 32 万员工、190 个国家的上网和内部应用访问切到 Zscaler，并用它替换了 VPN（数字来自 Zscaler 客户页，厂商口径）。</p>
 <p><span class="lb">护城河</span>转换成本加规模。它坐在客户所有流量的必经之路上，换掉它等于重做全公司的网络；全球机房网络是后来者要花多年才能复制的固定投入。</p>
-<p><span class="lb">盯什么</span>ARR 增速（公司已不再报账单，要看剔除收购后的口径）、净留存率。上表里它对"AI 颠覆"叙事最敏感。</p></div>
+<p><span class="lb">盯什么</span>ARR 增速（公司已不再报账单，要看剔除收购后的口径）、净留存率。今年 4 月“AI 颠覆”叙事发酵时它跌得最重（4-9 单日 -11%）。</p></div>
 <div class="co" data-t="NET"><h5>NET <small>Cloudflare</small></h5>
 <p><span class="lb">做什么</span>互联网的"前台"。网站和应用把流量先交给 Cloudflare 的全球网络，由它加速、挡攻击（比如用海量垃圾流量冲垮网站的 DDoS 攻击），再转给客户自己的服务器。</p>
 <p><span class="lb">案例</span>2025-11-18 它内部一个配置文件出错，X 等大量网站同时打不开约三小时。事故是坏事，但也让人直观看到有多少互联网流量经过它。</p>
@@ -262,7 +266,7 @@ details{margin:8px 0}summary{cursor:pointer;color:var(--ink2);font-size:13px}
 <p><span class="lb">含义</span>安全在总收入里仍是小头，股价看的是企业网络和 AI 数据中心订单。</p></div>
 <div class="co" data-t="AVGO"><h5>AVGO <small>博通</small></h5>
 <p><span class="lb">安全业务</span>2019 年以 107 亿美元买下赛门铁克的企业安全业务，后来又随 VMware 拿到 Carbon Black。</p>
-<p><span class="lb">含义</span>安全对它是不起眼的存量业务，股价由 AI 定制芯片决定。这是上表"带入半导体暴露"的主要来源。</p></div>
+<p><span class="lb">含义</span>安全对它是不起眼的存量业务，股价由 AI 定制芯片决定。这是 CIBR 带有半导体和 AI 资本开支暴露的主要来源。</p></div>
 <div class="co" data-t="FFIV"><h5>FFIV <small>F5</small></h5>
 <p><span class="lb">安全业务</span>卖"流量调度器"，放在银行、航空公司网站的服务器前面分发访问请求并过滤攻击。</p>
 <p><span class="lb">案例</span>2025-10 披露被国家级黑客长期潜伏、偷走部分核心产品 BIG-IP 的源代码，美国网络安全局 CISA 当天发紧急指令要求联邦机构排查。安全设备自身被攻破，是这个行业特有的风险。</p></div>
