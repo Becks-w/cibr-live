@@ -10,6 +10,7 @@ BACKFILL = os.environ.get("CIBR_BACKFILL")  # 补录某一天的存档：只写 
 A = load(RAW / ("analytics_backfill.json" if BACKFILL else "analytics.json"))
 FUND = load("fundamentals.json"); ZONES = load("zones.json"); CAL = load("calendar.json"); EV = load("events.json")
 UPD = load(CONTENT / "updates.json", {"updates": []})
+KW = (load(CONTENT / "kpi_watch.json", {}) or {}).get("companies", {})   # 「逐家看懂」里各公司跟踪指标的近几季实际值
 AUTO = {} if BACKFILL else (load(RAW / "earnings_auto.json", {}) or {})   # 财报后自动对照的状态（auto_earnings.py 写）
 PX = load(RAW / "prices.json", {}) or {}
 asof = A["asof"]; S = A["summary"]; T = A["tech"]
@@ -143,9 +144,10 @@ report = {"meta": meta, "summary": S, "tech": T, "cm_t": A["cm_t"], "cmat": A["c
           "yield_corr": A["yield_corr"], **A["charts"],
           "F": companies, "ladder": ladder, "holdings": FUND["holdings"], "band": FUND["band"], "fund_note": FUND.get("note"),
           "events": EV["events"], "calendar": calendar, "earnings": earnings_list, "zones": zones, "zones_cfg": ZONES, "framework": framework,
-          "updates": sorted(UPD["updates"], key=lambda u: u["date"], reverse=True), "alerts": alerts}
+          "updates": sorted(UPD["updates"], key=lambda u: u["date"], reverse=True), "alerts": alerts, "kpi_watch": KW}
 if BACKFILL:
     report["updates"] = [u for u in report["updates"] if u["date"] <= asof]
+    report["kpi_watch"] = {}   # 补录的存档不带指标表：没有按日期留底，带上会混进之后才出的财报
     report["alerts"] = [x for x in alerts if x["kind"] != "data"]
     meta["backfilled"] = datetime.now().strftime("%Y-%m-%d")
     save(SITE_DATA / "archive" / f"{asof}.json", report)

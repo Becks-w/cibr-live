@@ -82,6 +82,19 @@ details{margin:8px 0}summary{cursor:pointer;color:var(--ink2);font-size:13px}
 .co p{margin:4px 0;font-size:13.5px;line-height:1.6}
 .lb{display:inline-block;color:var(--ink3);font-weight:600;font-size:12px;margin-right:6px}
 .bank{margin:6px 0 4px;padding-left:20px;font-size:14px}
+.kw{font-size:12.5px;margin-top:6px;background:transparent}
+.kw th,.kw td{padding:5px 6px;text-align:right;line-height:1.45}
+.kw th:first-child,.kw td:first-child{text-align:left;font-weight:400;color:var(--ink)}
+.kw th{font-weight:600;color:var(--ink2);white-space:nowrap}
+.kw th small{display:block;font-weight:400;color:var(--ink3);font-size:11px}
+.kw td small{display:block;color:var(--ink3);font-size:11px;line-height:1.4}
+.kw td:not(:first-child){white-space:nowrap}
+.kw td small{white-space:normal}
+@media(max-width:820px){.kw td:not(:first-child),.kw th{white-space:normal}.kw th:first-child,.kw td:first-child{width:38%}.kw th,.kw td{padding:5px 4px}}
+.kw td.na{color:var(--ink3)}
+.wh{display:inline-block;font-size:10.5px;padding:0 6px;border-radius:999px;background:var(--surface2);color:var(--ink2);margin-left:4px;white-space:nowrap}
+.kwr{font-size:13px!important}
+.kws{font-size:11.5px!important;color:var(--ink3)}
 </style>
 </head>
 <body>
@@ -144,16 +157,17 @@ details{margin:8px 0}summary{cursor:pointer;color:var(--ink2);font-size:13px}
 <li><b>巨头与服务商</b>：物业、总包和安保外包公司，安全只是它们生意的一部分。</li>
 </ul>
 <p class="muted">财务术语：ARR = 年度经常性收入（订阅合同折成一年的金额）；净留存率（NRR）= 老客户今年的花费 ÷ 去年的花费，高于 100% 说明在加买；RPO = 已签约但还没确认为收入的金额，cRPO 是其中一年内到期的部分；账单（billings）= 当期开给客户的发票金额，领先于收入。</p>
+<p class="muted">每家公司的“盯什么”下面有一张小表，列出这些指标在最近两个季度财报里的实际值，指标名后面的灰色标签是出处。大致规律：收入、ARR、RPO、利润率、自由现金流在财报新闻稿里（美国公司随 8-K 文件提交）；留存率、大客户数、分产品的增速多半只在电话会或演示材料里；有的指标公司不披露或中途停止披露，表里标“未披露”，这一点本身值得留意。</p>
 
 <details class="sec" open><summary>① 端点安全 <small>CRWD、S · 装在每台设备上的保安</small></summary>
 <p class="ana">攻击者最终要在某台电脑或服务器上运行恶意程序。端点安全软件在每台设备上装一个小程序（行业里叫 agent），持续记录设备上发生的事并上传云端分析，发现异常就拦截。</p>
 <div class="cos">
-<div class="co"><h5>CRWD <small>CrowdStrike</small></h5>
+<div class="co" data-t="CRWD"><h5>CRWD <small>CrowdStrike</small></h5>
 <p><span class="lb">做什么</span>在客户每台电脑和服务器上装一个探头程序 Falcon，数据汇到云端统一分析。客户先买端点防护，再在同一个探头上加买身份、云、日志等模块。</p>
 <p><span class="lb">案例</span>2024-07-19，它推送的一次有缺陷的更新让全球约 850 万台 Windows 电脑蓝屏。达美航空五天取消约 7,000 个航班，称损失约 5 亿美元并起诉。事故后那个季度，公司披露的客户留存率仍约 97%。</p>
 <p><span class="lb">护城河</span>转换成本。事故说明它嵌在客户最底层的系统里，也说明出了这么大的事客户都没换：换一家要在几十万台设备上重装、重新培训、重写流程。其次是数据规模，看到的攻击样本越多，识别越准。</p>
 <p><span class="lb">盯什么</span>净新增 ARR、买多个模块的客户占比、毛留存率。</p></div>
-<div class="co"><h5>S <small>SentinelOne</small></h5>
+<div class="co" data-t="S"><h5>S <small>SentinelOne</small></h5>
 <p><span class="lb">做什么</span>和 CRWD 同一个生意，主打由软件自动处置、少依赖人工，客户偏中型企业。</p>
 <p><span class="lb">案例</span>2024-09 与联想签多年协议，联想在新出货的电脑里搭载它的 Singularity 平台，覆盖数百万台设备。</p>
 <p><span class="lb">护城河</span>较弱。它是挑战者，靠渠道（电脑厂商预装、托管安全服务商转售）拿份额，收入规模明显小于 CRWD。</p>
@@ -163,17 +177,17 @@ details{margin:8px 0}summary{cursor:pointer;color:var(--ink2);font-size:13px}
 <details class="sec"><summary>② 平台化 / 防火墙 + SASE <small>PANW、FTNT、CHKP · 大楼的门禁和安检</small></summary>
 <p class="ana">防火墙是放在公司网络出入口的安检设备，检查进出的流量。SASE 是把这套安检搬到云上，员工在家或出差也先过云端安检再上网。"平台化"指一家厂商把防火墙、云安全、安全运营这些原本分开买的产品打包卖。</p>
 <div class="cos">
-<div class="co"><h5>PANW <small>Palo Alto Networks</small></h5>
+<div class="co" data-t="PANW"><h5>PANW <small>Palo Alto Networks</small></h5>
 <p><span class="lb">做什么</span>防火墙起家，现在卖三大块：网络安全、云安全、安全运营（把各处告警汇总分析的指挥中心）。2026-02 以约 250 亿美元完成收购 CyberArk 后又加上身份。</p>
 <p><span class="lb">案例</span>2024-02 公司宣布"平台化"打法：客户旧合同没到期，也可以先免费用 PANW 的产品，到期后再转为付费。当季下调账单指引，股价一天跌 28%。此后下一代安全（NGS）ARR 持续高增长，最新一季 +66%（含并购）。</p>
 <p><span class="lb">护城河</span>捆绑带来的规模经济和转换成本。大企业通常同时用几十家安全厂商，CIO 想减少供应商；三大块都用 PANW 之后，数据和流程打通，很难再拆。</p>
 <p><span class="lb">盯什么</span>NGS ARR（尤其是剔除并购后的有机增速）、RPO、平台化客户数。</p></div>
-<div class="co"><h5>FTNT <small>Fortinet</small></h5>
+<div class="co" data-t="FTNT"><h5>FTNT <small>Fortinet</small></h5>
 <p><span class="lb">做什么</span>卖防火墙硬件盒子 FortiGate 加后续订阅服务，客户以中小企业和有大量分支网点的企业为主（连锁门店、银行网点、工厂）。</p>
 <p><span class="lb">案例</span>2025-08-07 股价单日跌 22%。管理层在电话会上说，市场期待的 2026 年防火墙换机周期在二季度末已经完成 40–50%，等于未来的增长被提前确认了。</p>
 <p><span class="lb">护城河</span>成本优势。它自己设计防火墙里的专用芯片，同样的处理性能价格更低；按出货台数是全球最大的防火墙厂商（公司口径）。弱点是硬件收入跟着换机周期走，有周期性。</p>
-<p><span class="lb">盯什么</span>产品收入增速（看换机周期走到哪）、账单、SASE 和安全运营两块新业务的占比。</p></div>
-<div class="co"><h5>CHKP <small>Check Point</small></h5>
+<p><span class="lb">盯什么</span>产品收入增速（看换机周期走到哪）、账单、SASE 和安全运营两块新业务的增速（占比和 ARR 已不再披露）。</p></div>
+<div class="co" data-t="CHKP"><h5>CHKP <small>Check Point</small></h5>
 <p><span class="lb">做什么</span>1993 年推出第一代商用防火墙，是这个品类的开创者。客户多为银行、政府、电信这类老牌大机构。</p>
 <p><span class="lb">案例</span>它没有戏剧性事件，"案例"就是财务特征本身：三十年的装机基础带来稳定续费，收入个位数增长，经营利润率在龙头里最高一档，现金主要用来回购。2024 年底创始人卸任 CEO，新任 CEO 的任务是让增长重新加速。</p>
 <p><span class="lb">护城河</span>存量客户的转换成本。一家大银行的防火墙里累积了成千上万条规则，换厂商等于全部重写重测，所以老客户很少走，但也难吸引新客户。</p>
@@ -183,17 +197,17 @@ details{margin:8px 0}summary{cursor:pointer;color:var(--ink2);font-size:13px}
 <details class="sec"><summary>③ 零信任 / 网络边缘 <small>ZS、NET、AKAM · 每扇门都重新刷卡</small></summary>
 <p class="ana">传统做法是员工通过 VPN 连回公司内网，进了内网就默认可信。零信任反过来：不默认信任任何人，每次访问每个应用都单独核验身份和设备。这类公司在全球铺了大量机房，客户的流量先经过它们的机房过一遍安检。</p>
 <div class="cos">
-<div class="co"><h5>ZS <small>Zscaler</small></h5>
+<div class="co" data-t="ZS"><h5>ZS <small>Zscaler</small></h5>
 <p><span class="lb">做什么</span>云上的安检站。员工无论在哪上网、访问公司应用，流量都先经过 Zscaler 的机房检查，取代公司自建的 VPN 和上网网关设备。</p>
 <p><span class="lb">案例</span>西门子把约 32 万员工、190 个国家的上网和内部应用访问切到 Zscaler，并用它替换了 VPN（数字来自 Zscaler 客户页，厂商口径）。</p>
 <p><span class="lb">护城河</span>转换成本加规模。它坐在客户所有流量的必经之路上，换掉它等于重做全公司的网络；全球机房网络是后来者要花多年才能复制的固定投入。</p>
-<p><span class="lb">盯什么</span>账单增速、净留存率。上表里它对"AI 颠覆"叙事最敏感。</p></div>
-<div class="co"><h5>NET <small>Cloudflare</small></h5>
+<p><span class="lb">盯什么</span>ARR 增速（公司已不再报账单，要看剔除收购后的口径）、净留存率。上表里它对"AI 颠覆"叙事最敏感。</p></div>
+<div class="co" data-t="NET"><h5>NET <small>Cloudflare</small></h5>
 <p><span class="lb">做什么</span>互联网的"前台"。网站和应用把流量先交给 Cloudflare 的全球网络，由它加速、挡攻击（比如用海量垃圾流量冲垮网站的 DDoS 攻击），再转给客户自己的服务器。</p>
 <p><span class="lb">案例</span>2025-11-18 它内部一个配置文件出错，X 等大量网站同时打不开约三小时。事故是坏事，但也让人直观看到有多少互联网流量经过它。</p>
 <p><span class="lb">护城河</span>规模经济和获客成本优势。同一张全球网络上叠加几十种产品，边际成本低；大量免费用户和开发者带来自下而上的销售线索，再向大企业卖贵的套餐。</p>
 <p><span class="lb">盯什么</span>大客户数量、净留存率（最新 122%）、自由现金流利润率（最新一季 10%，是它没达标的一项）。</p></div>
-<div class="co"><h5>AKAM <small>Akamai</small></h5>
+<div class="co" data-t="AKAM"><h5>AKAM <small>Akamai</small></h5>
 <p><span class="lb">做什么</span>1998 年成立的内容分发网络（CDN，把视频和网页缓存到离用户近的机房以加快访问）老牌厂商，现在最大的业务已经变成安全。</p>
 <p><span class="lb">案例</span>2025 年安全收入 22.4 亿美元（+10%），超过全年收入的一半；传统分发收入 12.6 亿美元（-5%）。增长最快的是 2021 年收购的 Guardicore（把内网切成小隔间，一处被攻破不会蔓延）和 API 安全，合计 2.93 亿美元、+43%。</p>
 <p><span class="lb">护城河</span>存量大客户关系和全球机房。银行、航空、电商的网站多年来用它挡攻击和恶意机器人，替换意愿低。但老业务在萎缩，整体是个位数增长。</p>
@@ -203,7 +217,7 @@ details{margin:8px 0}summary{cursor:pointer;color:var(--ink2);font-size:13px}
 <details class="sec"><summary>④ 身份 <small>OKTA、CyberArk · 工牌和主钥匙</small></summary>
 <p class="ana">很多入侵不是"攻破"，而是"登录"：攻击者拿到一个真账号，就能从正门进来。身份管理解决两件事：确认登录的人是谁、他能碰什么。</p>
 <div class="cos">
-<div class="co"><h5>OKTA <small>Okta</small></h5>
+<div class="co" data-t="OKTA"><h5>OKTA <small>Okta</small></h5>
 <p><span class="lb">做什么</span>企业的统一登录入口。员工登录一次 Okta，就能进公司用的上百个应用；公司在这里统一开账号、关账号、要求二次验证。另有面向开发者的 Auth0，给 App 提供现成的登录模块。</p>
 <p><span class="lb">案例</span>2023-09 美高梅（MGM）被入侵。据报道，攻击者打电话给 IT 服务台冒充员工，让对方重置了密码和二次验证，随后拿到身份系统的高权限；酒店和赌场系统瘫痪多日，MGM 在给 SEC 的文件里估计影响约 1 亿美元。这件事说明身份系统是总闸门，也说明 Okta 自身是高价值目标。</p>
 <p><span class="lb">护城河</span>中立和集成数量。它不属于微软、谷歌、亚马逊任何一家，预先对接了数千个应用，客户接入后所有系统的登录都挂在它上面。最大对手是微软随 Office 套餐提供的 Entra ID。</p>
@@ -218,22 +232,22 @@ details{margin:8px 0}summary{cursor:pointer;color:var(--ink2);font-size:13px}
 <details class="sec"><summary>⑤ 数据安全 / 漏洞管理 <small>RBRK、VRNS、TENB、QLYS · 金库清点、异地副本和定期体检</small></summary>
 <p class="ana">前面几类都在防止坏人进来。这一类回答另外两个问题：进来之前，我有哪些没修的漏洞？进来之后，数据还能不能恢复、会不会被拿走？</p>
 <div class="cos">
-<div class="co"><h5>RBRK <small>Rubrik</small></h5>
+<div class="co" data-t="RBRK"><h5>RBRK <small>Rubrik</small></h5>
 <p><span class="lb">做什么</span>给企业数据做备份，重点是备份本身不可被篡改（勒索软件通常先删备份再加密数据），并在出事后帮客户找到一份干净的副本快速恢复。</p>
 <p><span class="lb">案例</span>2020 年美国北卡罗来纳州达勒姆市遭 Ryuk 勒索软件攻击，用 Rubrik 里未被加密的备份恢复了受影响的服务器（Rubrik 客户案例，厂商口径）。反面例子是 2024 年 UnitedHealth 旗下的 Change Healthcare：付了 2,200 万美元赎金，全美医疗结算仍中断数周，公司披露的总成本约 30 亿美元。</p>
 <p><span class="lb">护城河</span>客户几年的备份都存在它的系统里，迁移成本高。勒索攻击让备份从 IT 运维预算升级为安全预算，单价上去了。</p>
 <p><span class="lb">盯什么</span>订阅 ARR 增速、自由现金流。2024-04 才上市，仍在从亏损走向盈利。</p></div>
-<div class="co"><h5>VRNS <small>Varonis</small></h5>
+<div class="co" data-t="VRNS"><h5>VRNS <small>Varonis</small></h5>
 <p><span class="lb">做什么</span>回答"公司的敏感文件在哪、谁能看、谁看过"。它扫描文件服务器和网盘，找出权限开得过大的敏感数据并自动收紧。</p>
 <p><span class="lb">案例</span>企业上线微软 Copilot 这类 AI 助手时遇到的问题：AI 能读到员工有权限打开的所有文件，以前没人翻的旧共享盘（工资表、并购材料）会被一句提问翻出来。"上 AI 之前先清权限"成了 Varonis 的主要卖点。</p>
 <p><span class="lb">护城河</span>细分领域的先发和专业度，但对手多（微软自带的 Purview、各家新出的数据安全产品）。公司正把本地部署的老客户迁到云订阅，据报道本地版 2026 年底停止支持。</p>
-<p><span class="lb">盯什么</span>SaaS ARR 占比和迁移进度。迁移期的报表收入会失真，要看 ARR。</p></div>
-<div class="co"><h5>TENB <small>Tenable</small></h5>
+<p><span class="lb">盯什么</span>原本看 SaaS ARR 和迁移进度（迁移期的报表收入会失真，要看 ARR）。2026-10-15 公司同意被 Proofpoint（私募基金 Thoma Bravo 旗下）以每股 49.75 美元现金收购，总价约 63 亿美元，预计 2027 年上半年完成；此后股价主要跟着交易能否完成走。</p></div>
+<div class="co" data-t="TENB"><h5>TENB <small>Tenable</small></h5>
 <p><span class="lb">做什么</span>漏洞扫描。定期把公司所有设备、服务器、云资源扫一遍，列出哪些有已知漏洞没打补丁，并按危险程度排序。旗下 Nessus 是行业里用得最广的扫描工具之一。</p>
 <p><span class="lb">案例</span>2021-12 的 Log4Shell。一个大量 Java 系统都在用的日志组件出了严重漏洞，企业的第一个问题是"我们哪些系统用了它"。Tenable 当月的数据显示，它扫过的资产里十分之一受影响；美国一个联邦部门光应对这一个漏洞就花了 3.3 万工时。</p>
 <p><span class="lb">护城河</span>品牌、装机量和政府客户（合规要求定期扫描）。扫描本身是成熟品类，增长靠向"暴露面管理"升级，即把云、身份、漏洞的风险放在一张图上排优先级。</p>
 <p><span class="lb">盯什么</span>收入增速（板块里偏低）、经营利润率的扩张。</p></div>
-<div class="co"><h5>QLYS <small>Qualys</small></h5>
+<div class="co" data-t="QLYS"><h5>QLYS <small>Qualys</small></h5>
 <p><span class="lb">做什么</span>和 Tenable 同一个生意，从 1999 年起就以云服务方式交付，利润率高、增速慢。</p>
 <p><span class="lb">案例</span>它的研究团队 2024-07 发现了 OpenSSH（绝大多数 Linux 服务器都用的远程登录组件）里的严重漏洞 regreSSHion，外部统计有上千万台服务器暴露在公网上。自己能发现重量级漏洞，是扫描厂商专业能力的证明。</p>
 <p><span class="lb">护城河</span>合规刚需带来的稳定续费（比如处理信用卡的商户必须定期做漏洞扫描），加上高利润的纯云模式。</p>
@@ -243,25 +257,25 @@ details{margin:8px 0}summary{cursor:pointer;color:var(--ink2);font-size:13px}
 <details class="sec"><summary>⑥ 网络设备 / IT 服务 / 平台巨头 <small>CSCO、AVGO、FFIV、ACN、IBM、MSFT、GOOGL · 物业和总包</small></summary>
 <p class="ana">这 7 家占 CIBR 约四分之一，但安全只是它们业务的一部分，股价主要由别的因素决定。理解它们有两个用处：它们是纯安全公司的竞争对手或收购方，也是 CIBR 净值里"不属于网安"的那部分波动的来源。</p>
 <div class="cos">
-<div class="co"><h5>CSCO <small>思科</small></h5>
+<div class="co" data-t="CSCO"><h5>CSCO <small>思科</small></h5>
 <p><span class="lb">安全业务</span>网络设备龙头。2024-03 以约 280 亿美元收购 Splunk（把全公司各系统的日志集中存储和检索的软件，安全团队靠它查案）。</p>
 <p><span class="lb">含义</span>安全在总收入里仍是小头，股价看的是企业网络和 AI 数据中心订单。</p></div>
-<div class="co"><h5>AVGO <small>博通</small></h5>
+<div class="co" data-t="AVGO"><h5>AVGO <small>博通</small></h5>
 <p><span class="lb">安全业务</span>2019 年以 107 亿美元买下赛门铁克的企业安全业务，后来又随 VMware 拿到 Carbon Black。</p>
 <p><span class="lb">含义</span>安全对它是不起眼的存量业务，股价由 AI 定制芯片决定。这是上表"带入半导体暴露"的主要来源。</p></div>
-<div class="co"><h5>FFIV <small>F5</small></h5>
+<div class="co" data-t="FFIV"><h5>FFIV <small>F5</small></h5>
 <p><span class="lb">安全业务</span>卖"流量调度器"，放在银行、航空公司网站的服务器前面分发访问请求并过滤攻击。</p>
 <p><span class="lb">案例</span>2025-10 披露被国家级黑客长期潜伏、偷走部分核心产品 BIG-IP 的源代码，美国网络安全局 CISA 当天发紧急指令要求联邦机构排查。安全设备自身被攻破，是这个行业特有的风险。</p></div>
-<div class="co"><h5>ACN <small>埃森哲</small></h5>
+<div class="co" data-t="ACN"><h5>ACN <small>埃森哲</small></h5>
 <p><span class="lb">安全业务</span>安全咨询和外包运营。2020 年从博通手里买下赛门铁克的托管安全服务部门。</p>
 <p><span class="lb">含义</span>企业出事后请它重建，平时把全天候监控外包给它。这是人力密集的服务生意，利润率和估值都低于软件。</p></div>
 <div class="co"><h5>IBM</h5>
 <p><span class="lb">安全业务</span>安全软件加咨询。每年发布的《数据泄露成本报告》是行业最常引用的数字：2025 年全球平均一次泄露成本 444 万美元，美国 1,022 万美元。</p>
 <p><span class="lb">含义</span>2024 年把 QRadar 的云端资产卖给 PANW，在安全软件上它是收缩的一方。</p></div>
-<div class="co"><h5>MSFT <small>微软</small></h5>
+<div class="co" data-t="MSFT"><h5>MSFT <small>微软</small></h5>
 <p><span class="lb">安全业务</span>按收入算是全球最大的安全厂商（2023 年初披露安全年收入超过 200 亿美元）。打法是把安全功能打包进 Office 的高级套餐，这是所有纯安全公司面对的最大价格威胁。</p>
 <p><span class="lb">案例</span>2023 年黑客盗取微软的签名密钥，读取了美国政府官员的邮件。政府审查委员会的结论是这次入侵本可避免，源于微软一连串安全失误。客户不愿把安全全部交给微软，是独立厂商得以存在的理由。</p></div>
-<div class="co"><h5>GOOGL <small>谷歌</small></h5>
+<div class="co" data-t="GOOGL"><h5>GOOGL <small>谷歌</small></h5>
 <p><span class="lb">安全业务</span>2022 年以 54 亿美元收购 Mandiant（企业被入侵后请来查案的顶级团队），2026-03 以 320 亿美元完成对云安全公司 Wiz 的收购，是它史上最大的并购。</p>
 <p><span class="lb">含义</span>安全是谷歌云追赶微软和亚马逊的差异化手段；320 亿美元的价格也给独立安全公司的估值提供了一个并购参照。</p></div>
 </div></details>
@@ -271,6 +285,7 @@ details{margin:8px 0}summary{cursor:pointer;color:var(--ink2);font-size:13px}
 <b>(2) 增长主要来自向老客户多卖模块。</b>所以财报里净留存率、多模块客户占比、RPO 比新增客户数更重要，"平台化"就是这件事的另一个说法。
 <b>(3) 事故是双向的。</b>别人出事是需求（MGM 之于身份、Change Healthcare 之于备份）；厂商自己出事多是短期冲击（CRWD、NET、F5），真正伤害估值的是增长被提前确认（FTNT 2025-08）或主动让利换份额（PANW 2024-02）。</div>
 
+<p class="src">各公司“财报里的实际值”小表：数字取自公司财报新闻稿（SEC 8-K 附件或公司官网）、随财报发布的书面评述、电话会文字稿，链接在每张表下面。CRWD、FTNT 和 RBRK FY27 Q1 的新闻稿因官网拒绝访问，读的是通讯社稿件的转载页；电话会文字稿来自第三方网站，不是公司官方版本；标“二手报道”“推算”的没有对照到公司原文。“读法”一行是本报告的归纳。判决日日历里排了财报的公司，出结果后小表自动加一列、“读法”由模型改写；其余公司需手动更新。Varonis 收购案：<a href="https://www.sec.gov/Archives/edgar/data/0001361113/000117184326007078/exh_991.htm" target="_blank" rel="noopener">公司三季报</a>、<a href="https://www.verdict.co.uk/proofpoint-varonis-6-3bn-cybersecurity-deal/" target="_blank" rel="noopener">Verdict</a>。</p>
 <p class="src">案例来源：CRWD/达美（<a href="https://fortune.com/2024/09/05/crowdstrike-outage-delta-impact-bernstein-american-airlines-united-microsoft/" target="_blank" rel="noopener">Fortune</a>、<a href="https://www.itpro.com/infrastructure/delta-sues-crowdstrike-for-usd500-million-in-damages-claims-cutting-corners-caused-infamous-july-outage" target="_blank" rel="noopener">ITPro</a>）· S/联想（<a href="https://www.businesswire.com/news/home/20240916836771/en" target="_blank" rel="noopener">Business Wire</a>）· PANW 2024-02（<a href="https://www.theregister.com/2024/02/28/palo_alto_class_action/" target="_blank" rel="noopener">The Register</a>）· PANW/CyberArk（<a href="https://www.itpro.com/business/acquisition/palo-alto-networks-ceo-hails-the-end-of-identity-silos-as-firm-closes-cyberark-acquisition" target="_blank" rel="noopener">ITPro</a>）· FTNT 2025-08（<a href="https://finance.yahoo.com/news/fortinet-stock-plunging-refresh-cycle-111501563.html" target="_blank" rel="noopener">Yahoo Finance</a>）· ZS/西门子（<a href="https://www.zscaler.com/customers/siemens-ag" target="_blank" rel="noopener">Zscaler</a>）· NET 2025-11-18（<a href="https://blog.cloudflare.com/18-november-2025-outage/" target="_blank" rel="noopener">Cloudflare</a>）· AKAM 2025 年报（<a href="https://www.ir.akamai.com/node/32741" target="_blank" rel="noopener">Akamai IR</a>）· MGM（<a href="https://thestack.technology/the-mgm-hack-100-million-hit" target="_blank" rel="noopener">The Stack</a>）· CyberArk 调查（<a href="https://www.businesswire.com/news/home/20250423817886/en" target="_blank" rel="noopener">Business Wire</a>）· 达勒姆（<a href="https://www.rubrik.com/blog/company/21/8/the-tales-of-two-rubrik-customers" target="_blank" rel="noopener">Rubrik</a>）· Change Healthcare（<a href="https://www.bankinfosecurity.com/change-healthcare-attack-cost-estimate-reaches-nearly-29b-a-26541" target="_blank" rel="noopener">BankInfoSecurity</a>）· Varonis/Copilot（<a href="https://www.varonis.com/blog/microsoft-copilot-security-product" target="_blank" rel="noopener">Varonis</a>）· Log4Shell（<a href="https://tenable.com/blog/one-in-10-assets-assessed-are-vulnerable-to-log4shell" target="_blank" rel="noopener">Tenable</a>）· regreSSHion（<a href="https://www.qualys.com/regresshion-cve-2024-6387/" target="_blank" rel="noopener">Qualys</a>）· Splunk（<a href="https://investor.cisco.com/news/news-details/2024/Cisco-Completes-Acquisition-of-Splunk/" target="_blank" rel="noopener">Cisco IR</a>）· 赛门铁克（<a href="https://www.infosecurity-magazine.com/news/broadcom-symantec-enterprise/" target="_blank" rel="noopener">Infosecurity</a>、<a href="https://newsroom.accenture.com/news/2020/accenture-to-acquire-symantecs-cyber-security-services-business-from-broadcom" target="_blank" rel="noopener">Accenture</a>）· F5（<a href="https://therecord.media/cisa-directive-f5-nation-state-incident" target="_blank" rel="noopener">The Record</a>）· IBM（<a href="https://helpnetsecurity.com/2025/08/04/ibm-cost-data-breach-report-2025" target="_blank" rel="noopener">Help Net Security</a>、<a href="https://www.darkreading.com/cybersecurity-operations/palo-alto-networks-closes-acquisition-of-ibm-s-qradar-saas-assets" target="_blank" rel="noopener">Dark Reading</a>）· 微软（<a href="https://www.cybersecuritydive.com/news/microsoft-20b-security-revenue/641498/" target="_blank" rel="noopener">Cybersecurity Dive</a>、<a href="https://therecord.media/dhs-cascade-of-security-failures-microsoft-china-hack" target="_blank" rel="noopener">The Record</a>）· 谷歌（<a href="https://rcpmag.com/Articles/2022/09/12/Google-Completes-Mandiant-Buy.aspx" target="_blank" rel="noopener">RCP</a>、<a href="https://pymnts.com/acquisitions/2026/google-completes-32-billion-purchase-of-cybersecurity-firm-wiz" target="_blank" rel="noopener">PYMNTS</a>）。客户规模等数字多为厂商或当事方口径，未经独立核实；公司成立年份、产品形态等背景信息为公开资料，未逐条附来源。"护城河"和"盯什么"是本报告的归纳，不是公司表述。</p>
 </div>
 
@@ -467,6 +482,18 @@ lineChart('cNorm',D.dates1y,[{label:'CIBR 网络安全',data:D.norm.CIBR,color:C
 // returns bars
 (function(){const ts=['OKTA','CRWD','PANW','TENB','FTNT','S','RBRK','NET','HACK','BUG','CIBR','SMH','QQQ','IGV','ZS','CHKP'];mk('cRet',{type:'bar',data:{labels:ts,datasets:[{label:'一年收益',data:ts.map(t=>+(S[t].ret1y*100).toFixed(1)),backgroundColor:C.s1,borderRadius:4,borderSkipped:'start'},{label:'YTD 收益',data:ts.map(t=>+(S[t].retytd*100).toFixed(1)),backgroundColor:C.s2,borderRadius:4,borderSkipped:'start'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{boxWidth:10,usePointStyle:true,pointStyle:'rectRounded'}},tooltip:{callbacks:{label:c=>` ${c.dataset.label}: ${c.parsed.y}%`}}},scales:{x:{grid:{display:false}},y:{ticks:{callback:v=>v+'%'},grid:{color:C.line}}}}});})();
 lineChart('cLead',D.dates1y,[{label:'CRWD',data:D.normLeaders.CRWD,color:C.s1},{label:'PANW',data:D.normLeaders.PANW,color:C.s2},{label:'FTNT',data:D.normLeaders.FTNT,color:C.s3},{label:'ZS',data:D.normLeaders.ZS,color:C.s4},{label:'NET',data:D.normLeaders.NET,color:C.s5},{label:'OKTA',data:D.normLeaders.OKTA,color:C.s7}],v=>v.toFixed(0));
+// 「盯什么」：各公司跟踪指标近几季财报里的实际值（content/kpi_watch.json，财报后自动追加）
+(function(){const K=D.kpi_watch||{};document.querySelectorAll('.co[data-t]').forEach(el=>{const c=K[el.dataset.t];if(!c||!c.rows||!c.rows.length||!c.quarters||!c.quarters.length)return;
+const from=Math.max(0,c.quarters.length-3),qs=c.quarters.slice(from);
+let h='<div class="tbl"><table class="kw"><tr><th>财报里的实际值</th>'+qs.map(q=>`<th>${q.label}${q.end?`<small>截至 ${q.end}</small>`:''}</th>`).join('')+'</tr>';
+c.rows.forEach(r=>{const cells=(r.v||[]).slice(from);while(cells.length<qs.length)cells.push(null);const last=cells[cells.length-1]||{};
+h+=`<tr><td>${r.k}${last.w?`<span class="wh">${last.w}</span>`:''}${r.n?`<small>${r.n}</small>`:''}</td>`+cells.map(x=>!x?'<td class="na">—</td>':`<td${/未披露|未查到/.test(x.t)?' class="na"':''}>${x.t}${x.n?`<small>${x.n}</small>`:''}</td>`).join('')+'</tr>';});
+h+='</table></div>';
+if(c.read)h+=`<p class="kwr"><span class="lb">读法</span>${c.read}</p>`;
+const src=qs.flatMap(q=>(q.src||[]).map(x=>`<a href="${x.url}" target="_blank" rel="noopener">${q.label} ${x.title}</a>`));
+const lastRep=qs[qs.length-1].reported||'';const ev=(D.calendar||[]).find(x=>x.ticker===el.dataset.t&&x.date>lastRep&&x.status!=='已出');const nx=ev?`下次财报 ${ev.date}（美东），出结果后自动加一列。`:'';
+if(src.length||nx)h+=`<p class="kws">${nx}${src.length?'来源：'+src.join(' · '):''}</p>`;
+el.insertAdjacentHTML('beforeend',h);});})();
 // stats table
 (function(){const ts=['CIBR','HACK','BUG','IGV','SMH','QQQ','SPY','CRWD','PANW','FTNT','ZS','NET','OKTA','S','RBRK','CHKP','CSCO','AVGO','NVDA'];document.getElementById('tblStats').innerHTML='<tr><th>代码</th><th>一年</th><th>YTD</th><th>年化波动</th><th>β QQQ</th><th>上行β</th><th>下行β</th><th>ρ QQQ</th><th>R²</th><th>β SMH</th><th>ρ SMH</th><th>最大回撤</th><th>回撤区间</th><th>距一年高点</th></tr>'+ts.map(t=>{const s=S[t];return `<tr><td>${t}</td><td class="${cls(s.ret1y)}">${pct(s.ret1y)}</td><td class="${cls(s.retytd)}">${pct(s.retytd)}</td><td>${pct(s.vol1y,0)}</td><td>${fmt(s.beta_qqq)}</td><td>${fmt(s.beta_up)}</td><td>${fmt(s.beta_dn)}</td><td>${fmt(s.corr_qqq)}</td><td>${fmt(s.corr_qqq**2)}</td><td>${fmt(s.beta_smh)}</td><td>${fmt(s.corr_smh)}</td><td class="neg">${pct(s.mdd1y[0])}</td><td style="font-size:11px">${s.mdd1y[1]} → ${s.mdd1y[2]}</td><td class="${cls(s.off_high)}">${pct(s.off_high)}</td></tr>`}).join('');})();
 // CIBR 2y price with MAs + events

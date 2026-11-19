@@ -23,7 +23,7 @@ MAX_ATTEMPTS = 6
 WINDOW_DAYS = 14       # 财报过了两周还没结果就不再自动追
 DATES_EVERY = 2        # tentative 日期每隔几天核对一次
 DATES_AHEAD = 21
-SRC_FILES = ["config/calendar.json", "config/events.json", "config/fundamentals.json", "content/updates.json"]
+SRC_FILES = ["config/calendar.json", "config/events.json", "config/fundamentals.json", "content/updates.json", "content/kpi_watch.json"]
 
 DATES_SCHEMA = json.dumps({
     "type": "object",
