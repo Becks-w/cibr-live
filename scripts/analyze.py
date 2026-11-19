@@ -6,7 +6,16 @@ import math, statistics as st
 from datetime import datetime
 from common import RAW, TICKERS, load, save, log
 
+import os
 P = load(RAW / "prices.json")
+BACKFILL = os.environ.get("CIBR_BACKFILL")  # 形如 2026-11-17：把行情截断到这一天再算，用于补录漏掉的存档
+if BACKFILL:
+    k = len([d for d in P["dates"] if d <= BACKFILL])
+    if not k or P["dates"][k - 1] != BACKFILL:
+        raise SystemExit(f"{BACKFILL} 不是已有行情里的交易日")
+    P["dates"] = P["dates"][:k]
+    for t in P["series"]:
+        for f in ("c", "h", "l", "v"): P["series"][t][f] = P["series"][t][f][:k]
 dates = P["dates"]; n = len(dates); SER = P["series"]
 asof = dates[-1]
 
@@ -211,5 +220,5 @@ charts = {
 out = {"asof": asof, "window_start": dates[i1y], "ytd_start": dates[iytd], "i1y": i1y, "iytd": iytd, "n": n,
        "summary": summary, "cm_t": cm_t, "cmat": cmat, "episodes": eps, "big": big, "monthly": mon, "tech": tech, "yield_corr": yc, "charts": charts,
        "sources": {"gateway": P.get("gateway"), "counts": P.get("counts"), "fetched_at": P.get("fetched_at"), "per_ticker": {t: SER[t]["src"] for t in SER}}}
-save(RAW / "analytics.json", out)
+save(RAW / ("analytics_backfill.json" if BACKFILL else "analytics.json"), out)
 log(f"analytics: 窗口 {dates[i1y]} → {asof}，CIBR {c[-1]} 1y {summary['CIBR']['ret1y']*100:.1f}% RSI {tech['CIBR']['rsi14']:.1f} MA200 {tech['CIBR']['ma200']:.2f}")

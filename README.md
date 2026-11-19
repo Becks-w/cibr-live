@@ -12,7 +12,7 @@
 
 | 层 | 文件 | 谁改 | 频率 |
 |---|---|---|---|
-| 行情与统计 | `scripts/fetch_prices.py` → `analyze.py` → `export.py` | 机器 | 每天 11:00（launchd，东八区） |
+| 行情与统计 | `scripts/fetch_prices.py` → `analyze.py` → `export.py` | 机器 | 每天 11:00，失败则 14:00 补跑（launchd，东八区） |
 | 事实配置 | `config/fundamentals.json`（基本面快照、梯子倍数、持仓）、`config/calendar.json`（判决日 + 检验标准）、`config/zones.json`（观察区）、`config/events.json`（图表事件点） | 人 / `earnings.py` | 财报后、再平衡后 |
 | 叙事 | `docs/index.html` 里带「叙事快照」标签的段落、`content/updates.json`（更新日志） | 人（或让 Claude 改） | 有新判断时；改完把 `config/settings.json` 的 `narrative_date` 改成当天 |
 
@@ -29,7 +29,10 @@ python3 scripts/notify.py --dry-run          # 看今天会发什么
 python3 -m http.server 8766 --directory docs # 本地预览 http://localhost:8766（页面用 fetch，不能直接双击打开）
 ```
 
-依赖：Python 3.11+，`pip3 install ib_async yfinance`。IBKR Gateway（只读，127.0.0.1:4001）开着时走 IBKR，否则自动回退 Yahoo；两者都失败沿用上一次并在页面标出。
+依赖：Python 3.11+，`pip3 install ib_async yfinance`。IBKR Gateway（只读，127.0.0.1:4001）开着时走 IBKR，否则自动回退 Yahoo（Yahoo 没取到的代码隔 45 秒重试，共 3 次）。
+两者都失败、或某只取到的数据比上次还旧时，沿用上一次的序列（`src` 标 `stale`），流程不中断，页面「今日信号」会提示，14:00 自动补跑。
+
+漏掉某天的存档时补录：`python3 scripts/backfill.py 2026-11-17`（用现有行情截断到那天重算，只写 `docs/data/archive/<日期>.json`，不带入那天之后的财报结果）。
 
 ## 财报后（半自动）
 
@@ -50,7 +53,7 @@ launchctl start com.becks.cibr-live     # 手动触发一次
 tail -f logs/run.log
 ```
 
-每天 11:00（本机时间 = 东八区，美股收盘后）。Mac 休眠错过会在唤醒后补跑。
+每天 11:00 正式刷新，14:00 补跑一次（本机时间 = 东八区）：上午已成功拿到新数据时，14:00 那次直接跳过；上午失败或有标的沿用旧数据时才真正重跑。Mac 休眠错过会在唤醒后补跑。
 
 ## Telegram
 

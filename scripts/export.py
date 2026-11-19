@@ -2,11 +2,12 @@
 """合并 analytics + config + content → docs/data/report.json（页面唯一数据源）+ 当日存档 + meta.json。
 这里也算“今日信号”（alerts），页面显示、notify.py 推送都用同一份。
 """
-import glob
+import glob, os
 from datetime import datetime, timedelta
 from common import RAW, CONFIG, CONTENT, SITE_DATA, SETTINGS, load, save, log, now_utc
 
-A = load(RAW / "analytics.json")
+BACKFILL = os.environ.get("CIBR_BACKFILL")  # 补录某一天的存档：只写 archive/<日期>.json，不动 report.json / meta.json
+A = load(RAW / ("analytics_backfill.json" if BACKFILL else "analytics.json"))
 FUND = load("fundamentals.json"); ZONES = load("zones.json"); CAL = load("calendar.json"); EV = load("events.json")
 UPD = load(CONTENT / "updates.json", {"updates": []})
 asof = A["asof"]; S = A["summary"]; T = A["tech"]
@@ -45,9 +46,10 @@ framework = {"ma200_up": ma200_up, "invalid": px_cibr < ZONES["invalid_below"] a
 earn = {}
 for f in sorted(glob.glob(str(CONTENT / "earnings" / "*.json"))):
     e = load(f)
+    if BACKFILL and e and e.get("date", "") > asof: continue  # 补录时不带入当时还没发生的财报
     if e and e.get("ticker") and e.get("date"): earn[(e["ticker"], e["date"])] = e
 asof_d = datetime.strptime(asof, "%Y-%m-%d")
-today_d = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)  # 倒数按运行当天算，不按行情截至日（周末/假日会差几天）
+today_d = (asof_d + timedelta(days=1)) if BACKFILL else datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)  # 倒数按运行当天算，不按行情截至日（周末/假日会差几天）
 look = int(SETTINGS.get("alerts", {}).get("earnings_lookahead_days", 2))
 calendar = []
 for ev in CAL["events"]:
@@ -97,7 +99,9 @@ for c in calendar:
 src = A["sources"]
 if src.get("gateway") == "down": alerts.append({"kind": "data", "level": "warning", "text": "IBKR Gateway 未连上，本次行情来自 Yahoo"})
 stale = [t for t, s in src.get("per_ticker", {}).items() if str(s).startswith("stale")]
-if stale: alerts.append({"kind": "data", "level": "warning", "text": f"{len(stale)} 只标的今日未取到、沿用上次：{', '.join(stale)}"})
+if stale and len(stale) >= len(src.get("per_ticker", {})):
+    alerts.append({"kind": "data", "level": "critical", "text": f"IBKR 与 Yahoo 今日都取不到行情，页面仍停留在 {asof} 收盘；14:00 会自动补跑"})
+elif stale: alerts.append({"kind": "data", "level": "warning", "text": f"{len(stale)} 只标的今日未取到、沿用上次：{', '.join(stale)}"})
 
 meta = {"asof": asof, "generated_at": now_utc(), "window_start": A["window_start"], "ytd_start": A["ytd_start"], "n_days": A["n"],
         "sources": src, "narrative_date": SETTINGS.get("narrative_date"), "fundamentals_asof": FUND["asof"], "holdings_asof": FUND["holdings"]["asof"],
@@ -107,6 +111,14 @@ report = {"meta": meta, "summary": S, "tech": T, "cm_t": A["cm_t"], "cmat": A["c
           "F": companies, "ladder": ladder, "holdings": FUND["holdings"], "band": FUND["band"], "fund_note": FUND.get("note"),
           "events": EV["events"], "calendar": calendar, "earnings": earnings_list, "zones": zones, "zones_cfg": ZONES, "framework": framework,
           "updates": sorted(UPD["updates"], key=lambda u: u["date"], reverse=True), "alerts": alerts}
+if BACKFILL:
+    report["updates"] = [u for u in report["updates"] if u["date"] <= asof]
+    report["alerts"] = [x for x in alerts if x["kind"] != "data"]
+    meta["backfilled"] = datetime.now().strftime("%Y-%m-%d")
+    save(SITE_DATA / "archive" / f"{asof}.json", report)
+    log(f"backfill: 写入 docs/data/archive/{asof}.json（{len(report['alerts'])} 条信号）")
+    for x in report["alerts"]: log("  ·", x["text"])
+    raise SystemExit(0)
 save(SITE_DATA / "report.json", report)
 save(SITE_DATA / "archive" / f"{asof}.json", report)
 archives = sorted(p.name[:-5] for p in (SITE_DATA / "archive").glob("*.json"))

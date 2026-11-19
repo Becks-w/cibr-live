@@ -3,6 +3,7 @@
 python3 scripts/run.py                 全流程
 python3 scripts/run.py --skip-publish  本地看效果
 python3 scripts/run.py --skip-fetch    用上次的行情重算（改了 config/content 后）
+python3 scripts/run.py --retry-only    今天已成功刷新就跳过，否则补跑
 """
 import argparse, subprocess, sys
 from common import ROOT, DOCS, log
@@ -35,13 +36,27 @@ def main():
     ap = argparse.ArgumentParser()
     for f in ("fetch", "notify", "publish"): ap.add_argument(f"--skip-{f}", action="store_true")
     ap.add_argument("--no-ibkr", action="store_true")
+    ap.add_argument("--retry-only", action="store_true", help="补跑：今天已经成功取到新数据就直接退出（launchd 14:00 用）")
     a = ap.parse_args()
+    import json
+    from datetime import datetime
+    today = datetime.now().strftime("%Y-%m-%d")
+    last_f = ROOT / "data" / "raw" / "last_run.json"
+    if a.retry_only and last_f.exists():
+        last = json.loads(last_f.read_text())
+        if last.get("day") == today and last.get("ok"):
+            log(f"retry-only: 今天 {last.get('at')} 已成功刷新到 {last.get('asof')}，跳过"); return
+        log(f"retry-only: 今天还没有成功的刷新（上次 {last.get('day')} ok={last.get('ok')}），补跑")
     if not a.skip_fetch: step("fetch_prices.py", ["--no-ibkr"] if a.no_ibkr else [])
     step("analyze.py", []); step("export.py", [])
     if not a.skip_notify: step("notify.py", [])
-    import json
     asof = json.loads((DOCS / "data" / "meta.json").read_text())["asof"]
     if not a.skip_publish: publish(asof)
+    if not a.skip_fetch:  # 记录今天这次取数是否拿到了新数据，供 14:00 补跑判断
+        P = json.loads((ROOT / "data" / "raw" / "prices.json").read_text())
+        ok = not P.get("stale")
+        last_f.write_text(json.dumps({"day": today, "at": datetime.now().strftime("%H:%M"), "asof": P["asof"], "ok": ok, "stale": len(P.get("stale") or []), "gateway": P.get("gateway")}))
+        if not ok: log(f"注意：{len(P['stale'])} 只标的沿用旧数据，14:00 会自动补跑")
     log("done")
 
 

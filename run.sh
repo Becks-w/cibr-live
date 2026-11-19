@@ -4,4 +4,7 @@ export PATH="/Users/beckywang/.local/bin:/Library/Frameworks/Python.framework/Ve
 export LANG=en_US.UTF-8
 cd "/Users/beckywang/Projects/cibr-live" || exit 1
 echo "---- $(date '+%F %T') ----" >> logs/run.log
-python3 scripts/run.py "$@" >> logs/run.log 2>&1
+# 11:00 是正式刷新；13 点以后由 launchd 触发的那次是补跑，上午成功就自动跳过
+EXTRA=""
+if [ "$#" -eq 0 ] && [ "$(date +%H)" -ge 13 ]; then EXTRA="--retry-only"; fi
+python3 scripts/run.py $EXTRA "$@" >> logs/run.log 2>&1
