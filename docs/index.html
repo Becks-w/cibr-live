@@ -98,6 +98,7 @@ details{margin:8px 0}summary{cursor:pointer;color:var(--ink2);font-size:13px}
 .stack{display:grid;grid-template-columns:1fr;gap:14px}.stack>*{min-width:0}
 .hold th{position:sticky;top:0;background:var(--surface2);z-index:1;white-space:nowrap}.hold td{white-space:nowrap}.hold td small{display:block;color:var(--ink3);font-size:11px;font-weight:400}
 .ms td{text-align:left;line-height:1.55}.ms th{text-align:left}.ms td small{display:block;color:var(--ink2);font-size:12px;line-height:1.5;margin:2px 0}.ms td:nth-child(3),.ms th:nth-child(3){text-align:right;white-space:nowrap}.ms td:nth-child(4){min-width:170px}.ms td:nth-child(5){color:var(--ink2);font-size:12px;min-width:84px}.ms td:nth-child(2){font-size:12px}
+.gloss{margin-top:12px;padding-top:10px;border-top:1px solid var(--line);color:var(--ink2);font-size:13px}.gloss ul{margin:6px 0 0;padding-left:18px}.gloss li{margin:3px 0}.gloss b{color:var(--ink)}
 </style>
 </head>
 <body>
@@ -114,7 +115,15 @@ details{margin:8px 0}summary{cursor:pointer;color:var(--ink2);font-size:13px}
 
 <h2 id="slive">⚡ 最新动态：今日信号 · 更新日志 · 财报对照</h2>
 <div id="alerts"></div>
-<div class="card"><h4>判决日日历</h4><div class="cap">⏳ 未发生（按你打开页面当天的日期倒数）· ✔ 已发生（出结果后自动对照第 8 节的检验标准）；已过两周的事件自动移出列表。日期为美东日期，盘后财报对应北京时间次日清晨。</div><div class="tbl"><table id="tblCal"></table></div></div>
+<div class="card"><h4>判决日日历</h4><div class="cap">⏳ 未发生（按你打开页面当天的日期倒数）· ✔ 已发生（出结果后自动对照第 8 节的检验标准）；已过两周的事件自动移出列表。日期为美东日期，盘后财报对应北京时间次日清晨。</div><div class="tbl"><table id="tblCal"></table></div>
+<div class="gloss" id="gloss"><b>财务术语</b>
+<ul>
+<li><b>ARR</b> = 年度经常性收入（订阅合同折成一年的金额）。</li>
+<li><b>净留存率（NRR）</b> = 老客户今年的花费 ÷ 去年的花费，高于 100% 说明在加买。</li>
+<li><b>RPO</b> = 已签约但还没确认为收入的金额。</li>
+<li><b>cRPO</b> = RPO 中一年内到期的部分。</li>
+<li><b>账单（billings）</b> = 当期开给客户的发票金额，领先于收入。</li>
+</ul></div></div>
 <div class="card"><h4>财报对照结果</h4><div class="cap">财报日次日 11:00（北京时间）的每日刷新自动抽取公司公告、逐条对照日历里的标准后写入，人工可改。财报后首日涨跌幅取自本页行情。</div><div id="earnBox"></div></div>
 <div id="updates"></div>
 
@@ -163,7 +172,7 @@ details{margin:8px 0}summary{cursor:pointer;color:var(--ink2);font-size:13px}
 <li><b>数据安全与漏洞管理</b>：清点金库里有什么、谁能进，留一份歹徒碰不到的异地副本；定期体检，找出没锁的窗户。</li>
 <li><b>巨头与服务商</b>：物业、总包和安保外包公司，安全只是它们生意的一部分。</li>
 </ul>
-<p class="muted">财务术语：ARR = 年度经常性收入（订阅合同折成一年的金额）；净留存率（NRR）= 老客户今年的花费 ÷ 去年的花费，高于 100% 说明在加买；RPO = 已签约但还没确认为收入的金额，cRPO 是其中一年内到期的部分；账单（billings）= 当期开给客户的发票金额，领先于收入。</p>
+<p class="muted">财务术语（ARR、净留存率、RPO、cRPO、账单）的解释在页首「<a href="#gloss">判决日日历</a>」下方。</p>
 <p class="muted">每家公司的“盯什么”下面有一张小表，列出这些指标在最近两个季度财报里的实际值，指标名后面的灰色标签是出处。大致规律：收入、ARR、RPO、利润率、自由现金流在财报新闻稿里（美国公司随 8-K 文件提交）；留存率、大客户数、分产品的增速多半只在电话会或演示材料里；有的指标公司不披露或中途停止披露，表里标“未披露”，这一点本身值得留意。</p>
 
 <details class="sec" open><summary>① 端点安全 <small>CRWD、S · 装在每台设备上的保安</small></summary>
