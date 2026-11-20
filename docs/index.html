@@ -118,11 +118,11 @@ details{margin:8px 0}summary{cursor:pointer;color:var(--ink2);font-size:13px}
 <div class="card"><h4>判决日日历</h4><div class="cap">⏳ 未发生（按你打开页面当天的日期倒数）· ✔ 已发生（出结果后自动对照第 8 节的检验标准）；已过两周的事件自动移出列表。日期为美东日期，盘后财报对应北京时间次日清晨。</div><div class="tbl"><table id="tblCal"></table></div>
 <div class="gloss" id="gloss"><b>财务术语</b>
 <ul>
-<li><b>ARR</b> = 年度经常性收入（订阅合同折成一年的金额）。</li>
-<li><b>净留存率（NRR）</b> = 老客户今年的花费 ÷ 去年的花费，高于 100% 说明在加买。</li>
-<li><b>RPO</b> = 已签约但还没确认为收入的金额。</li>
-<li><b>cRPO</b> = RPO 中一年内到期的部分。</li>
-<li><b>账单（billings）</b> = 当期开给客户的发票金额，领先于收入。</li>
+<li><b>ARR</b>（Annual Recurring Revenue）= 年度经常性收入，订阅合同折成一年的金额。</li>
+<li><b>NRR</b>（Net Revenue Retention，净留存率）= 老客户今年的花费 ÷ 去年的花费，高于 100% 说明在加买。有的公司叫 Net Retention Rate 或 Dollar-Based Net Retention，是同一个东西。</li>
+<li><b>RPO</b>（Remaining Performance Obligations，剩余履约义务）= 已签约但还没确认为收入的金额。</li>
+<li><b>cRPO</b>（Current Remaining Performance Obligations）= RPO 中未来 12 个月内会确认为收入的部分。</li>
+<li><b>Billings</b>（账单）= 当期开给客户的发票金额，领先于收入。</li>
 </ul></div></div>
 <div class="card"><h4>财报对照结果</h4><div class="cap">财报日次日 11:00（北京时间）的每日刷新自动抽取公司公告、逐条对照日历里的标准后写入，人工可改。财报后首日涨跌幅取自本页行情。</div><div id="earnBox"></div></div>
 <div id="updates"></div>
@@ -491,7 +491,7 @@ const tiles=[['CIBR 一年收益',pct(S.CIBR.ret1y),'YTD '+pct(S.CIBR.retytd)],[
 document.getElementById('tiles').innerHTML=tiles.map(t=>`<div class="tile"><div class="k">${t[0]}</div><div class="v">${t[1]}</div><div class="d">${t[2]}</div></div>`).join('');
 // holdings
 document.getElementById('tblHold').innerHTML=(function(){const ym=d=>d?d.slice(0,7):'';const px=(v,cur)=>v==null?'–':(cur==='JPY'?Math.round(v).toLocaleString('en-US'):v.toFixed(2))+(cur?` <small style="display:inline">${cur}</small>`:'');
-return '<tr><th>代码</th><th>权重</th><th>子赛道</th><th>现价</th><th>一年高点</th><th>一年低点</th><th>距高点</th><th>近一年最大回撤</th><th>2021–25 最大回撤</th><th>相当于上轮</th><th>一年</th><th>YTD</th></tr>'+D.holdings.rows.map(h=>{const s=S[h.t]||h.px;const c=h.cyc&&!h.cyc.na?h.cyc:null;const m=s&&s.mdd1y?s.mdd1y:null;const cur=s&&s.cur;
+return '<tr><th>代码</th><th>权重</th><th style="text-align:center">子赛道</th><th>现价</th><th>一年高点</th><th>一年低点</th><th>距高点</th><th>近一年最大回撤</th><th>2021–25 最大回撤</th><th>相当于上轮</th><th>一年</th><th>YTD</th></tr>'+D.holdings.rows.map(h=>{const s=S[h.t]||h.px;const c=h.cyc&&!h.cyc.na?h.cyc:null;const m=s&&s.mdd1y?s.mdd1y:null;const cur=s&&s.cur;
 const ratio=m&&c&&c.mdd&&c.first<'2022-01-01'?m[0]/c.mdd:null;
 return `<tr><td>${h.t}</td><td>${h.w.toFixed(2)}%</td><td style="text-align:left">${h.sub}</td>`+
 `<td>${s?px(s.last,cur):'–'}</td>`+

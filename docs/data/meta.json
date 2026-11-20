@@ -1,22 +1,25 @@
 {
- "asof": "2026-11-18",
- "generated_at": "2026-11-19 10:43 UTC",
- "window_start": "2025-11-18",
+ "asof": "2026-11-19",
+ "generated_at": "2026-11-20 03:01 UTC",
+ "window_start": "2025-11-19",
  "ytd_start": "2026-01-02",
  "n_days": 501,
  "sources": {
   "gateway": "connected",
   "counts": {
-   "ibkr": 23,
-   "yahoo": 6
+   "ibkr": 27,
+   "yahoo": 2
   },
-  "fetched_at": "2026-11-19 05:09 UTC",
+  "fetched_at": "2026-11-20 03:01 UTC",
   "per_ticker": {
+   "CIBR": "ibkr",
    "HACK": "ibkr",
    "BUG": "ibkr",
+   "IGV": "ibkr",
    "SMH": "ibkr",
    "SOXX": "ibkr",
    "QQQ": "ibkr",
+   "SPY": "ibkr",
    "NVDA": "ibkr",
    "AVGO": "ibkr",
    "CRWD": "ibkr",
@@ -25,6 +28,7 @@
    "ZS": "ibkr",
    "NET": "ibkr",
    "OKTA": "ibkr",
+   "S": "ibkr",
    "CHKP": "ibkr",
    "GEN": "ibkr",
    "TENB": "ibkr",
@@ -35,10 +39,6 @@
    "CSCO": "ibkr",
    "DDOG": "ibkr",
    "SNOW": "ibkr",
-   "CIBR": "yahoo",
-   "IGV": "yahoo",
-   "SPY": "yahoo",
-   "S": "yahoo",
    "^VIX": "yahoo",
    "^TNX": "yahoo"
   }
@@ -52,31 +52,6 @@
  "stale_after_days": 4,
  "title": "网络安全行业深度复盘：CIBR 龙头",
  "alerts": [
-  {
-   "kind": "move",
-   "level": "good",
-   "text": "CIBR 单日 +4.7%（SMH -0.1%、QQQ +0.4%、IGV +1.3%）；当日成交量 4.99 百万股，为前 20 个交易日日均成交量（2.21 百万股）的 2.26 倍（显著放量；Yahoo 全市场口径）"
-  },
-  {
-   "kind": "move",
-   "level": "good",
-   "text": "PANW 单日 +9.9%"
-  },
-  {
-   "kind": "move",
-   "level": "good",
-   "text": "OKTA 单日 +12.1%"
-  },
-  {
-   "kind": "move",
-   "level": "good",
-   "text": "S 单日 +10.4%"
-  },
-  {
-   "kind": "move",
-   "level": "good",
-   "text": "RBRK 单日 +9.3%"
-  },
   {
    "kind": "earn",
    "level": "warning",
@@ -96,6 +71,7 @@
   "2026-11-13",
   "2026-11-16",
   "2026-11-17",
-  "2026-11-18"
+  "2026-11-18",
+  "2026-11-19"
  ]
 }
