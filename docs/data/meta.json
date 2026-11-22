@@ -1,6 +1,6 @@
 {
  "asof": "2026-11-20",
- "generated_at": "2026-11-21 05:22 UTC",
+ "generated_at": "2026-11-22 04:10 UTC",
  "window_start": "2025-11-20",
  "ytd_start": "2026-01-02",
  "n_days": 501,
@@ -9,14 +9,16 @@
   "counts": {
    "yahoo": 29
   },
-  "fetched_at": "2026-11-21 05:22 UTC",
+  "fetched_at": "2026-11-22 03:03 UTC",
   "per_ticker": {
    "CIBR": "yahoo",
    "HACK": "yahoo",
    "BUG": "yahoo",
+   "IGV": "yahoo",
    "SMH": "yahoo",
    "SOXX": "yahoo",
    "QQQ": "yahoo",
+   "SPY": "yahoo",
    "NVDA": "yahoo",
    "AVGO": "yahoo",
    "CRWD": "yahoo",
@@ -27,19 +29,17 @@
    "OKTA": "yahoo",
    "S": "yahoo",
    "CHKP": "yahoo",
+   "GEN": "yahoo",
    "TENB": "yahoo",
    "RBRK": "yahoo",
    "QLYS": "yahoo",
-   "CSCO": "yahoo",
-   "SNOW": "yahoo",
-   "^VIX": "yahoo",
-   "^TNX": "yahoo",
-   "IGV": "yahoo",
-   "SPY": "yahoo",
-   "GEN": "yahoo",
    "AKAM": "yahoo",
    "FFIV": "yahoo",
-   "DDOG": "yahoo"
+   "CSCO": "yahoo",
+   "DDOG": "yahoo",
+   "SNOW": "yahoo",
+   "^VIX": "yahoo",
+   "^TNX": "yahoo"
   }
  },
  "narrative_date": "2026-11-19",
